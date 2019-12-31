@@ -1,5 +1,6 @@
 package models.users;
 
+import models.appointments.I_AppointmentParticipant;
 import models.feedback.I_Feedback;
 import models.feedback.I_FeedbackRecipient;
 import models.users.info.Address;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * A User subclass for the system's doctor.
  */
 public class Doctor extends User
-    implements I_FeedbackRecipient{
+    implements I_AppointmentParticipant, I_FeedbackRecipient{
 
     public static Role ROLE = Role.DOCTOR;
 

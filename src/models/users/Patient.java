@@ -1,17 +1,21 @@
 package models.users;
 
+import models.appointments.I_AppointmentParticipant;
+import models.drugs.I_Prescription;
+
 import models.feedback.I_FeedbackSender;
 import models.users.info.Address;
 import models.users.info.Gender;
 import models.users.info.Role;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * A User subclass for the system's patients.
  */
 public class Patient extends User
-    implements I_FeedbackSender {
+    implements I_AppointmentParticipant, I_FeedbackSender {
 
     public static Role ROLE = Role.PATIENT;
 
