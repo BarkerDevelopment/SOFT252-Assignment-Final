@@ -1,5 +1,6 @@
 package models.appointments;
 
+import models.repositories.I_RepositoryItem;
 import models.users.Doctor;
 import models.users.Patient;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Defines the functions for an appointment object.
  */
-public interface I_Appointment {
+public interface I_Appointment extends I_RepositoryItem {
     /**
      * @return the _participants variable. Represents all the participants in the appointment.
      */

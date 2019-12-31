@@ -1,5 +1,6 @@
 package models.users;
 
+import models.repositories.I_RepositoryItem;
 import models.users.info.Address;
 import models.users.info.ID;
 import models.users.info.IDFactory;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Super class for the system users.
  */
 public class User
-    implements I_MessageRecipient {
+    implements I_MessageRecipient, I_RepositoryItem {
 
     private final ID _id;
     private String _name;
