@@ -2,11 +2,13 @@ package models.users;
 
 import models.users.info.Address;
 import models.users.info.Role;
+import models.messaging.I_MessageSender;
 
 /**
  * A User subclass for the system's secretaries.
  */
-public class Secretary extends User {
+public class Secretary extends User
+    implements I_MessageSender {
 
     public static Role ROLE = Role.SECRETARY;
 

@@ -4,17 +4,23 @@ import models.users.info.Address;
 import models.users.info.ID;
 import models.users.info.IDFactory;
 import models.users.info.Role;
+import models.messaging.I_Message;
+import models.messaging.I_MessageRecipient;
+
+import java.util.ArrayList;
 
 /**
  * Super class for the system users.
  */
-public class User {
+public class User
+    implements I_MessageRecipient {
 
     private final ID _id;
     private String _name;
     private String _surname;
     private Address _address;
     private int _password;
+    private ArrayList< I_Message > _messages;
 
     /**
      * Creates a User object.
@@ -31,6 +37,7 @@ public class User {
         _surname = surname;
         _address = address;
         _password = password;
+        _messages = new ArrayList<>();
     }
 
     /**
@@ -49,6 +56,7 @@ public class User {
         _surname = surname;
         _address = new Address();
         _password = password;
+        _messages = new ArrayList<>();
     }
 
     /**
@@ -67,6 +75,7 @@ public class User {
         _surname = surname;
         _address = new Address();
         _password = "password".hashCode();
+        _messages = new ArrayList<>();
     }
 
     /**
@@ -105,6 +114,14 @@ public class User {
     }
 
     /**
+     * @return the _messages variable. Represents the stored messages to the user.
+     */
+    @Override
+    public ArrayList< I_Message > getMessages() {
+        return _messages;
+    }
+
+    /**
      * @param name the new contents to set _name to.
      */
     public void setName(String name) {
@@ -130,5 +147,13 @@ public class User {
      */
     public void setPassword(String password) {
         _password = password.hashCode();
+    }
+
+    /**
+     * @param messages the new contents to set _prescriptions to.
+     */
+    @Override
+    public void setMessage(ArrayList< I_Message > messages) {
+        _messages = messages;
     }
 }
