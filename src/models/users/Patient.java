@@ -3,6 +3,7 @@ package models.users;
 import models.appointments.I_AppointmentParticipant;
 import models.drugs.I_Prescription;
 
+import models.drugs.I_PrescriptionHolder;
 import models.feedback.I_FeedbackSender;
 import models.users.info.Address;
 import models.users.info.Gender;
@@ -15,12 +16,14 @@ import java.util.ArrayList;
  * A User subclass for the system's patients.
  */
 public class Patient extends User
-    implements I_AppointmentParticipant, I_FeedbackSender {
+    implements I_AppointmentParticipant, I_PrescriptionHolder, I_FeedbackSender {
 
     public static Role ROLE = Role.PATIENT;
 
     private final LocalDate _dob;
     private final Gender _gender;
+
+    private ArrayList< I_Prescription > _prescriptions;
 
     /**
      * Creates an Patient object.
@@ -36,6 +39,8 @@ public class Patient extends User
         super(ROLE, name, surname, address, password);
         _dob = dob;
         _gender = gender;
+
+        _prescriptions = new ArrayList<>();
     }
 
     /**
@@ -53,6 +58,8 @@ public class Patient extends User
         super(ROLE, name, surname, password, seed);
         _dob = dob;
         _gender = gender;
+
+        _prescriptions = new ArrayList<>();
     }
 
     /**
@@ -69,6 +76,8 @@ public class Patient extends User
         super(ROLE, idNumber, name, surname);
         _dob = LocalDate.now();
         _gender = gender;
+
+        _prescriptions = new ArrayList<>();
     }
 
     /**
@@ -83,5 +92,21 @@ public class Patient extends User
      */
     public Gender getGender() {
         return _gender;
+    }
+
+    /**
+     * @return the _prescriptions variable. Represents all the prescriptions the I_PrescriptionHolder has.
+     */
+    @Override
+    public ArrayList< I_Prescription > getPrescriptions() {
+        return _prescriptions;
+    }
+
+    /**
+     * @param prescriptions the new contents to set _prescriptions to.
+     */
+    @Override
+    public void setPrescriptions(ArrayList< I_Prescription > prescriptions) {
+        _prescriptions = prescriptions;
     }
 }
