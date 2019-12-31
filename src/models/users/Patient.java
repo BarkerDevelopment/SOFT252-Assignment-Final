@@ -1,5 +1,6 @@
 package models.users;
 
+import models.feedback.I_FeedbackSender;
 import models.users.info.Address;
 import models.users.info.Gender;
 import models.users.info.Role;
@@ -9,7 +10,8 @@ import java.time.LocalDate;
 /**
  * A User subclass for the system's patients.
  */
-public class Patient extends User{
+public class Patient extends User
+    implements I_FeedbackSender {
 
     public static Role ROLE = Role.PATIENT;
 
