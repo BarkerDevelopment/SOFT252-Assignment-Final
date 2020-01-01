@@ -1,5 +1,6 @@
 package controllers.repository;
 
+import exceptions.DuplicateDrugException;
 import models.repositories.I_RepositoryItem;
 
 import java.util.ArrayList;
@@ -20,14 +21,14 @@ public interface I_RepositoryController< T extends I_RepositoryItem > {
      *
      * @param item the item to be added.
      */
-    public abstract void add(T item);
+    public abstract void add(T item) throws Exception;
 
     /**
      * Add a collection of items to the repository.
      *
      * @param items the collection of items to be added.
      */
-    public abstract void add(ArrayList< T > items);
+    public abstract void add(ArrayList< T > items) throws Exception;
 
     /**
      * Removes an item from the repository.
