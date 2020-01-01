@@ -1,5 +1,6 @@
 package models.users.info;
 
+import exceptions.OutOfRangeException;
 import models.I_Printable;
 
 /**
@@ -7,7 +8,7 @@ import models.I_Printable;
  */
 public class ID
         implements I_Printable {
-    private static final int ID_LENGTH = 4;
+    public static final int ID_LENGTH = 4;
 
     private final Role _role;
     private final String _idNumber;
@@ -17,11 +18,11 @@ public class ID
      *
      * @param role the initial character of the ID that identifies the user to belong to a specific group.
      * @param idNumber a String of numbers.
-     * @throws IllegalArgumentException if length of idNumber is greater than the constant ID_LENGTH.
+     * @throws OutOfRangeException if length of idNumber is greater than the constant ID_LENGTH.
      */
-    public ID(Role role, String idNumber){
+    public ID(Role role, String idNumber) throws OutOfRangeException {
         if(idNumber.length() > ID_LENGTH)
-            throw new IllegalArgumentException(String.format("Length of idNumber is too great. Must be less than %d integers.", ID_LENGTH));
+            throw new OutOfRangeException(String.format("Length of idNumber is too great. Must be less than %d integers.", ID_LENGTH));
 
         _role = role;
         _idNumber = idNumber;

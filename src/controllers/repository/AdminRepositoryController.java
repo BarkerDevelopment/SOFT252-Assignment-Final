@@ -1,12 +1,13 @@
 package controllers.repository;
 
+import exceptions.ObjectNotFoundException;
 import models.repositories.Repository;
 import models.users.Admin;
 
 import java.util.ArrayList;
 
 public class AdminRepositoryController
-    implements I_RepositoryController< Admin >{
+    implements I_RepositoryController< Admin >, I_UniqueQueryableRepository< String, Admin > {
     private Repository _repository;
 
     /**
@@ -32,6 +33,35 @@ public class AdminRepositoryController
         _repository.get().forEach(i -> content.add( (Admin) i) );
 
         return content;
+    }
+
+    /**
+     * @param identifier the unique sting which identifies an object.
+     * @return the found object.
+     * @throws ObjectNotFoundException if an object cannot be found.
+     */
+    @Override
+    public Admin get(String identifier) throws ObjectNotFoundException {
+        for (Admin user : this.get()) if(user.getUnique().equals(identifier)) return user;
+
+        throw new ObjectNotFoundException();
+    }
+
+    /**
+     * Queries the contnents of the repository to see if it contains an object that can be identified by the passed
+     * string.
+     *
+     * @param identifier the unique sting which identifies an object.
+     * @return TRUE if the repository contains an object with the identifier, FALSE otherwise.
+     */
+    @Override
+    public boolean contains(String identifier) {
+        try {
+            return this.get(identifier).getUnique().equals(identifier);
+
+        } catch (ObjectNotFoundException e) {
+            return false;
+        }
     }
 
     /**

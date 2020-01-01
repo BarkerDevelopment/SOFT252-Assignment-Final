@@ -1,25 +1,31 @@
 package models.users.info;
 
+import controllers.repository.*;
 import models.I_Printable;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * An enumeration representing the possible user roles.
  */
 public enum Role
         implements I_Printable {
-    ADMIN('A'),
-    DOCTOR('D'),
-    SECRETARY('S'),
-    PATIENT('P');
+    ADMIN('A', AdminRepositoryController.class),
+    DOCTOR('D', DoctorRepositoryController.class),
+    SECRETARY('S', SecretaryRepositoryController.class),
+    PATIENT('P', PatientRepositoryController.class);
 
     private final char _roleString;
+    private final Class< ? > _repositoryControllerClass;
+
     /**
      * Enum constructor assigning input variables.
      *
      * @param roleString the character required for the ID.
      */
-    private Role(char roleString) {
+    private Role(char roleString, Class< ? > repositoryControllerClass) {
         _roleString = roleString;
+        _repositoryControllerClass = repositoryControllerClass;
     }
 
     /**
@@ -28,6 +34,19 @@ public enum Role
     @Override
     public String toString(){
         return Character.toString(_roleString);
+    }
+
+    /**
+     * @return the repository controller specific to the role.
+     */
+    public I_RepositoryController< ? > getRepositoryController() {
+        try {
+            return (I_RepositoryController< ? >) _repositoryControllerClass.getConstructor().newInstance();
+
+        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 package models.users;
 
+import exceptions.OutOfRangeException;
+import models.I_Unique;
 import models.repositories.I_RepositoryItem;
 import models.users.info.Address;
 import models.users.info.ID;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
  * Super class for the system users.
  */
 public class User
-    implements I_MessageRecipient, I_RepositoryItem {
+    implements I_MessageRecipient, I_RepositoryItem, I_Unique< String > {
 
     private final ID _id;
     private String _name;
@@ -70,13 +72,21 @@ public class User
      * @param name the User's name.
      * @param surname the User's surname.
      */
-    public User(Role role, String idNumber, String name, String surname){
+    public User(Role role, String idNumber, String name, String surname) throws OutOfRangeException {
         _id = new ID(role, idNumber);
         _name = name;
         _surname = surname;
         _address = new Address();
         _password = "password".hashCode();
         _messages = new ArrayList<>();
+    }
+
+    /**
+     * @return the objects unique string.
+     */
+    @Override
+    public String getUnique() {
+        return _id.toString();
     }
 
     /**
