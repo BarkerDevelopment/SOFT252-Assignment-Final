@@ -6,17 +6,15 @@ import java.util.ArrayList;
 /**
  * A class that stores instances of objects for a centralised access point to them.
  *
- * @param <T> the type of object to be stored.
  */
-public interface I_Repository<T extends I_RepositoryItem>
-        extends Serializable {
+public interface I_Repository extends Serializable {
     /**
-     * @return the list of all items in the repo.
+     * @return the _items variable. Represents the list of all items in the repo.
      */
-    public abstract ArrayList< T > get();
+    public abstract ArrayList< I_RepositoryItem > get();
 
     /**
-     * @param items
+     * @param items the new contents of the _items variable.
      */
-    public abstract void set(ArrayList< T > items);
+    public abstract void set(ArrayList< I_RepositoryItem > items);
 }

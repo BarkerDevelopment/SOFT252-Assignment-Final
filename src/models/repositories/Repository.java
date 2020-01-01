@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 /**
  * A collection of objects.
- *
- * @param <T> the type of object to store in the repository.
  */
-public class Repository< T extends I_RepositoryItem >
-        implements I_Repository< T > {
+public class Repository
+        implements I_Repository {
 
-    protected ArrayList< T > _items;
+    protected ArrayList< I_RepositoryItem > _items;
 
     /**
      * Creates a repository with an empty _items list.
@@ -23,23 +21,23 @@ public class Repository< T extends I_RepositoryItem >
      * Creates a repository with a instantiated _items list.
      * @param items the list of items to create the repository with.
      */
-    public Repository(ArrayList< T > items) {
+    public Repository(ArrayList< I_RepositoryItem > items) {
         _items = items;
     }
 
     /**
-     * @return the list of all items in the repo.
+     * @return the _items variable. Represents the list of all items in the repo.
      */
     @Override
-    public ArrayList< T > get() {
+    public ArrayList< I_RepositoryItem > get() {
         return _items;
     }
 
     /**
-     * @param items the new items.
+     * @param items the new contents of the _items variable.
      */
     @Override
-    public void set(ArrayList< T > items) {
+    public void set(ArrayList< I_RepositoryItem > items) {
         _items = items;
     }
 }
