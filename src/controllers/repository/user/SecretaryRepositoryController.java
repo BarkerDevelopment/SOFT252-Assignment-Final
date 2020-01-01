@@ -1,13 +1,15 @@
-package controllers.repository;
+package controllers.repository.user;
 
+import controllers.repository.I_RepositoryController;
+import controllers.repository.I_UniqueQueryableRepository;
 import exceptions.ObjectNotFoundException;
 import models.repositories.Repository;
-import models.users.Doctor;
+import models.users.Secretary;
 
 import java.util.ArrayList;
 
-public class DoctorRepositoryController
-        implements I_RepositoryController< Doctor >, I_UniqueQueryableRepository< String, Doctor > {
+public class SecretaryRepositoryController
+        implements I_RepositoryController< Secretary >, I_UniqueQueryableRepository< String, Secretary > {
     private Repository _repository;
 
     /**
@@ -28,9 +30,9 @@ public class DoctorRepositoryController
      * @return the contents of the repository cast to the correct type.
      */
     @Override
-    public ArrayList< Doctor > get() {
-        ArrayList< Doctor > content = new ArrayList<>();
-        _repository.get().forEach(i -> content.add( (Doctor) i) );
+    public ArrayList< Secretary > get() {
+        ArrayList< Secretary > content = new ArrayList<>();
+        _repository.get().forEach(i -> content.add( (Secretary) i) );
 
         return content;
     }
@@ -41,8 +43,8 @@ public class DoctorRepositoryController
      * @throws ObjectNotFoundException if an object cannot be found.
      */
     @Override
-    public Doctor get(String identifier) throws ObjectNotFoundException {
-        for (Doctor user : this.get()) if(user.getUnique().equals(identifier)) return user;
+    public Secretary get(String identifier) throws ObjectNotFoundException {
+        for (Secretary user : this.get()) if(user.getUnique().equals(identifier)) return user;
 
         throw new ObjectNotFoundException();
     }
@@ -70,7 +72,7 @@ public class DoctorRepositoryController
      * @param item the item to be added.
      */
     @Override
-    public void add(Doctor item) {
+    public void add(Secretary item) {
         _repository.get().add(item);
     }
 
@@ -80,7 +82,7 @@ public class DoctorRepositoryController
      * @param items the collection of items to be added.
      */
     @Override
-    public void add(ArrayList< Doctor > items) {
+    public void add(ArrayList< Secretary > items) {
         _repository.get().addAll(items);
     }
 
@@ -90,7 +92,7 @@ public class DoctorRepositoryController
      * @param item the item to be removed.
      */
     @Override
-    public void remove(Doctor item) {
+    public void remove(Secretary item) {
         _repository.get().remove(item);
     }
 
@@ -100,7 +102,7 @@ public class DoctorRepositoryController
      * @param items the collection of items to be removed.
      */
     @Override
-    public void remove(ArrayList< Doctor > items) {
+    public void remove(ArrayList< Secretary > items) {
         _repository.get().removeAll(items);
     }
 

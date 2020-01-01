@@ -1,37 +1,38 @@
-package controllers.repository;
+package controllers.repository.user;
 
+import controllers.repository.I_RepositoryController;
+import controllers.repository.I_UniqueQueryableRepository;
 import exceptions.ObjectNotFoundException;
 import models.repositories.Repository;
-import models.users.User;
-import models.users.info.Role;
+import models.users.Doctor;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 
-public class UserRepositoryController
-    implements I_RepositoryController< User >, I_UniqueQueryableRepository< String, User >{
+public class DoctorRepositoryController
+        implements I_RepositoryController< Doctor >, I_UniqueQueryableRepository< String, Doctor > {
+    private Repository _repository;
 
-    private EnumMap< Role, Repository> _repositories;
+    /**
+     * @return the _repository variable. Represents the repository the object controls.
+     */
+    public Repository getRepository() {
+        return _repository;
+    }
+
+    /**
+     * @param repository the new contents of the _repository variable.
+     */
+    public void setRepository(Repository repository) {
+        _repository = repository;
+    }
 
     /**
      * @return the contents of the repository cast to the correct type.
      */
     @Override
-    public ArrayList< User > get() {
-        ArrayList< User > content = new ArrayList<>();
-
-        /*
-         * I would have like to avoided using a quadratic loop, however due to the casting issues I've been facing
-         * it was near impossible. To avoid it, I would have used the ArrayList.addAll() function but alas, you can't
-         * do it if there are conflicting types.
-         *
-         * While I'm using a quadratic loop, it only has a time complexity of O(n) as it only cycles through the list once.
-         */
-        _repositories.forEach(
-                (role, repository) -> repository.get().forEach(
-                        user -> content.add( (User) user)
-                )
-        );
+    public ArrayList< Doctor > get() {
+        ArrayList< Doctor > content = new ArrayList<>();
+        _repository.get().forEach(i -> content.add( (Doctor) i) );
 
         return content;
     }
@@ -42,8 +43,8 @@ public class UserRepositoryController
      * @throws ObjectNotFoundException if an object cannot be found.
      */
     @Override
-    public User get(String identifier) throws ObjectNotFoundException {
-        for (User user : this.get()) if(user.getUnique().equals(identifier)) return user;
+    public Doctor get(String identifier) throws ObjectNotFoundException {
+        for (Doctor user : this.get()) if(user.getUnique().equals(identifier)) return user;
 
         throw new ObjectNotFoundException();
     }
@@ -71,9 +72,8 @@ public class UserRepositoryController
      * @param item the item to be added.
      */
     @Override
-    public void add(User item) {
-        _repositories.get( item.getId().getRole() )
-                .get().add(item);
+    public void add(Doctor item) {
+        _repository.get().add(item);
     }
 
     /**
@@ -82,8 +82,8 @@ public class UserRepositoryController
      * @param items the collection of items to be added.
      */
     @Override
-    public void add(ArrayList< User > items) {
-        items.forEach(this::add);
+    public void add(ArrayList< Doctor > items) {
+        _repository.get().addAll(items);
     }
 
     /**
@@ -92,9 +92,8 @@ public class UserRepositoryController
      * @param item the item to be removed.
      */
     @Override
-    public void remove(User item) {
-        _repositories.get( item.getId().getRole() )
-                .get().remove(item);
+    public void remove(Doctor item) {
+        _repository.get().remove(item);
     }
 
     /**
@@ -103,8 +102,8 @@ public class UserRepositoryController
      * @param items the collection of items to be removed.
      */
     @Override
-    public void remove(ArrayList< User > items) {
-        items.forEach(this::remove);
+    public void remove(ArrayList< Doctor > items) {
+        _repository.get().removeAll(items);
     }
 
     /**
@@ -112,8 +111,6 @@ public class UserRepositoryController
      */
     @Override
     public void clear() {
-        _repositories.forEach(
-                (role, repository) -> repository.get().clear()
-        );
+        _repository.get().clear();
     }
 }

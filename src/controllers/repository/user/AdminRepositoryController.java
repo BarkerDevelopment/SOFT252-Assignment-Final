@@ -1,5 +1,7 @@
-package controllers.repository;
+package controllers.repository.user;
 
+import controllers.repository.I_RepositoryController;
+import controllers.repository.I_UniqueQueryableRepository;
 import exceptions.ObjectNotFoundException;
 import models.repositories.Repository;
 import models.users.Admin;

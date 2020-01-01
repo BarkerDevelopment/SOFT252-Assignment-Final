@@ -1,6 +1,10 @@
 package models.users.info;
 
 import controllers.repository.*;
+import controllers.repository.user.AdminRepositoryController;
+import controllers.repository.user.DoctorRepositoryController;
+import controllers.repository.user.PatientRepositoryController;
+import controllers.repository.user.SecretaryRepositoryController;
 import models.I_Printable;
 
 import java.lang.reflect.InvocationTargetException;
