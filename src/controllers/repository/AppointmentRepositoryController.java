@@ -1,9 +1,17 @@
 package controllers.repository;
 
+import exceptions.AppointmentClashException;
 import models.appointments.Appointment;
+import models.appointments.I_Appointment;
+import models.appointments.I_AppointmentParticipant;
 import models.repositories.Repository;
+import models.users.Doctor;
+import models.users.Patient;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class AppointmentRepositoryController
         implements I_RepositoryController< Appointment > {
@@ -35,13 +43,57 @@ public class AppointmentRepositoryController
     }
 
     /**
+     * @return all appointments of a specific participant.
+     */
+    public ArrayList< I_Appointment > get(I_AppointmentParticipant participant){
+        return new ArrayList<>( this.get().stream().filter(
+                a -> a.getParticipants().contains(participant)
+        ).collect(Collectors.toList()));
+    }
+
+    /**
+     * @return all appointments of a specified day.
+     */
+    public ArrayList< I_Appointment > get(LocalDate date) {
+        return new ArrayList<>( this.get().stream().filter(
+                a -> a.getDateTime().toLocalDate().equals(date)
+        ).collect(Collectors.toList()));
+    }
+
+    /**
      * Adds an item to the repository.
      *
      * @param item the item to be added.
      */
     @Override
-    public void add(Appointment item) {
-        _repository.get().add(item);
+    public void add(Appointment item) throws AppointmentClashException {
+        LocalDateTime dateTime = item.getDateTime();
+        Patient patient = item.getPatient();
+        Doctor doctor = item.getDoctor();
+
+        // Retrieves all appointments at the request's time that involve either one of the participants.
+        ArrayList< I_Appointment > clashAppointments = new ArrayList<>(this.get(dateTime.toLocalDate())
+                .stream()
+                .filter(a -> a.getParticipants().contains(patient) || a.getParticipants().contains(doctor))
+                .collect(Collectors.toList())
+        );
+
+        if(clashAppointments.isEmpty()) {
+            _repository.get().add(item);
+
+        }else{
+            if(clashAppointments.size() == 2){
+                throw new AppointmentClashException("Both participants are involved in another appointment at this time.");
+
+            }else{
+                I_Appointment clash = clashAppointments.get(0);
+
+                throw new AppointmentClashException(
+                        String.format("The %s is already involved involved in another appointment at this time.",
+                        (clash.getDoctor().equals(doctor) ? "doctor" : "patient"))
+                );
+            }
+        }
     }
 
     /**
@@ -50,8 +102,10 @@ public class AppointmentRepositoryController
      * @param items the collection of items to be added.
      */
     @Override
-    public void add(ArrayList< Appointment > items) {
-        _repository.get().addAll(items);
+    public void add(ArrayList< Appointment > items) throws AppointmentClashException {
+        for (Appointment item : items) {
+            this.add(item);
+        }
     }
 
     /**
