@@ -3,17 +3,30 @@ package controllers.serialisation;
 import controllers.repository.I_EnumRepositoryController;
 import controllers.repository.I_EnumRepositoryControllerKey;
 import controllers.repository.I_SingleRepositoryController;
+import controllers.serialisation.strategies.DefaultDeserialisationStrategy;
+import controllers.serialisation.strategies.DefaultSerialisationStrategy;
+import controllers.serialisation.strategies.I_DeserialisationStrategy;
+import controllers.serialisation.strategies.I_SerialisationStrategy;
 import models.repositories.Repository;
 
 /**
  * A class that controls the serialisation of the repositories.
  */
 public class RepositorySerialisationController {
-    private I_SerialisationStrategy _serialisationStrategy;
-    private I_DeserialisationStrategy _deserialisationStrategy;
+    private final I_SerialisationStrategy _serialisationStrategy;
+    private final I_DeserialisationStrategy _deserialisationStrategy;
 
     /**
-     * Default constructor.
+     * Default constructor. Creates a controller with the default strategies.
+     *
+     */
+    public RepositorySerialisationController() {
+        _serialisationStrategy = new DefaultSerialisationStrategy();
+        _deserialisationStrategy = new DefaultDeserialisationStrategy();
+    }
+
+    /**
+     * Alternative constructor. Allows for the definition of a serialisation strategy.
      *
      * @param serialisationStrategy the serialisation strategy.
      * @param deserialisationStrategy the deserialisation strategy.

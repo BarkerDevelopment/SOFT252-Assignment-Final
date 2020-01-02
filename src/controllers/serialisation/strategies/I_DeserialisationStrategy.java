@@ -1,4 +1,4 @@
-package controllers.serialisation;
+package controllers.serialisation.strategies;
 
 /**
  * Identifies an object as a deserialisation strategy.
