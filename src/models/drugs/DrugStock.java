@@ -11,8 +11,7 @@ public class DrugStock
     /**
      * Builder design pattern.
      */
-    @SuppressWarnings("InnerClassMayBeStatic")
-    public class Builder
+    public static class Builder
             implements I_Builder< DrugStock > {
         public String name;
         public String description;
