@@ -1,61 +1,13 @@
 package models.drugs;
 
 import models.I_Builder;
+import models.I_Unique;
 import models.repositories.I_RepositoryItem;
 
 import java.util.ArrayList;
 
 public class DrugStock
         implements I_RepositoryItem {
-    /**
-     * Builder design pattern.
-     */
-    public static class Builder
-            implements I_Builder< DrugStock > {
-        public String name;
-        public String description;
-        public ArrayList< String > sideEffects;
-        public int stock;
-
-        /**
-         * Default builder constructor.
-         *
-         * @param name the DrugStock object's Drug object's name.
-         * @param description the DrugStock object's Drug object's description.
-         */
-        public Builder (String name, String description){
-            this.name = name;
-            this.description = description;
-            this.sideEffects = new ArrayList<>();
-            this.stock = 0;
-        }
-
-        /**
-         * @param sideEffects the DrugStock object's Drug object's side effects.
-         * @return the Builder object.
-         */
-        public Builder sideEffects(ArrayList< String > sideEffects){
-            this.sideEffects = sideEffects;
-            return this;
-        }
-
-        /**
-         * @param stock the DrugStock object's stock.
-         * @return the Builder object.
-         */
-        public Builder stock(int stock){
-            this.stock = stock;
-            return this;
-        }
-
-        /**
-         * @return the object based on the builder.
-         */
-        @Override
-        public DrugStock build() {
-            return new DrugStock(this);
-        }
-    }
 
     /**
      * A class that encapsulates a drug treatment.
@@ -142,14 +94,41 @@ public class DrugStock
     private final Drug _drug;
     private int _stock;
 
+    private ArrayList< I_Observer< Integer > > _observers;
+
     /**
-     * Creates a DrugStock object.
+     * Default constructor.
+     *
+     * @param name the drug's name.
+     * @param description the drug's description.
+     * @param sideEffects the drug's sideEffects.
+     * @param stock the drug's stock.
+     */
+    public DrugStock(String name, String description, ArrayList< String > sideEffects, int stock) {
+        _drug = new Drug(name, description, sideEffects);
+        _stock = stock;
+
+        _observers = new ArrayList<>();
+    }
+
+    /**
+     * Creates a DrugStock item from a request.
      *
      * @param builder the DrugStock builder object.
      */
     public DrugStock(Builder builder) {
         _drug = new Drug(builder.name, builder.description, builder.sideEffects);
         _stock = builder.stock;
+
+        _observers = new ArrayList<>();
+    }
+
+    /**
+     * @return T the objects unique string.
+     */
+    @Override
+    public I_Treatment getUnique() {
+        return _drug;
     }
 
     /**
