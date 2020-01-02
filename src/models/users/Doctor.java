@@ -1,5 +1,6 @@
 package models.users;
 
+import exceptions.OutOfRangeException;
 import models.appointments.I_AppointmentParticipant;
 import models.feedback.I_Feedback;
 import models.feedback.I_FeedbackRecipient;
@@ -53,7 +54,7 @@ public class Doctor extends User
      * @param name     the Doctor's name.
      * @param surname  the Doctor's surname.
      */
-    public Doctor(String idNumber, String name, String surname) {
+    public Doctor(String idNumber, String name, String surname) throws OutOfRangeException {
         super(ROLE, idNumber, name, surname);
         _feedback = new ArrayList<>();
     }

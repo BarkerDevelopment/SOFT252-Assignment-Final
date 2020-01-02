@@ -1,5 +1,6 @@
 package models.users;
 
+import exceptions.OutOfRangeException;
 import models.appointments.I_AppointmentParticipant;
 import models.drugs.I_Prescription;
 
@@ -72,7 +73,7 @@ public class Patient extends User
      * @param surname the Patient's surname.
      * @param gender the Patient's gender.
      */
-    public Patient(String idNumber, String name, String surname, Gender gender) {
+    public Patient(String idNumber, String name, String surname, Gender gender) throws OutOfRangeException {
         super(ROLE, idNumber, name, surname);
         _dob = LocalDate.now();
         _gender = gender;

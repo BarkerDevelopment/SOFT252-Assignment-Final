@@ -1,5 +1,6 @@
 package models.users;
 
+import exceptions.OutOfRangeException;
 import models.users.info.Address;
 import models.users.info.UserRole;
 import models.messaging.I_MessageSender;
@@ -45,7 +46,7 @@ public class Secretary extends User
      * @param name the Secretary's name.
      * @param surname the Secretary's surname.
      */
-    public Secretary(String idNumber, String name, String surname) {
+    public Secretary(String idNumber, String name, String surname) throws OutOfRangeException {
         super(ROLE, idNumber, name, surname);
     }
 }
