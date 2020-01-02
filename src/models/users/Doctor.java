@@ -4,7 +4,7 @@ import models.appointments.I_AppointmentParticipant;
 import models.feedback.I_Feedback;
 import models.feedback.I_FeedbackRecipient;
 import models.users.info.Address;
-import models.users.info.Role;
+import models.users.info.UserRole;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Doctor extends User
     implements I_AppointmentParticipant, I_FeedbackRecipient{
 
-    public static Role ROLE = Role.DOCTOR;
+    public static UserRole ROLE = UserRole.DOCTOR;
 
     private ArrayList< I_Feedback > _feedback;
 

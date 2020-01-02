@@ -1,19 +1,37 @@
 package controllers.repository.user;
 
-import controllers.repository.I_RepositoryController;
+import controllers.repository.I_EnumRepositoryController;
 import controllers.repository.I_UniqueQueryableRepository;
 import exceptions.ObjectNotFoundException;
 import models.repositories.Repository;
 import models.users.User;
-import models.users.info.Role;
+import models.users.info.UserRole;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 
 public class UserRepositoryController
-    implements I_RepositoryController< User >, I_UniqueQueryableRepository< String, User > {
+    implements I_EnumRepositoryController< UserRole, User >, I_UniqueQueryableRepository< String, User > {
 
-    private EnumMap< Role, Repository> _repositories;
+    private EnumMap< UserRole, Repository> _repositories;
+
+    /**
+     * @param type the type of repository to get.
+     * @return the content of the _repository variable. Represents the repository that holds the data.
+     */
+    @Override
+    public Repository getRepository(UserRole type) {
+        return _repositories.get(type);
+    }
+
+    /**
+     * @param type the type of repository to return.
+     * @param repository the new repository to replace the repository in the _repository variable.
+     */
+    @Override
+    public void setRepository(UserRole type, Repository repository) {
+        _repositories.put(type, repository);
+    }
 
     /**
      * @return the contents of the repository cast to the correct type.

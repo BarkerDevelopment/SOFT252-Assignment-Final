@@ -10,7 +10,7 @@ public class ID
         implements I_Printable {
     public static final int ID_LENGTH = 4;
 
-    private final Role _role;
+    private final UserRole _role;
     private final String _idNumber;
 
     /**
@@ -20,7 +20,7 @@ public class ID
      * @param idNumber a String of numbers.
      * @throws OutOfRangeException if length of idNumber is greater than the constant ID_LENGTH.
      */
-    public ID(Role role, String idNumber) throws OutOfRangeException {
+    public ID(UserRole role, String idNumber) throws OutOfRangeException {
         if(idNumber.length() > ID_LENGTH)
             throw new OutOfRangeException(String.format("Length of idNumber is too great. Must be less than %d integers.", ID_LENGTH));
 
@@ -31,7 +31,7 @@ public class ID
     /**
      * @return the _role variable.
      */
-    public Role getRole() {
+    public UserRole getRole() {
         return _role;
     }
 

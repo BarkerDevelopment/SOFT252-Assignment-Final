@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * An enumeration representing the possible user roles.
  */
-public enum Role
+public enum UserRole
         implements I_Printable {
     ADMIN('A', AdminRepositoryController.class),
     DOCTOR('D', DoctorRepositoryController.class),
@@ -27,7 +27,7 @@ public enum Role
      *
      * @param roleString the character required for the ID.
      */
-    private Role(char roleString, Class< ? > repositoryControllerClass) {
+    private UserRole(char roleString, Class< ? > repositoryControllerClass) {
         _roleString = roleString;
         _repositoryControllerClass = repositoryControllerClass;
     }
@@ -60,11 +60,11 @@ public enum Role
      * @return an enum instance.
      * @throws EnumConstantNotPresentException if character does not correspond to an enum instance.
      */
-    public static Role fromChar(char input) throws EnumConstantNotPresentException{
-        for(Role instance : Role.values()){
+    public static UserRole fromChar(char input) throws EnumConstantNotPresentException{
+        for(UserRole instance : UserRole.values()){
             if (instance._roleString == input) return instance;
         }
 
-        throw new EnumConstantNotPresentException(Role.class, Character.toString(input));
+        throw new EnumConstantNotPresentException(UserRole.class, Character.toString(input));
     }
 }

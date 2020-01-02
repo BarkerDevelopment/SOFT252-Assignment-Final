@@ -6,7 +6,7 @@ import models.repositories.I_RepositoryItem;
 import models.users.info.Address;
 import models.users.info.ID;
 import models.users.info.IDFactory;
-import models.users.info.Role;
+import models.users.info.UserRole;
 import models.messaging.I_Message;
 import models.messaging.I_MessageRecipient;
 
@@ -34,7 +34,7 @@ public class User
      * @param address the User's address
      * @param password the User's password.
      */
-    public User(Role role, String name, String surname, Address address, int password){
+    public User(UserRole role, String name, String surname, Address address, int password){
         _id = new IDFactory(role).create();
         _name = name;
         _surname = surname;
@@ -53,7 +53,7 @@ public class User
      * @param password the User's password.
      * @param seed the pseudo-random generator seed. This ensures repeatable random generation.
      */
-    public User(Role role, String name, String surname, int password, long seed){
+    public User(UserRole role, String name, String surname, int password, long seed){
         _id = new IDFactory(role, seed).create();
         _name = name;
         _surname = surname;
@@ -72,7 +72,7 @@ public class User
      * @param name the User's name.
      * @param surname the User's surname.
      */
-    public User(Role role, String idNumber, String name, String surname) throws OutOfRangeException {
+    public User(UserRole role, String idNumber, String name, String surname) throws OutOfRangeException {
         _id = new ID(role, idNumber);
         _name = name;
         _surname = surname;

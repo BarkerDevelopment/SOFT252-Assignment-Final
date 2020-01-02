@@ -1,7 +1,7 @@
 package models.users;
 
 import models.users.info.Address;
-import models.users.info.Role;
+import models.users.info.UserRole;
 import models.messaging.I_MessageSender;
 
 /**
@@ -10,7 +10,7 @@ import models.messaging.I_MessageSender;
 public class Secretary extends User
     implements I_MessageSender {
 
-    public static Role ROLE = Role.SECRETARY;
+    public static UserRole ROLE = UserRole.SECRETARY;
 
     /**
      * Creates an Secretary object.

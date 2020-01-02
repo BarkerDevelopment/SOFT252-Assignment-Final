@@ -1,14 +1,14 @@
 package models.users;
 
 import models.users.info.Address;
-import models.users.info.Role;
+import models.users.info.UserRole;
 
 /**
  * A User subclass for the system administrators.
  */
 public class Admin extends User {
 
-    public static Role ROLE = Role.ADMIN;
+    public static UserRole ROLE = UserRole.ADMIN;
 
     /**
      * Creates an Admin object.

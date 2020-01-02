@@ -10,7 +10,7 @@ import java.util.Random;
  * A class that creates random IDs objects.
  */
 public class IDFactory {
-    private final Role _role;
+    private final UserRole _role;
     private final long _seed;
 
     /**
@@ -18,7 +18,7 @@ public class IDFactory {
      *
      * @param role the role of the resultant IDs.
      */
-    public IDFactory(Role role) {
+    public IDFactory(UserRole role) {
         _role = role;
         _seed = System.currentTimeMillis();
     }
@@ -30,7 +30,7 @@ public class IDFactory {
      * @param role the role of the resultant IDs.
      * @param seed the pseudo random number generator seed.
      */
-    public IDFactory(Role role, long seed) {
+    public IDFactory(UserRole role, long seed) {
         _role = role;
         _seed = seed;
     }
@@ -38,7 +38,7 @@ public class IDFactory {
     /**
      * @return the _role variable. Represents the type of ID the factory will create.
      */
-    public Role getRole() {
+    public UserRole getRole() {
         return _role;
     }
 

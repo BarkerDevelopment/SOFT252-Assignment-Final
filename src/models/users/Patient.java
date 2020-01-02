@@ -7,7 +7,7 @@ import models.drugs.I_PrescriptionHolder;
 import models.feedback.I_FeedbackSender;
 import models.users.info.Address;
 import models.users.info.Gender;
-import models.users.info.Role;
+import models.users.info.UserRole;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Patient extends User
     implements I_AppointmentParticipant, I_PrescriptionHolder, I_FeedbackSender {
 
-    public static Role ROLE = Role.PATIENT;
+    public static UserRole ROLE = UserRole.PATIENT;
 
     private final LocalDate _dob;
     private final Gender _gender;
