@@ -1,10 +1,6 @@
 package models.users.info;
 
 import controllers.repository.*;
-import controllers.repository.user.AdminRepositoryController;
-import controllers.repository.user.DoctorRepositoryController;
-import controllers.repository.user.PatientRepositoryController;
-import controllers.repository.user.SecretaryRepositoryController;
 import models.I_Printable;
 
 import java.lang.reflect.InvocationTargetException;
@@ -14,26 +10,23 @@ import java.lang.reflect.InvocationTargetException;
  */
 public enum UserRole
         implements I_EnumRepositoryControllerKey, I_Printable {
-    ADMIN('A', "admins", AdminRepositoryController.class),
-    DOCTOR('D', "doctors", DoctorRepositoryController.class),
-    SECRETARY('S', "secretaries", SecretaryRepositoryController.class),
-    PATIENT('P', "patients", PatientRepositoryController.class);
+    ADMIN('A', "admins"),
+    DOCTOR('D', "doctors"),
+    SECRETARY('S', "secretaries"),
+    PATIENT('P', "patients");
 
     private final char _roleString;
     private final String _filename;
-    private final Class< ? > _repositoryControllerClass;
 
     /**
      * Enum constructor assigning input variables.
      *
      * @param roleString the character required for the ID.
      * @param fileName the file destination of the repository content.
-     * @param repositoryControllerClass the repository controller class.
      */
-    private UserRole(char roleString, String fileName, Class< ? > repositoryControllerClass) {
+    private UserRole(char roleString, String fileName) {
         _roleString = roleString;
         _filename = fileName;
-        _repositoryControllerClass = repositoryControllerClass;
     }
 
     /**
@@ -42,19 +35,6 @@ public enum UserRole
     @Override
     public String getFileName() {
         return _filename;
-    }
-
-    /**
-     * @return the repository controller specific to the role.
-     */
-    public I_SingleRepositoryController< ? > getRepositoryController() {
-        try {
-            return (I_SingleRepositoryController< ? >) _repositoryControllerClass.getConstructor().newInstance();
-
-        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     /**

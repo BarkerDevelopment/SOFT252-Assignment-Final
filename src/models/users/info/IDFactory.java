@@ -1,7 +1,7 @@
 package models.users.info;
 
-import controllers.repository.I_SingleRepositoryController;
 import controllers.repository.I_UniqueQueryableRepository;
+import controllers.repository.UserRepositoryController;
 import exceptions.OutOfRangeException;
 
 import java.util.Random;
@@ -48,11 +48,9 @@ public class IDFactory {
      * @return the randomly generated ID.
      */
     public ID create(){
-        I_SingleRepositoryController< ? > repositoryController = _role.getRepositoryController();
+        UserRepositoryController repositoryController = UserRepositoryController.getInstance();
 
         try{
-            I_UniqueQueryableRepository< String, ? > queryableRepositoryController = (I_UniqueQueryableRepository< String, ? >) repositoryController;
-
             Random rand = new Random(_seed);
 
             String idNumber;
@@ -66,7 +64,7 @@ public class IDFactory {
                 idNumber = idNumberBuilder.toString();
 
                 // Loop ensures that generated ID doesn't already exist.
-            } while(queryableRepositoryController.contains(_role.toString() + idNumber));
+            } while(((I_UniqueQueryableRepository< String, ? >) repositoryController).contains(_role.toString() + idNumber));
 
             return new ID(_role, idNumber);
 
