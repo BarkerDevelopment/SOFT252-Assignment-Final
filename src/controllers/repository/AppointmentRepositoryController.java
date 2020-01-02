@@ -13,6 +13,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * A class that controls the interactions with the Appointment repository.
+ */
 public class AppointmentRepositoryController
         implements I_SingleRepositoryController< Appointment > {
     private Repository _repository;
@@ -20,6 +23,7 @@ public class AppointmentRepositoryController
     /**
      * @return the _repository variable. Represents the repository the object controls.
      */
+    @Override
     public Repository getRepository() {
         return _repository;
     }
@@ -27,6 +31,7 @@ public class AppointmentRepositoryController
     /**
      * @param repository the new contents of the _repository variable.
      */
+    @Override
     public void setRepository(Repository repository) {
         _repository = repository;
     }

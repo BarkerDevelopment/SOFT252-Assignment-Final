@@ -7,6 +7,9 @@ import models.requests.RequestType;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
+/**
+ * A class that controls the interactions with the Request repositories.
+ */
 public class RequestRepositoryController
         implements I_EnumRepositoryController< RequestType, Request > {
 

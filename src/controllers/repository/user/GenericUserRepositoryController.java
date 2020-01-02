@@ -8,7 +8,11 @@ import models.users.User;
 
 import java.util.ArrayList;
 
-public class GenericUserRepositoryController< T extends User >
+/**
+ * An abstract superclass that controls the interactions with a User repository.
+ * @param <T> the type of User.
+ */
+public abstract class GenericUserRepositoryController< T extends User >
     implements I_SingleRepositoryController< T >, I_UniqueQueryableRepository< String, T > {
     protected Repository _repository;
 

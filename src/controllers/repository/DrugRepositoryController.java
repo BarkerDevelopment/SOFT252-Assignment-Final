@@ -7,6 +7,9 @@ import models.repositories.Repository;
 
 import java.util.ArrayList;
 
+/**
+ * A class that controls the interactions with the Drug repository.
+ */
 public class DrugRepositoryController
         implements I_SingleRepositoryController< DrugStock >, I_UniqueQueryableRepository< String, DrugStock > {
     private Repository _repository;

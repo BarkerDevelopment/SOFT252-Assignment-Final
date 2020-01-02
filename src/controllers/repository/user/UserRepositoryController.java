@@ -10,6 +10,9 @@ import models.users.info.UserRole;
 import java.util.ArrayList;
 import java.util.EnumMap;
 
+/**
+ * A class that controls the interactions with the User repositories.
+ */
 public class UserRepositoryController
     implements I_EnumRepositoryController< UserRole, User >, I_UniqueQueryableRepository< String, User > {
 
