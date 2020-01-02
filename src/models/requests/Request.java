@@ -1,12 +1,13 @@
 package models.requests;
 
+import models.messaging.I_MessageSender;
 import models.repositories.I_RepositoryItem;
 
 /**
  * Template pattern for a request as approval/denial end in the request being deleted from the appropriate repository.
  */
 public abstract class Request
-    implements I_RepositoryItem {
+    implements I_RepositoryItem, I_MessageSender {
 
     protected RequestType _type;
 
@@ -28,10 +29,10 @@ public abstract class Request
     /**
      * The action following request approval.
      */
-    protected abstract void approveAction() throws Exception;
+    public abstract void approveAction() throws Exception;
 
     /**
      * The action following request denial.
      */
-    protected abstract void denyAction();
+    public abstract void denyAction();
 }

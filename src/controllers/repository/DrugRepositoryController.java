@@ -4,16 +4,17 @@ import exceptions.DuplicateDrugException;
 import exceptions.ObjectNotFoundException;
 import exceptions.StockLevelException;
 import models.drugs.DrugStock;
+import models.drugs.I_Treatment;
+import models.repositories.I_RepositoryItem;
 import models.repositories.Repository;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 /**
  * A class that controls the interactions with the Drug repository.
  */
 public class DrugRepositoryController
-        implements I_SingleRepositoryController< DrugStock > {
+        implements I_SingleRepositoryController< DrugStock >, I_UniqueQueryableRepository<I_Treatment, DrugStock> {
     private static DrugRepositoryController INSTANCE;
 
     private final String _fileName;
@@ -71,21 +72,20 @@ public class DrugRepositoryController
         return content;
     }
 
+
     /**
      * @param identifier the unique sting which identifies an object.
      * @return the found object.
      * @throws ObjectNotFoundException if an object cannot be found.
      */
-    public ArrayList< DrugStock > get(String identifier) throws ObjectNotFoundException {
-        ArrayList< DrugStock > drugStocks = new ArrayList<>();
-        for (DrugStock item : this.get()) if(item.getDrug().getName().equals(identifier)) drugStocks.add(item);
-
-        if(drugStocks.size() > 0){
-            return drugStocks;
-
-        }else{
-            throw new ObjectNotFoundException();
+    @Override
+    public DrugStock get(I_Treatment identifier) throws ObjectNotFoundException {
+        for (I_RepositoryItem item : _repository.get()){
+            DrugStock drugStock = (DrugStock) item;
+            if( drugStock.getDrug().equals(identifier)) return drugStock;
         }
+
+        throw new ObjectNotFoundException();
     }
 
     /**
@@ -95,11 +95,12 @@ public class DrugRepositoryController
      * @param identifier the unique sting which identifies an object.
      * @return TRUE if the repository contains an object with the identifier, FALSE otherwise.
      */
-    public boolean contains(String identifier) {
+    @Override
+    public boolean contains(I_Treatment identifier) {
         try {
-            return this.get(identifier).size() > 0;
+            return this.get(identifier) != null;
 
-        } catch (ObjectNotFoundException e) {
+        }catch (ObjectNotFoundException e) {
             return false;
         }
     }
@@ -111,35 +112,21 @@ public class DrugRepositoryController
      */
     @Override
     public void add(DrugStock item) throws DuplicateDrugException {
-        if(this.contains(item.getDrug().getName())){
-            ArrayList< DrugStock > drugStocks = null;
-
-            try{
-                drugStocks = this.get(item.getDrug().getName());
-
-            }catch (ObjectNotFoundException e) {
-                // This will never be called because the if statement ensures that the object is not in the repository.
-                e.printStackTrace();
-            }
-
-            if(drugStocks != null && drugStocks.size() > 0){ // Which it will be, this is just so the compiler shuts up.
-
-                if(! drugStockMatchesDescription(drugStocks, item.getDrug().getDescription())){
-                    _repository.get().add(item);
-                }
-
-            }else {
-                /*
-                 * If the repository contains a Drug that shares both a name and description as a Drug already in the
-                 * repository it will throw an exception.
-                 */
+        if(this.contains(item.getDrug()))
                 throw new DuplicateDrugException(String.format("%s already exists in the system.", item.getDrug().getName()));
+
+        else{
+            for (I_RepositoryItem repositoryItem : _repository.get()){
+                DrugStock drugStock = (DrugStock) repositoryItem;
+                if( drugStock.getDrug().getName().equals(item.getDrug().getName())){
+                    if ( drugStock.getDrug().getDescription().equals(item.getDrug().getDescription())) {
+                        throw new DuplicateDrugException(String.format("%s already exists in the system.", item.getDrug().getName()));
+                    }
+                }
             }
 
-        }else{
             _repository.get().add(item);
         }
-
     }
 
     /**
@@ -157,10 +144,11 @@ public class DrugRepositoryController
     /**
      * Updates a DrugStock objects stock by the passed value.
      *
-     * @param drugStock the target DrugStock object.
+     * @param drug the target drug object.
      * @param stockChange the proposed change in stock.
      */
-    public void updateStock(DrugStock drugStock, int stockChange) throws StockLevelException {
+    public void updateStock(I_Treatment drug, int stockChange) throws StockLevelException, ObjectNotFoundException {
+        DrugStock drugStock = this.get(drug);
         int newStock = drugStock.getStock() + stockChange;
 
         if(newStock >= 0){
@@ -199,21 +187,5 @@ public class DrugRepositoryController
     @Override
     public void clear() {
         _repository.get().clear();
-    }
-
-    /**
-     * Compares the descriptions of all the drugs of the passed ArrayList against the passed string.
-     *
-     * @param drugStocks the ArrayList of drugStocks.
-     * @param description the target description.
-     * @return TRUE if a drug out of the passed array matches the description, FALSE if no drugs match the description.
-     */
-    private boolean drugStockMatchesDescription(ArrayList< DrugStock > drugStocks, String description){
-        ArrayList< DrugStock > drugStocksWithDescription = new ArrayList<> (
-            drugStocks.stream().filter(
-                drugStock -> drugStock.getDrug().getDescription().equals(description)
-            ).collect(Collectors.toList()));
-
-        return drugStocksWithDescription.size() == 0;
     }
 }

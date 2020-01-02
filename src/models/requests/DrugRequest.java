@@ -1,7 +1,15 @@
 package models.requests;
 
+import controllers.auxiliary.MessageController;
+import controllers.primary.DoctorController;
+import controllers.repository.DrugRepositoryController;
+import controllers.repository.UserRepositoryController;
 import exceptions.DuplicateDrugException;
+import models.drugs.DrugStock;
+import models.messaging.Message;
+import models.repositories.Repository;
 import models.users.Doctor;
+import models.users.info.UserRole;
 
 import java.util.ArrayList;
 
@@ -28,6 +36,7 @@ public class DrugRequest extends Request {
 
         _doctor = requester;
         _name = name;
+        _startingQty = 0;
         _sideEffects = new ArrayList<>();
     }
 
@@ -44,8 +53,8 @@ public class DrugRequest extends Request {
 
         _doctor = requester;
         _name = name;
-        _sideEffects = new ArrayList<>();
         _startingQty = qty;
+        _sideEffects = new ArrayList<>();
     }
 
     /**
@@ -108,15 +117,33 @@ public class DrugRequest extends Request {
      * The action following request approval.
      */
     @Override
-    protected void approveAction() {
+    public void approveAction() {
+        try{
+            DrugRepositoryController.getInstance().add(new DrugStock(this));
+            MessageController.send(_doctor, new Message(this,
+                    String.format("Your request for a new drug - %s - has been approved.", _name)
+            ));
 
+            Repository doctorRepository = UserRepositoryController.getInstance().getRepository(UserRole.DOCTOR);
+
+            doctorRepository.get().forEach(doctor ->
+                    MessageController.send(_doctor, new Message(this,
+                            String.format("%s is now available for prescription.", _name)
+                    ))
+            );
+
+        }catch (DuplicateDrugException e){
+            e.printStackTrace();
+        }
     }
 
     /**
      * The action following request denial.
      */
     @Override
-    protected void denyAction() {
-
+    public void denyAction() {
+        MessageController.send(_doctor, new Message(this,
+                String.format("Your request for a new drug - %s - has been denied.", _name)
+        ));
     }
 }

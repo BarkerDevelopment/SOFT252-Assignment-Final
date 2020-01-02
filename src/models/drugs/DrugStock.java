@@ -4,6 +4,7 @@ import models.I_Observable;
 import models.I_Observer;
 import models.I_Unique;
 import models.repositories.I_RepositoryItem;
+import models.requests.DrugRequest;
 
 import java.util.ArrayList;
 
@@ -115,11 +116,11 @@ public class DrugStock
     /**
      * Creates a DrugStock item from a request.
      *
-     * @param builder the DrugStock builder object.
+     * @param drugRequest the new drug request.
      */
-    public DrugStock(Builder builder) {
-        _drug = new Drug(builder.name, builder.description, builder.sideEffects);
-        _stock = builder.stock;
+    public DrugStock(DrugRequest drugRequest) {
+        _drug = new Drug(drugRequest.getName(), drugRequest.getDescription(), drugRequest.getSideEffects());
+        _stock = drugRequest.getStartingQty();
 
         _observers = new ArrayList<>();
     }
