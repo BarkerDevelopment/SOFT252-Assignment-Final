@@ -1,6 +1,7 @@
 package models.appointments;
 
 import models.drugs.I_Prescription;
+import models.requests.AppointmentRequest;
 import models.users.Doctor;
 import models.users.Patient;
 
@@ -20,6 +21,19 @@ public class Appointment
     private String _notes;
     private ArrayList< I_Prescription > _prescriptions;
     private boolean _isCompleted;
+
+    /**
+     * Creates an appointment object from a request.
+     *
+     * @param appointmentRequest the appointment request.
+     */
+    public Appointment(AppointmentRequest appointmentRequest) {
+        _patient = appointmentRequest.getPatient();
+        _doctor = appointmentRequest.getDoctor();
+        _dateTime = appointmentRequest.getDateTime();
+        _prescriptions = new ArrayList<>();
+        _isCompleted = false;
+    }
 
     /**
      * Default appointment constructor.
@@ -69,6 +83,13 @@ public class Appointment
     }
 
     /**
+     * @return the _isCompleted variable.
+     */
+    public boolean isCompleted() {
+        return _isCompleted;
+    }
+
+    /**
      *
      * @return the _notes variable.
      */
@@ -109,5 +130,12 @@ public class Appointment
      */
     public void setPrescriptions(ArrayList<I_Prescription> prescriptions) {
         _prescriptions = prescriptions;
+    }
+
+    /**
+     * @param completed the value to set _isCompleted to.
+     */
+    public void setCompleted(boolean completed) {
+        _isCompleted = completed;
     }
 }

@@ -1,6 +1,10 @@
 package models.requests;
 
+import controllers.auxiliary.MessageController;
+import controllers.repository.AppointmentRepositoryController;
 import exceptions.AppointmentClashException;
+import models.appointments.Appointment;
+import models.messaging.Message;
 import models.users.Doctor;
 import models.users.Patient;
 
@@ -9,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * A class that encapsulates a request for an appointment.
  */
-public class AppointmentRequest extends Request{
+public class AppointmentRequest extends Request {
 
     private final Patient _patient;
     private Doctor _doctor;
@@ -70,15 +74,33 @@ public class AppointmentRequest extends Request{
      * The action following request approval.
      */
     @Override
-    protected void approveAction() {
+    public void approveAction() {
+        try {
+            AppointmentRepositoryController.getInstance().add(new Appointment(this));
 
+            MessageController.send(_patient, new Message(this,
+                    String.format("You have an appointment with Dr.%s at %s.",
+                            _doctor.getSurname(), _dateTime.toString())
+                ));
+
+            MessageController.send(_doctor, new Message(this,
+                    String.format("You have an appointment with patient %s at %s.",
+                            _patient.getId().toString(), _dateTime.toString())
+                ));
+
+        } catch (AppointmentClashException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * The action following request denial.
      */
     @Override
-    protected void denyAction() {
-
+    public void denyAction() {
+        MessageController.send(_patient, new Message(this,
+                String.format("Your request for an appointment with Dr.%s at %s has been denied.",
+                        _doctor.getSurname(), _dateTime.toString() ))
+        );
     }
 }

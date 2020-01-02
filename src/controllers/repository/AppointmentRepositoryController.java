@@ -5,6 +5,7 @@ import models.appointments.Appointment;
 import models.appointments.I_Appointment;
 import models.appointments.I_AppointmentParticipant;
 import models.repositories.Repository;
+import models.requests.PrescriptionRequest;
 import models.users.Doctor;
 import models.users.Patient;
 
@@ -169,5 +170,20 @@ public class AppointmentRepositoryController
     @Override
     public void clear() {
         _repository.get().clear();
+    }
+
+    /**
+     * Completes an appointment.
+     *
+     * @param appointment the target appointment.
+     */
+    public void complete(Appointment appointment){
+        RequestRepositoryController.getInstance().add(
+                new ArrayList<>(appointment.getPrescriptions().stream().map(
+                        prescription -> new PrescriptionRequest(appointment.getPatient(), prescription)
+                ).collect(Collectors.toList()))
+        );
+
+        appointment.setCompleted(true);
     }
 }
