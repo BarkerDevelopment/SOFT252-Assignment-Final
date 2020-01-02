@@ -14,7 +14,36 @@ import java.util.ArrayList;
  */
 public abstract class GenericUserRepositoryController< T extends User >
     implements I_SingleRepositoryController< T >, I_UniqueQueryableRepository< String, T > {
+
+    private final String _fileName;
     protected Repository _repository;
+
+    /**
+     * Default constructor. Creates an object without a repository.
+     * @param fileName the filename of where the repository is stored.
+     */
+    public GenericUserRepositoryController(String fileName) {
+        _fileName = fileName;
+        _repository = null;
+    }
+
+    /**
+     * Default constructor. Creates an object without a repository.
+     * @param fileName the filename of where the repository is stored.
+     * @param repository the initial repository.
+     */
+    public GenericUserRepositoryController(String fileName, Repository repository) {
+        _fileName = fileName;
+        _repository = repository;
+    }
+
+    /**
+     * @return the _fileName variable. Represents the file that stores the repository contents.
+     */
+    @Override
+    public String getFileName() {
+        return _fileName;
+    }
 
     /**
      * @return the _repository variable. Represents the repository the object controls.

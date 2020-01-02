@@ -9,6 +9,8 @@ import models.users.info.UserRole;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * A class that controls the interactions with the User repositories.
@@ -17,6 +19,14 @@ public class UserRepositoryController
     implements I_EnumRepositoryController< UserRole, User >, I_UniqueQueryableRepository< String, User > {
 
     private EnumMap< UserRole, Repository> _repositories;
+
+    /**
+     * @return all repositories stored by the EnumRepositoryController.
+     */
+    @Override
+    public Set< Entry< UserRole, Repository > > getRepositories() {
+        return _repositories.entrySet();
+    }
 
     /**
      * @param type the type of repository to get.

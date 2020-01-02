@@ -18,7 +18,24 @@ import java.util.stream.Collectors;
  */
 public class AppointmentRepositoryController
         implements I_SingleRepositoryController< Appointment > {
+    private final String _fileName;
     private Repository _repository;
+
+    /**
+     * Default constructor. Creates an object without a repository.
+     */
+    public AppointmentRepositoryController() {
+        _fileName = "appointments";
+        _repository = null;
+    }
+
+    /**
+     * @return the _fileName variable. Represents the file that stores the repository contents.
+     */
+    @Override
+    public String getFileName() {
+        return _fileName;
+    }
 
     /**
      * @return the _repository variable. Represents the repository the object controls.

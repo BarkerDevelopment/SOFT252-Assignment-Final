@@ -12,7 +12,23 @@ import java.util.ArrayList;
  */
 public class DrugRepositoryController
         implements I_SingleRepositoryController< DrugStock >, I_UniqueQueryableRepository< String, DrugStock > {
+    private final String _fileName;
     private Repository _repository;
+
+    /**
+     * Default constructor. Creates an object without a repository.
+     */
+    public DrugRepositoryController() {
+        _fileName = "drugs";
+    }
+
+    /**
+     * @return the _fileName variable. Represents the file that stores the repository contents.
+     */
+    @Override
+    public String getFileName() {
+        return _fileName;
+    }
 
     /**
      * @return the _repository variable. Represents the repository the object controls.

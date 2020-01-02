@@ -14,30 +14,34 @@ import java.lang.reflect.InvocationTargetException;
  */
 public enum UserRole
         implements I_EnumRepositoryControllerKey, I_Printable {
-    ADMIN('A', AdminRepositoryController.class),
-    DOCTOR('D', DoctorRepositoryController.class),
-    SECRETARY('S', SecretaryRepositoryController.class),
-    PATIENT('P', PatientRepositoryController.class);
+    ADMIN('A', "admins", AdminRepositoryController.class),
+    DOCTOR('D', "doctors", DoctorRepositoryController.class),
+    SECRETARY('S', "secretaries", SecretaryRepositoryController.class),
+    PATIENT('P', "patients", PatientRepositoryController.class);
 
     private final char _roleString;
+    private final String _filename;
     private final Class< ? > _repositoryControllerClass;
 
     /**
      * Enum constructor assigning input variables.
      *
      * @param roleString the character required for the ID.
+     * @param fileName the file destination of the repository content.
+     * @param repositoryControllerClass the repository controller class.
      */
-    private UserRole(char roleString, Class< ? > repositoryControllerClass) {
+    private UserRole(char roleString, String fileName, Class< ? > repositoryControllerClass) {
         _roleString = roleString;
+        _filename = fileName;
         _repositoryControllerClass = repositoryControllerClass;
     }
 
     /**
-     * @return the object as a string.
+     * @return the _fileName variable. Represents the file at which the serialised repository is stored.
      */
     @Override
-    public String toString(){
-        return Character.toString(_roleString);
+    public String getFileName() {
+        return _filename;
     }
 
     /**
@@ -51,6 +55,14 @@ public enum UserRole
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * @return the object as a string.
+     */
+    @Override
+    public String toString(){
+        return Character.toString(_roleString);
     }
 
     /**

@@ -10,6 +10,11 @@ import models.repositories.Repository;
  */
 public interface I_SingleRepositoryController< T extends I_RepositoryItem > extends I_RepositoryController< T >{
     /**
+     * @return the _fileName variable. Represents the file that stores the repository contents.
+     */
+    public abstract String getFileName();
+
+    /**
      * @return the content of the _repository variable. Represents the repository that holds the data.
      */
     public abstract Repository getRepository();
