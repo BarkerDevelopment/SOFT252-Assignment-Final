@@ -6,6 +6,7 @@ import models.drugs.I_Prescription;
 
 import models.drugs.I_PrescriptionHolder;
 import models.feedback.I_FeedbackSender;
+import models.requests.AccountCreationRequest;
 import models.users.info.Address;
 import models.users.info.Gender;
 import models.users.info.UserRole;
@@ -25,6 +26,19 @@ public class Patient extends User
     private final Gender _gender;
 
     private ArrayList< I_Prescription > _prescriptions;
+
+    /**
+     * Creates a Patient object from a request.
+     *
+     * @param request the account creation request.
+     */
+    public Patient(AccountCreationRequest request) {
+        super(ROLE, request.getName(), request.getSurname(), request.getAddress(), request.getPassword());
+        _dob = request.getDob();
+        _gender = request.getGender();
+
+        _prescriptions = new ArrayList<>();
+    }
 
     /**
      * Creates an Patient object.

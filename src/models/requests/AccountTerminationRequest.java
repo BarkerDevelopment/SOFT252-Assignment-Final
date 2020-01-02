@@ -1,11 +1,15 @@
 package models.requests;
 
+import controllers.auxiliary.MessageController;
+import controllers.repository.UserRepositoryController;
+
+import models.messaging.Message;
 import models.users.User;
 
 /**
  * A class that encapsulates a request to delete an existing Patient object from the repository.
  */
-public class AccountTerminationRequest extends Request{
+public class AccountTerminationRequest extends Request {
 
     private final User _requester;
 
@@ -32,15 +36,17 @@ public class AccountTerminationRequest extends Request{
      * The action following request approval.
      */
     @Override
-    protected void approveAction() {
-
+    public void approveAction() {
+        UserRepositoryController.getInstance().remove(_requester);
     }
 
     /**
      * The action following request denial.
      */
     @Override
-    protected void denyAction() {
-
+    public void denyAction() {
+        MessageController.send(_requester,
+                new Message(this, "Your request to terminate your account has been denied."))
+        ;
     }
 }

@@ -1,5 +1,7 @@
 package models.requests;
 
+import controllers.repository.UserRepositoryController;
+import models.users.Patient;
 import models.users.info.Address;
 import models.users.info.Gender;
 
@@ -18,7 +20,6 @@ public class AccountCreationRequest extends Request {
 
     /**
      * Default constructor.
-     * Additionally, this constructor adds the resultant object to its corresponding repository: RequestRepository.
      *
      * @param name the Patient's name.
      * @param surname the Patient's surname.
@@ -84,15 +85,15 @@ public class AccountCreationRequest extends Request {
      * The action following request approval.
      */
     @Override
-    protected void approveAction() {
-
+    public void approveAction() {
+        UserRepositoryController.getInstance().add(new Patient(this));
     }
 
     /**
      * The action following request denial.
      */
     @Override
-    protected void denyAction() {
-
+    public void denyAction() {
+        // There is no functionality for a AccountCreationRequest denyAction.
     }
 }
