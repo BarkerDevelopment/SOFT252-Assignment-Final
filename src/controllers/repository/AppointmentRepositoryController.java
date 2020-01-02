@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class AppointmentRepositoryController
-        implements I_RepositoryController< Appointment > {
+        implements I_SingleRepositoryController< Appointment > {
     private Repository _repository;
 
     /**

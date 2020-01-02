@@ -1,6 +1,6 @@
 package models.users.info;
 
-import controllers.repository.I_RepositoryController;
+import controllers.repository.I_SingleRepositoryController;
 import controllers.repository.I_UniqueQueryableRepository;
 import exceptions.OutOfRangeException;
 
@@ -48,7 +48,7 @@ public class IDFactory {
      * @return the randomly generated ID.
      */
     public ID create(){
-        I_RepositoryController< ? > repositoryController = _role.getRepositoryController();
+        I_SingleRepositoryController< ? > repositoryController = _role.getRepositoryController();
 
         try{
             I_UniqueQueryableRepository< String, ? > queryableRepositoryController = (I_UniqueQueryableRepository< String, ? >) repositoryController;

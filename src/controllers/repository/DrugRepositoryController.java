@@ -2,14 +2,13 @@ package controllers.repository;
 
 import exceptions.DuplicateDrugException;
 import exceptions.ObjectNotFoundException;
-import models.appointments.Appointment;
 import models.drugs.DrugStock;
 import models.repositories.Repository;
 
 import java.util.ArrayList;
 
 public class DrugRepositoryController
-        implements I_RepositoryController< DrugStock >, I_UniqueQueryableRepository< String, DrugStock > {
+        implements I_SingleRepositoryController< DrugStock >, I_UniqueQueryableRepository< String, DrugStock > {
     private Repository _repository;
 
     /**

@@ -1,6 +1,6 @@
 package controllers.repository.user;
 
-import controllers.repository.I_RepositoryController;
+import controllers.repository.I_SingleRepositoryController;
 import controllers.repository.I_UniqueQueryableRepository;
 import exceptions.ObjectNotFoundException;
 import models.repositories.Repository;
@@ -9,7 +9,7 @@ import models.users.User;
 import java.util.ArrayList;
 
 public class GenericUserRepositoryController< T extends User >
-    implements I_RepositoryController< T >, I_UniqueQueryableRepository< String, T > {
+    implements I_SingleRepositoryController< T >, I_UniqueQueryableRepository< String, T > {
     protected Repository _repository;
 
     /**
