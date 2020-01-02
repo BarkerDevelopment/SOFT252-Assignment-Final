@@ -1,13 +1,14 @@
 package models.drugs;
 
-import models.I_Builder;
+import models.I_Observable;
+import models.I_Observer;
 import models.I_Unique;
 import models.repositories.I_RepositoryItem;
 
 import java.util.ArrayList;
 
 public class DrugStock
-        implements I_RepositoryItem {
+        implements I_RepositoryItem, I_Observable< Integer >, I_Unique< I_Treatment > {
 
     /**
      * A class that encapsulates a drug treatment.
@@ -150,5 +151,37 @@ public class DrugStock
      */
     public void setStock(int stock) {
         _stock = stock;
+
+        this.updateObservers(_stock);
+    }
+
+    /**
+     * Subscribes an observer object to the observable object.
+     *
+     * @param o the observer to subscribe.
+     */
+    @Override
+    public void subscribe(I_Observer< Integer > o) {
+        _observers.add(o);
+    }
+
+    /**
+     * Unsubscribes an observer object to the observable object.
+     *
+     * @param o the observer to unsubscribe.
+     */
+    @Override
+    public void unsubscribe(I_Observer< Integer > o) {
+        _observers.remove(o);
+    }
+
+    /**
+     * Updates the subscribed observers with the passed variable.
+     *
+     * @param item the object to update the observers with,
+     */
+    @Override
+    public void updateObservers(Integer item) {
+        _observers.forEach(o -> o.update(item));
     }
 }
