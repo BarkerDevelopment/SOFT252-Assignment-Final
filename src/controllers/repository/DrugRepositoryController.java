@@ -2,6 +2,7 @@ package controllers.repository;
 
 import exceptions.DuplicateDrugException;
 import exceptions.ObjectNotFoundException;
+import exceptions.StockLevelException;
 import models.drugs.DrugStock;
 import models.repositories.Repository;
 
@@ -112,7 +113,7 @@ public class DrugRepositoryController
                 if(! drugStockMatchesDescription(drugStocks, item.getDrug().getDescription())){
                     _repository.get().add(item);
                 }
-                
+
             }else {
                 /*
                  * If the repository contains a Drug that shares both a name and description as a Drug already in the
@@ -136,6 +137,25 @@ public class DrugRepositoryController
     public void add(ArrayList< DrugStock > items) throws DuplicateDrugException {
         for (DrugStock item : items) {
             this.add(item);
+        }
+    }
+
+    /**
+     * Updates a DrugStock objects stock by the passed value.
+     *
+     * @param drugStock the target DrugStock object.
+     * @param stockChange the proposed change in stock.
+     */
+    public void updateStock(DrugStock drugStock, int stockChange) throws StockLevelException {
+        int newStock = drugStock.getStock() + stockChange;
+
+        if(newStock >= 0){
+            drugStock.setStock(newStock);
+
+        }else{
+            throw new StockLevelException(
+                    String.format("%s stock change of %d results in a negative stock.", drugStock.getDrug().getName(), stockChange)
+            );
         }
     }
 
