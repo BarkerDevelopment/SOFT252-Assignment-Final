@@ -136,4 +136,25 @@ public class RequestRepositoryController
                 (requestType, repository) -> repository.get().clear()
         );
     }
+
+    /**
+     * Approve a request, then deletes it.
+     *
+     * @param request the target request to approve.
+     * @throws Exception of the request's approveAction throws an Exception.
+     */
+    public void approve(Request request) throws Exception {
+        request.approveAction();
+        this.remove(request);
+    }
+
+    /**
+     * Deny a request, then deletes it.
+     *
+     * @param request the target request to deny.
+     */
+    public void deny(Request request){
+        request.denyAction();
+        this.remove(request);
+    }
 }
