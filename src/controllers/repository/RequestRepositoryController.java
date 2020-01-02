@@ -8,9 +8,27 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 
 public class RequestRepositoryController
-        implements I_RepositoryController< Request > {
+        implements I_EnumRepositoryController< RequestType, Request > {
 
     private EnumMap< RequestType, Repository > _repositories;
+
+    /**
+     * @param type the type of repository to get.
+     * @return the content of the _repository variable. Represents the repository that holds the data.
+     */
+    @Override
+    public Repository getRepository(RequestType type) {
+        return _repositories.get(type);
+    }
+
+    /**
+     * @param type the type of repository to return.
+     * @param repository the new repository to replace the repository in the _repository variable.
+     */
+    @Override
+    public void setRepository(RequestType type, Repository repository) {
+        _repositories.put(type, repository);
+    }
 
     /**
      * @return the contents of the repository cast to the correct type.

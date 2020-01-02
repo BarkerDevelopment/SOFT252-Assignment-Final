@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
  * An enumeration representing the possible user roles.
  */
 public enum UserRole
-        implements I_Printable {
+        implements I_EnumRepositoryControllerKey, I_Printable {
     ADMIN('A', AdminRepositoryController.class),
     DOCTOR('D', DoctorRepositoryController.class),
     SECRETARY('S', SecretaryRepositoryController.class),
@@ -43,9 +43,9 @@ public enum UserRole
     /**
      * @return the repository controller specific to the role.
      */
-    public I_RepositoryController< ? > getRepositoryController() {
+    public I_SingleRepositoryController< ? > getRepositoryController() {
         try {
-            return (I_RepositoryController< ? >) _repositoryControllerClass.getConstructor().newInstance();
+            return (I_SingleRepositoryController< ? >) _repositoryControllerClass.getConstructor().newInstance();
 
         } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
             e.printStackTrace();
