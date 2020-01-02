@@ -18,7 +18,31 @@ import java.util.Set;
 public class UserRepositoryController
     implements I_EnumRepositoryController< UserRole, User >, I_UniqueQueryableRepository< String, User > {
 
+    private static UserRepositoryController INSTANCE;
+
     private EnumMap< UserRole, Repository> _repositories;
+
+    /**
+     * Singleton constructor.
+     */
+    private UserRepositoryController() {
+        _repositories = new EnumMap< >(UserRole.class);
+
+        _repositories.forEach(
+                (requestType, repository) -> repository = new Repository()
+        );
+    }
+
+    /**
+     * UserRepositoryController implements the Singleton pattern.
+     *
+     * @return the Singleton RequestRepositoryController.
+     */
+    public static UserRepositoryController getInstance(){
+        if(INSTANCE == null) INSTANCE = new UserRepositoryController();
+
+        return INSTANCE;
+    }
 
     /**
      * @return all repositories stored by the EnumRepositoryController.

@@ -14,14 +14,28 @@ import java.util.stream.Collectors;
  */
 public class DrugRepositoryController
         implements I_SingleRepositoryController< DrugStock > {
+    private static DrugRepositoryController INSTANCE;
+
     private final String _fileName;
     private Repository _repository;
 
     /**
      * Default constructor. Creates an object without a repository.
      */
-    public DrugRepositoryController() {
+    private DrugRepositoryController() {
         _fileName = "drugs";
+        _repository = new Repository();
+    }
+
+    /**
+     * RequestRepositoryController implements the Singleton pattern.
+     *
+     * @return the Singleton RequestRepositoryController.
+     */
+    public static DrugRepositoryController getInstance(){
+        if(INSTANCE == null) INSTANCE = new DrugRepositoryController();
+
+        return INSTANCE;
     }
 
     /**

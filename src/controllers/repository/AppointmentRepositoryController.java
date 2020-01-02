@@ -18,15 +18,28 @@ import java.util.stream.Collectors;
  */
 public class AppointmentRepositoryController
         implements I_SingleRepositoryController< Appointment > {
+    private static AppointmentRepositoryController INSTANCE;
+
     private final String _fileName;
     private Repository _repository;
 
     /**
-     * Default constructor. Creates an object without a repository.
+     * Singleton constructor.
      */
-    public AppointmentRepositoryController() {
+    private AppointmentRepositoryController() {
         _fileName = "appointments";
         _repository = null;
+    }
+
+    /**
+     * AppointmentRepositoryController implements the Singleton pattern.
+     *
+     * @return the Singleton RequestRepositoryController.
+     */
+    public static AppointmentRepositoryController getInstance(){
+        if(INSTANCE == null) INSTANCE = new AppointmentRepositoryController();
+
+        return INSTANCE;
     }
 
     /**

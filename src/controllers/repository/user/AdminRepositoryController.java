@@ -7,10 +7,23 @@ import models.users.info.UserRole;
  * A class that controls the interactions with the Admin repository.
  */
 public class AdminRepositoryController extends GenericUserRepositoryController< Admin > {
+    private static AdminRepositoryController INSTANCE;
+
     /**
-     * Default constructor. Creates an object without a repository.
+     * Singleton constructor.
      */
-    public AdminRepositoryController() {
+    private AdminRepositoryController() {
         super(UserRole.ADMIN.getFileName());
+    }
+
+    /**
+     * AdminRepositoryController implements the Singleton pattern.
+     *
+     * @return the Singleton RequestRepositoryController.
+     */
+    public static AdminRepositoryController getInstance(){
+        if(INSTANCE == null) INSTANCE = new AdminRepositoryController();
+
+        return INSTANCE;
     }
 }

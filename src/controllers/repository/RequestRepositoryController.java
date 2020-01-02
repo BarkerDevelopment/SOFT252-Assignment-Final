@@ -15,7 +15,30 @@ import java.util.Set;
 public class RequestRepositoryController
         implements I_EnumRepositoryController< RequestType, Request > {
 
+    private static RequestRepositoryController INSTANCE;
     private EnumMap< RequestType, Repository > _repositories;
+
+    /**
+     * Singleton constructor.
+     */
+    private RequestRepositoryController() {
+        _repositories = new EnumMap< >(RequestType.class);
+
+        _repositories.forEach(
+            (requestType, repository) -> repository = new Repository()
+        );
+    }
+
+    /**
+     * RequestRepositoryController implements the Singleton pattern.
+     *
+     * @return the Singleton RequestRepositoryController.
+     */
+    public static RequestRepositoryController getInstance(){
+        if(INSTANCE == null) INSTANCE = new RequestRepositoryController();
+
+        return INSTANCE;
+    }
 
     /**
      * @return all repositories stored by the EnumRepositoryController.
