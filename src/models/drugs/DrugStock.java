@@ -1,13 +1,12 @@
 package models.drugs;
 
 import models.I_Builder;
-import models.I_Unique;
 import models.repositories.I_RepositoryItem;
 
 import java.util.ArrayList;
 
 public class DrugStock
-        implements I_RepositoryItem, I_Unique< String > {
+        implements I_RepositoryItem {
     /**
      * Builder design pattern.
      */
@@ -151,14 +150,6 @@ public class DrugStock
     public DrugStock(Builder builder) {
         _drug = new Drug(builder.name, builder.description, builder.sideEffects);
         _stock = builder.stock;
-    }
-
-    /**
-     * @return T the objects unique string.
-     */
-    @Override
-    public String getUnique() {
-        return _drug.getName();
     }
 
     /**

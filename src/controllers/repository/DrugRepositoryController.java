@@ -6,12 +6,13 @@ import models.drugs.DrugStock;
 import models.repositories.Repository;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * A class that controls the interactions with the Drug repository.
  */
 public class DrugRepositoryController
-        implements I_SingleRepositoryController< DrugStock >, I_UniqueQueryableRepository< String, DrugStock > {
+        implements I_SingleRepositoryController< DrugStock > {
     private final String _fileName;
     private Repository _repository;
 
@@ -60,11 +61,16 @@ public class DrugRepositoryController
      * @return the found object.
      * @throws ObjectNotFoundException if an object cannot be found.
      */
-    @Override
-    public DrugStock get(String identifier) throws ObjectNotFoundException {
-        for (DrugStock item : this.get()) if(item.getUnique().equals(identifier)) return item;
+    public ArrayList< DrugStock > get(String identifier) throws ObjectNotFoundException {
+        ArrayList< DrugStock > drugStocks = new ArrayList<>();
+        for (DrugStock item : this.get()) if(item.getDrug().getName().equals(identifier)) drugStocks.add(item);
 
-        throw new ObjectNotFoundException();
+        if(drugStocks.size() > 0){
+            return drugStocks;
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**
@@ -74,10 +80,9 @@ public class DrugRepositoryController
      * @param identifier the unique sting which identifies an object.
      * @return TRUE if the repository contains an object with the identifier, FALSE otherwise.
      */
-    @Override
     public boolean contains(String identifier) {
         try {
-            return this.get(identifier).getUnique().equals(identifier);
+            return this.get(identifier).size() > 0;
 
         } catch (ObjectNotFoundException e) {
             return false;
@@ -91,28 +96,30 @@ public class DrugRepositoryController
      */
     @Override
     public void add(DrugStock item) throws DuplicateDrugException {
-        if(this.contains(item.getUnique())){
-            DrugStock drugStock = null;
+        if(this.contains(item.getDrug().getName())){
+            ArrayList< DrugStock > drugStocks = null;
 
             try{
-                drugStock = this.get(item.getUnique());
+                drugStocks = this.get(item.getDrug().getName());
 
             }catch (ObjectNotFoundException e) {
                 // This will never be called because the if statement ensures that the object is not in the repository.
                 e.printStackTrace();
             }
 
-            if(drugStock != null){ // Which it will be, this is just so the compiler shuts up.
-                if(!drugStock.getDrug().getDescription().equals(item.getDrug().getDescription())){
+            if(drugStocks != null && drugStocks.size() > 0){ // Which it will be, this is just so the compiler shuts up.
+
+                if(! drugStockMatchesDescription(drugStocks, item.getDrug().getDescription())){
                     _repository.get().add(item);
                 }
+                
+            }else {
+                /*
+                 * If the repository contains a Drug that shares both a name and description as a Drug already in the
+                 * repository it will throw an exception.
+                 */
+                throw new DuplicateDrugException(String.format("%s already exists in the system.", item.getDrug().getName()));
             }
-
-            /*
-             * If the repository contains a Drug that shares both a name and description as a Drug already in the
-             * repository it will throw an exception.
-             */
-            throw new DuplicateDrugException(String.format("%s already exists in the system.", item.getDrug().getName()));
 
         }else{
             _repository.get().add(item);
@@ -158,5 +165,21 @@ public class DrugRepositoryController
     @Override
     public void clear() {
         _repository.get().clear();
+    }
+
+    /**
+     * Compares the descriptions of all the drugs of the passed ArrayList against the passed string.
+     *
+     * @param drugStocks the ArrayList of drugStocks.
+     * @param description the target description.
+     * @return TRUE if a drug out of the passed array matches the description, FALSE if no drugs match the description.
+     */
+    private boolean drugStockMatchesDescription(ArrayList< DrugStock > drugStocks, String description){
+        ArrayList< DrugStock > drugStocksWithDescription = new ArrayList<> (
+            drugStocks.stream().filter(
+                drugStock -> drugStock.getDrug().getDescription().equals(description)
+            ).collect(Collectors.toList()));
+
+        return drugStocksWithDescription.size() == 0;
     }
 }
