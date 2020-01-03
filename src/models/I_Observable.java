@@ -21,9 +21,7 @@ public interface I_Observable< T > {
     public abstract void unsubscribe(I_Observer< T > o);
 
     /**
-     * Updates the subscribed observers with the passed variable.
-     *
-     * @param item the object to update the observers with,
+     * Updates the subscribed observers with the object.
      */
-    public abstract void updateObservers(T item);
+    public abstract void updateObservers();
 }

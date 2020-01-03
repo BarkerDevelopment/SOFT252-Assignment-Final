@@ -153,7 +153,7 @@ public class DrugStock
     public void setStock(int stock) {
         _stock = stock;
 
-        this.updateObservers(_stock);
+        this.updateObservers();
     }
 
     /**
@@ -178,11 +178,9 @@ public class DrugStock
 
     /**
      * Updates the subscribed observers with the passed variable.
-     *
-     * @param item the object to update the observers with,
      */
     @Override
-    public void updateObservers(Integer item) {
-        _observers.forEach(o -> o.update(item));
+    public void updateObservers() {
+        _observers.forEach(o -> o.update(_stock));
     }
 }
