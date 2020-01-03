@@ -1,1 +1,1 @@
-SOFT252-Assignment-IntelliJ
+# SOFT252 Assignment
