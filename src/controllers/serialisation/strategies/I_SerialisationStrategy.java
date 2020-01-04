@@ -1,7 +1,7 @@
 package controllers.serialisation.strategies;
 
 /**
- * Identifies an object as a serialisation strategy.
+ * Identifies an object as a serialisation strategy for serialising and deserialising objects..
  */
 public interface I_SerialisationStrategy {
     /**
@@ -9,4 +9,10 @@ public interface I_SerialisationStrategy {
      * @param obj the object to be serialised.
      */
     public abstract void serialise(String fileName, Object obj);
+
+    /**
+     * @param fileName the destination file that contains the target object.
+     * @return the deserialised object.
+     */
+    public abstract Object deserialise(String fileName);
 }

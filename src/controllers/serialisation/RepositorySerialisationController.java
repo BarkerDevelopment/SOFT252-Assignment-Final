@@ -3,9 +3,7 @@ package controllers.serialisation;
 import controllers.repository.I_EnumRepositoryController;
 import controllers.repository.I_EnumRepositoryControllerKey;
 import controllers.repository.I_SingleRepositoryController;
-import controllers.serialisation.strategies.DefaultDeserialisationStrategy;
 import controllers.serialisation.strategies.DefaultSerialisationStrategy;
-import controllers.serialisation.strategies.I_DeserialisationStrategy;
 import controllers.serialisation.strategies.I_SerialisationStrategy;
 import models.repositories.Repository;
 
@@ -14,7 +12,6 @@ import models.repositories.Repository;
  */
 public class RepositorySerialisationController {
     private final I_SerialisationStrategy _serialisationStrategy;
-    private final I_DeserialisationStrategy _deserialisationStrategy;
 
     /**
      * Default constructor. Creates a controller with the default strategies.
@@ -22,18 +19,15 @@ public class RepositorySerialisationController {
      */
     public RepositorySerialisationController() {
         _serialisationStrategy = new DefaultSerialisationStrategy();
-        _deserialisationStrategy = new DefaultDeserialisationStrategy();
     }
 
     /**
      * Alternative constructor. Allows for the definition of a serialisation strategy.
      *
      * @param serialisationStrategy the serialisation strategy.
-     * @param deserialisationStrategy the deserialisation strategy.
      */
-    public RepositorySerialisationController(I_SerialisationStrategy serialisationStrategy, I_DeserialisationStrategy deserialisationStrategy) {
+    public RepositorySerialisationController(I_SerialisationStrategy serialisationStrategy) {
         _serialisationStrategy = serialisationStrategy;
-        _deserialisationStrategy = deserialisationStrategy;
     }
 
     /**
@@ -41,13 +35,6 @@ public class RepositorySerialisationController {
      */
     public I_SerialisationStrategy getSerialisationStrategy() {
         return _serialisationStrategy;
-    }
-
-    /**
-     * @return the _deserialisationStrategy variable. Represents the strategy that will be used to deserialise the objects.
-     */
-    public I_DeserialisationStrategy getDeserialisationStrategy() {
-        return _deserialisationStrategy;
     }
 
     /**
@@ -76,7 +63,7 @@ public class RepositorySerialisationController {
      * @param repositoryController the target SingleRepositoryController.
      */
     public void load(I_SingleRepositoryController< ? > repositoryController){
-        repositoryController.setRepository( ( Repository ) _deserialisationStrategy.deserialise( repositoryController.getFileName() ));
+        repositoryController.setRepository( ( Repository ) _serialisationStrategy.deserialise( repositoryController.getFileName() ));
     }
 
     /**
@@ -88,7 +75,7 @@ public class RepositorySerialisationController {
         repositoryController.getRepositories().forEach(
                 entry -> {
                     I_EnumRepositoryControllerKey key = entry.getKey();
-                    repositoryController.setRepository(key, ( Repository ) _deserialisationStrategy.deserialise(key.getFileName()));
+                    repositoryController.setRepository(key, ( Repository ) _serialisationStrategy.deserialise(key.getFileName()));
             }
         );
     }
