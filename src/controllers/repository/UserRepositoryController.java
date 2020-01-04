@@ -1,14 +1,18 @@
 package controllers.repository;
 
+import exceptions.DuplicateObjectException;
 import exceptions.ObjectNotFoundException;
+import models.repositories.I_RepositoryItem;
 import models.repositories.Repository;
 import models.users.User;
+import models.users.info.ID;
 import models.users.info.UserRole;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * A class that controls the interactions with the User repositories.
@@ -26,9 +30,7 @@ public class UserRepositoryController
     private UserRepositoryController() {
         _repositories = new EnumMap< >(UserRole.class);
 
-        _repositories.forEach(
-                (requestType, repository) -> repository = new Repository()
-        );
+        for(UserRole role : UserRole.values()) _repositories.put(role, new Repository());
     }
 
     /**
@@ -143,42 +145,62 @@ public class UserRepositoryController
      * Adds an item to the repository.
      *
      * @param item the item to be added.
+     * @throws DuplicateObjectException
      */
     @Override
-    public void add(User item) {
-        _repositories.get( item.getId().getRole() )
-                .get().add(item);
+    public void add(User item) throws DuplicateObjectException {
+        ArrayList< I_RepositoryItem > users = _repositories.get( item.getId().getRole() ).get();
+
+        if(! users.contains(item)){
+            users.add(item);
+
+        }else{
+            throw new DuplicateObjectException();
+        }
     }
 
     /**
      * Add a collection of items to the repository.
      *
      * @param items the collection of items to be added.
+     * @throws DuplicateObjectException
      */
     @Override
-    public void add(ArrayList< User > items) {
-        items.forEach(this::add);
+    public void add(ArrayList< User > items) throws DuplicateObjectException {
+        for (User user : items){
+            this.add(user);
+        }
     }
 
     /**
      * Removes an item from the repository.
      *
      * @param item the item to be removed.
+     * @throws ObjectNotFoundException
      */
     @Override
-    public void remove(User item) {
-        _repositories.get( item.getId().getRole() )
-                .get().remove(item);
+    public void remove(User item) throws ObjectNotFoundException {
+        ArrayList< I_RepositoryItem > users = _repositories.get( item.getId().getRole() ).get();
+
+        if(users.contains(item)){
+            users.remove(item);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**
      * Removes a collection of items from the repository.
      *
      * @param items the collection of items to be removed.
+     * @throws ObjectNotFoundException
      */
     @Override
-    public void remove(ArrayList< User > items) {
-        items.forEach(this::remove);
+    public void remove(ArrayList< User > items) throws ObjectNotFoundException {
+        for (User user : items){
+            this.remove(user);
+        }
     }
 
     /**

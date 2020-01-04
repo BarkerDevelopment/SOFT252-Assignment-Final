@@ -1,5 +1,6 @@
 package controllers.repository;
 
+import exceptions.ObjectNotFoundException;
 import models.repositories.I_RepositoryItem;
 
 import java.util.ArrayList;
@@ -29,14 +30,14 @@ public interface I_RepositoryController< T extends I_RepositoryItem > {
      *
      * @param item the item to be removed.
      */
-    public abstract void remove(T item);
+    public abstract void remove(T item) throws Exception;
 
     /**
      * Removes a collection of items from the repository.
      *
      * @param items the collection of items to be removed.
      */
-    public abstract void remove(ArrayList< T > items);
+    public abstract void remove(ArrayList< T > items) throws Exception;
 
     /**
      * Clears the repository.
