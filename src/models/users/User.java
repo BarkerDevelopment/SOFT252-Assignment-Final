@@ -1,5 +1,6 @@
 package models.users;
 
+import controllers.repository.UserRepositoryController;
 import exceptions.OutOfRangeException;
 import models.I_Unique;
 import models.repositories.I_RepositoryItem;
@@ -35,7 +36,7 @@ public class User
      * @param password the User's password.
      */
     public User(UserRole role, String name, String surname, Address address, int password){
-        _id = new IDFactory(role).create();
+        _id = new IDFactory(role).create(UserRepositoryController.getInstance().getIDs(role));
         _name = name;
         _surname = surname;
         _address = address;
@@ -54,7 +55,7 @@ public class User
      * @param seed the pseudo-random generator seed. This ensures repeatable random generation.
      */
     public User(UserRole role, String name, String surname, int password, long seed){
-        _id = new IDFactory(role, seed).create();
+        _id = new IDFactory(role, seed).create(UserRepositoryController.getInstance().getIDs(role));
         _name = name;
         _surname = surname;
         _address = new Address();

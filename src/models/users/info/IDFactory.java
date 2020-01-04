@@ -4,7 +4,9 @@ import controllers.repository.I_UniqueQueryableRepository;
 import controllers.repository.UserRepositoryController;
 import exceptions.OutOfRangeException;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * A class that creates random IDs objects.
@@ -20,7 +22,7 @@ public class IDFactory {
      */
     public IDFactory(UserRole role) {
         _role = role;
-        _seed = System.currentTimeMillis();
+        _seed = 0;
     }
 
     /**
@@ -47,30 +49,37 @@ public class IDFactory {
      *
      * @return the randomly generated ID.
      */
-    public ID create(){
-        UserRepositoryController repositoryController = UserRepositoryController.getInstance();
+    public ID create(ArrayList<ID> ids) {
+        String idNumber;
+        ArrayList< String > idStrings = new ArrayList<>(ids.stream().map(ID::toString).collect(Collectors.toList()));
+
+        do {
+            idNumber = _seed == 0 ? generateID(System.currentTimeMillis()) : generateID(_seed);
+        } while(idStrings.contains(_role.toString() + idNumber)); // Loop ensures that generated ID doesn't already exist.
 
         try{
-            Random rand = new Random(_seed);
-
-            String idNumber;
-
-            do {
-                StringBuilder idNumberBuilder = new StringBuilder();
-
-                for (int i = 0; i < ID.ID_LENGTH; i++) {
-                    idNumberBuilder.append(rand.nextInt(10));
-                }
-                idNumber = idNumberBuilder.toString();
-
-                // Loop ensures that generated ID doesn't already exist.
-            } while(((I_UniqueQueryableRepository< String, ? >) repositoryController).contains(_role.toString() + idNumber));
-
             return new ID(_role, idNumber);
 
-        }catch (ClassCastException | NullPointerException | OutOfRangeException e){
+        }catch (OutOfRangeException e){
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * Generates a random String of integers.
+     *
+     * @param seed the pseudo random seed.
+     * @return the String of integers.
+     */
+    private String generateID(long seed){
+        Random rand = new Random(seed);
+        StringBuilder idNumberBuilder = new StringBuilder();
+
+        for (int i = 0; i < ID.ID_LENGTH; i++) {
+            idNumberBuilder.append(rand.nextInt(10));
+        }
+
+        return idNumberBuilder.toString();
     }
 }

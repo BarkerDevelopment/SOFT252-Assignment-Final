@@ -104,6 +104,25 @@ public class UserRepositoryController
     }
 
     /**
+     * @return all the IDs of the users in the repository controller.
+     */
+    public ArrayList< ID > getIDs(){
+        return new ArrayList<>(
+                this.get().stream().map(User::getId).collect(Collectors.toList())
+        );
+    }
+
+    /**
+     * @param role the type of role of the IDs.
+     * @return all the IDs of the users of the passed ID in the repository controller.
+     */
+    public ArrayList< ID > getIDs(UserRole role){
+        return new ArrayList<>(
+                this.getRepository(role).get().stream().map(item -> ((User) item).getId()).collect(Collectors.toList())
+        );
+    }
+
+    /**
      * Queries the contnents of the repository to see if it contains an object that can be identified by the passed
      * string.
      *
