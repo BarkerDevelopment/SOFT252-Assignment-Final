@@ -1,5 +1,6 @@
 package models.users.info;
 
+import controllers.primary.*;
 import controllers.repository.*;
 import models.I_Printable;
 
@@ -10,13 +11,14 @@ import java.lang.reflect.InvocationTargetException;
  */
 public enum UserRole
         implements I_EnumRepositoryControllerKey, I_Printable {
-    ADMIN('A', "admins"),
-    DOCTOR('D', "doctors"),
-    SECRETARY('S', "secretaries"),
-    PATIENT('P', "patients");
+    ADMIN('A', "admins", AdminController.class),
+    DOCTOR('D', "doctors", DoctorController.class),
+    SECRETARY('S', "secretaries", SecretaryController.class),
+    PATIENT('P', "patients", PatientController.class);
 
     private final char _roleString;
     private final String _filename;
+    private final Class< ? > _viewController;
 
     /**
      * Enum constructor assigning input variables.
@@ -24,9 +26,10 @@ public enum UserRole
      * @param roleString the character required for the ID.
      * @param fileName the file destination of the repository content.
      */
-    private UserRole(char roleString, String fileName) {
+    private UserRole(char roleString, String fileName, Class< ? > viewController) {
         _roleString = roleString;
         _filename = fileName;
+        _viewController = viewController;
     }
 
     /**
@@ -35,6 +38,13 @@ public enum UserRole
     @Override
     public String getFileName() {
         return _filename;
+    }
+
+    /**
+     * @return the view controller corresponding to the UserRole.
+     */
+    public I_ViewController getViewController() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        return (I_ViewController) _viewController.getConstructor().newInstance();
     }
 
     /**
@@ -54,7 +64,7 @@ public enum UserRole
      */
     public static UserRole fromChar(char input) throws EnumConstantNotPresentException{
         for(UserRole instance : UserRole.values()){
-            if (instance._roleString == input) return instance;
+            if (instance._roleString == Character.toUpperCase(input)) return instance;
         }
 
         throw new EnumConstantNotPresentException(UserRole.class, Character.toString(input));
