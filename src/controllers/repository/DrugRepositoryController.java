@@ -1,6 +1,6 @@
 package controllers.repository;
 
-import exceptions.DuplicateDrugException;
+import exceptions.DuplicateObjectException;
 import exceptions.ObjectNotFoundException;
 import exceptions.StockLevelException;
 import models.drugs.DrugStock;
@@ -111,16 +111,16 @@ public class DrugRepositoryController
      * @param item the item to be added.
      */
     @Override
-    public void add(DrugStock item) throws DuplicateDrugException {
+    public void add(DrugStock item) throws DuplicateObjectException {
         if(this.contains(item.getDrug()))
-                throw new DuplicateDrugException(String.format("%s already exists in the system.", item.getDrug().getName()));
+                throw new DuplicateObjectException(String.format("%s already exists in the system.", item.getDrug().getName()));
 
         else{
             for (I_RepositoryItem repositoryItem : _repository.get()){
                 DrugStock drugStock = (DrugStock) repositoryItem;
                 if( drugStock.getDrug().getName().equals(item.getDrug().getName())){
                     if ( drugStock.getDrug().getDescription().equals(item.getDrug().getDescription())) {
-                        throw new DuplicateDrugException(String.format("%s already exists in the system.", item.getDrug().getName()));
+                        throw new DuplicateObjectException(String.format("%s already exists in the system.", item.getDrug().getName()));
                     }
                 }
             }
@@ -135,7 +135,7 @@ public class DrugRepositoryController
      * @param items the collection of items to be added.
      */
     @Override
-    public void add(ArrayList< DrugStock > items) throws DuplicateDrugException {
+    public void add(ArrayList< DrugStock > items) throws DuplicateObjectException {
         for (DrugStock item : items) {
             this.add(item);
         }

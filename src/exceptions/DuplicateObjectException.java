@@ -1,15 +1,15 @@
 package exceptions;
 
 /**
- * DuplicateException is a super-class of exceptions related to the attempt of creating an object similar or the same to
- * one that exists already within a repository.
+ * DuplicateUserException is a sub-class of exceptions related to the attempt of adding a user that already exists in the
+ * repository to it.
  */
-public class DuplicateException extends Exception{
+public class DuplicateObjectException extends RuntimeException {
     /**
      * Constructs a new exception with null as its detail message. The cause is not initialized, and may subsequently
      * be initialized by a call to Throwable.initCause(java.lang.Throwable).
      */
-    public DuplicateException(){
+    public DuplicateObjectException(){
         super();
     }
 
@@ -20,7 +20,7 @@ public class DuplicateException extends Exception{
      * @param message the detail message. The detail message is saved for later retrieval by the Throwable.getMessage()
      *                method.
      */
-    public DuplicateException(String message){
+    public DuplicateObjectException(String message){
         super(message);
     }
 
@@ -33,7 +33,7 @@ public class DuplicateException extends Exception{
      * @param cause the cause (which is saved for later retrieval by the Throwable.getCause() method). (A null value is
      *              permitted, and indicates that the cause is nonexistent or unknown.)
      */
-    public DuplicateException(String message, Throwable cause){
+    public DuplicateObjectException(String message, Throwable cause){
         super(message, cause);
     }
 
@@ -45,7 +45,7 @@ public class DuplicateException extends Exception{
      * @param cause  the cause (which is saved for later retrieval by the Throwable.getCause() method).
      *               (A null value is permitted, and indicates that the cause is nonexistent or unknown.)
      */
-    public DuplicateException(Throwable cause){
+    public DuplicateObjectException(Throwable cause){
         super(cause);
     }
 
@@ -58,7 +58,7 @@ public class DuplicateException extends Exception{
      * @param enableSuppression whether or not suppression is enabled or disabled
      * @param writableStackTrace whether or not the stack trace should be writable
      */
-    public DuplicateException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace){
+    public DuplicateObjectException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace){
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

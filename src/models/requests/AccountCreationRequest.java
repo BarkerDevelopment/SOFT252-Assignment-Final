@@ -1,6 +1,7 @@
 package models.requests;
 
 import controllers.repository.UserRepositoryController;
+import exceptions.DuplicateObjectException;
 import models.users.Patient;
 import models.users.info.Address;
 import models.users.info.Gender;
@@ -86,7 +87,12 @@ public class AccountCreationRequest extends Request {
      */
     @Override
     public void approveAction() {
-        UserRepositoryController.getInstance().add(new Patient(this));
+        try {
+            UserRepositoryController.getInstance().add(new Patient(this));
+        }catch (DuplicateObjectException e){
+            // TODO handle this correctly.
+            e.printStackTrace();
+        }
     }
 
     /**

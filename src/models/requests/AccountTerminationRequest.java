@@ -3,6 +3,7 @@ package models.requests;
 import controllers.auxiliary.MessageController;
 import controllers.repository.UserRepositoryController;
 
+import exceptions.ObjectNotFoundException;
 import models.messaging.Message;
 import models.users.User;
 
@@ -37,7 +38,14 @@ public class AccountTerminationRequest extends Request {
      */
     @Override
     public void approveAction() {
-        UserRepositoryController.getInstance().remove(_requester);
+        try {
+            UserRepositoryController.getInstance().remove(_requester);
+
+        } catch (ObjectNotFoundException e) {
+            //TODO handle this properly.
+            e.printStackTrace();
+        }
+
     }
 
     /**

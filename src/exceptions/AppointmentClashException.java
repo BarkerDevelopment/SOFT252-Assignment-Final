@@ -3,7 +3,7 @@ package exceptions;
 /**
  *
  */
-public class AppointmentClashException extends DuplicateException {
+public class AppointmentClashException extends Exception {
     /**
      * Constructs a new exception with null as its detail message. The cause is not initialized, and may subsequently
      * be initialized by a call to Throwable.initCause(java.lang.Throwable).

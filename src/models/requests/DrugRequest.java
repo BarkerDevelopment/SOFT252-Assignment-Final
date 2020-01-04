@@ -1,10 +1,9 @@
 package models.requests;
 
 import controllers.auxiliary.MessageController;
-import controllers.primary.DoctorController;
 import controllers.repository.DrugRepositoryController;
 import controllers.repository.UserRepositoryController;
-import exceptions.DuplicateDrugException;
+import exceptions.DuplicateObjectException;
 import models.drugs.DrugStock;
 import models.messaging.Message;
 import models.repositories.Repository;
@@ -132,7 +131,7 @@ public class DrugRequest extends Request {
                     ))
             );
 
-        }catch (DuplicateDrugException e){
+        }catch (DuplicateObjectException e){
             e.printStackTrace();
         }
     }
