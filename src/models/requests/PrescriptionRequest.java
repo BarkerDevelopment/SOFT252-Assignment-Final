@@ -27,12 +27,13 @@ public class PrescriptionRequest extends Request
      * @param patient the patient the prescription needs to be delivered to.
      * @param prescription the prescription the patient needs.
      */
-    public PrescriptionRequest(Patient patient, I_Prescription prescription) {
+    public PrescriptionRequest(Patient patient, I_Prescription prescription) throws ObjectNotFoundException {
         super(RequestType.PRESCRIPTION);
         _patient = patient;
         _prescription = prescription;
-
         _drugStock = 0;
+
+        DrugRepositoryController.getInstance().get(_prescription.getTreatment()).subscribe(this);
     }
 
     /**
@@ -71,7 +72,7 @@ public class PrescriptionRequest extends Request
      */
     @Override
     public void approveAction() throws StockLevelException, ObjectNotFoundException {
-        if(_prescription.getQty() > _drugStock){
+        if(_prescription.getQty() <= _drugStock){
             DrugRepositoryController.getInstance().updateStock(_prescription.getTreatment(), -(_drugStock));
             _patient.getPrescriptions().add( _prescription );
 

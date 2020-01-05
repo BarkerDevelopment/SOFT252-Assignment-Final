@@ -5,6 +5,7 @@ import exceptions.ObjectNotFoundException;
 import models.appointments.Appointment;
 import models.appointments.I_Appointment;
 import models.appointments.I_AppointmentParticipant;
+import models.drugs.I_Prescription;
 import models.repositories.Repository;
 import models.requests.PrescriptionRequest;
 import models.users.Doctor;
@@ -194,11 +195,10 @@ public class AppointmentRepositoryController
      */
     public void complete(Appointment appointment) throws ObjectNotFoundException {
         if(_repository.get().contains(appointment)) {
-            RequestRepositoryController.getInstance().add(
-                    new ArrayList<>(appointment.getPrescriptions().stream().map(
-                            prescription -> new PrescriptionRequest(appointment.getPatient(), prescription)
-                    ).collect(Collectors.toList()))
-            );
+            RequestRepositoryController controller = RequestRepositoryController.getInstance();
+            Patient patient = appointment.getPatient();
+
+            for(I_Prescription prescription : appointment.getPrescriptions()) controller.add(new PrescriptionRequest(patient, prescription));
 
             appointment.setCompleted(true);
 

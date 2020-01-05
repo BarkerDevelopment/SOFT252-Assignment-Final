@@ -42,7 +42,7 @@ public class AccountTerminationRequest extends Request {
             UserRepositoryController.getInstance().remove(_requester);
 
         } catch (ObjectNotFoundException e) {
-            //TODO handle this properly.
+            //TODO handle this error properly.
             e.printStackTrace();
         }
 

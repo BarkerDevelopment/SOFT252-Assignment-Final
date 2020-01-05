@@ -35,6 +35,7 @@ public class DrugRequest extends Request {
 
         _doctor = requester;
         _name = name;
+        _description = "";
         _startingQty = 0;
         _sideEffects = new ArrayList<>();
     }
@@ -47,13 +48,14 @@ public class DrugRequest extends Request {
      * @param name the name of the drug.
      * @param qty the quantity required.
      */
-    public DrugRequest(Doctor requester, String name, int qty) {
+    public DrugRequest(Doctor requester, String name, String description, ArrayList<String> sideEffects, int qty) {
         super(RequestType.NEW_DRUG);
 
         _doctor = requester;
         _name = name;
+        _description = description;
         _startingQty = qty;
-        _sideEffects = new ArrayList<>();
+        _sideEffects = sideEffects;
     }
 
     /**
@@ -119,12 +121,12 @@ public class DrugRequest extends Request {
     public void approveAction() {
         try{
             DrugRepositoryController.getInstance().add(new DrugStock(this));
+
             MessageController.send(_doctor, new Message(this,
                     String.format("Your request for a new drug - %s - has been approved.", _name)
             ));
 
             Repository doctorRepository = UserRepositoryController.getInstance().getRepository(UserRole.DOCTOR);
-
             doctorRepository.get().forEach(doctor ->
                     MessageController.send(_doctor, new Message(this,
                             String.format("%s is now available for prescription.", _name)
@@ -132,7 +134,7 @@ public class DrugRequest extends Request {
             );
 
         }catch (DuplicateObjectException e){
-            e.printStackTrace();
+            denyAction();
         }
     }
 

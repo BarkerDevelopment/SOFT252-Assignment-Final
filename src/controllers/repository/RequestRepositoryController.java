@@ -1,8 +1,12 @@
 package controllers.repository;
 
+import exceptions.DuplicateObjectException;
+import exceptions.ObjectNotFoundException;
+import models.repositories.I_RepositoryItem;
 import models.repositories.Repository;
 import models.requests.Request;
 import models.requests.RequestType;
+import models.users.User;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -78,6 +82,10 @@ public class RequestRepositoryController
         return content;
     }
 
+    /**
+     * @param type the type of request.
+     * @return an ArrayList of all the requests of the specified type.
+     */
     public ArrayList< Request > get(RequestType type){
         ArrayList< Request > content = new ArrayList<>();
         _repositories.get(type).get().forEach(i -> content.add( (Request) i) );
@@ -91,8 +99,15 @@ public class RequestRepositoryController
      * @param item the item to be added.
      */
     @Override
-    public void add(Request item) {
-        _repositories.get(item.getType()).get().add(item);
+    public void add(Request item) throws DuplicateObjectException{
+        ArrayList< I_RepositoryItem > requests = _repositories.get( item.getType() ).get();
+
+        if(! requests.contains(item)){
+            requests.add(item);
+
+        }else{
+            throw new DuplicateObjectException();
+        }
     }
 
     /**
@@ -102,7 +117,9 @@ public class RequestRepositoryController
      */
     @Override
     public void add(ArrayList< Request > items) {
-        items.forEach(this::add);
+        for (Request request : items){
+            this.add(request);
+        }
     }
 
     /**
@@ -111,8 +128,15 @@ public class RequestRepositoryController
      * @param item the item to be removed.
      */
     @Override
-    public void remove(Request item) {
-        _repositories.get(item.getType()).get().remove(item);
+    public void remove(Request item) throws ObjectNotFoundException {
+        ArrayList< I_RepositoryItem > requests = _repositories.get( item.getType() ).get();
+
+        if(requests.contains(item)){
+            requests.remove(item);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**
@@ -121,8 +145,10 @@ public class RequestRepositoryController
      * @param items the collection of items to be removed.
      */
     @Override
-    public void remove(ArrayList< Request > items) {
-        items.forEach(this::remove);
+    public void remove(ArrayList< Request > items) throws ObjectNotFoundException {
+        for (Request request : items){
+            this.remove(request);
+        }
     }
 
     /**
@@ -139,20 +165,33 @@ public class RequestRepositoryController
      * Approve a request, then deletes it.
      *
      * @param request the target request to approve.
-     * @throws Exception of the request's approveAction throws an Exception.
+     * @throws ObjectNotFoundException the request cannot be found in the repository.
+     * @throws Exception if the request's approveAction throws an Exception.
      */
     public void approve(Request request) throws Exception {
-        request.approveAction();
-        this.remove(request);
+        if(this.get(request.getType()).contains(request)){
+            request.approveAction();
+            this.remove(request);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**
      * Deny a request, then deletes it.
      *
      * @param request the target request to deny.
+     * @throws ObjectNotFoundException if the request cannot be found in the repository.
+     * @throws Exception if the request's approveAction throws an Exception.
      */
-    public void deny(Request request){
-        request.denyAction();
-        this.remove(request);
+    public void deny(Request request) throws Exception {
+        if(this.get(request.getType()).contains(request)){
+            request.denyAction();
+            this.remove(request);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 }

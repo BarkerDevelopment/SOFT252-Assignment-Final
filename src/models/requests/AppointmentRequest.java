@@ -89,7 +89,8 @@ public class AppointmentRequest extends Request {
                 ));
 
         } catch (AppointmentClashException e) {
-            e.printStackTrace();
+            //TODO handle this error properly.
+            denyAction();
         }
     }
 
