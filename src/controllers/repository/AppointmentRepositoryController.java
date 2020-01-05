@@ -1,6 +1,7 @@
 package controllers.repository;
 
 import exceptions.AppointmentClashException;
+import exceptions.ObjectNotFoundException;
 import models.appointments.Appointment;
 import models.appointments.I_Appointment;
 import models.appointments.I_AppointmentParticipant;
@@ -29,7 +30,7 @@ public class AppointmentRepositoryController
      */
     private AppointmentRepositoryController() {
         _fileName = "appointments";
-        _repository = null;
+        _repository = new Repository();
     }
 
     /**
@@ -81,7 +82,7 @@ public class AppointmentRepositoryController
     /**
      * @return all appointments of a specific participant.
      */
-    public ArrayList< I_Appointment > get(I_AppointmentParticipant participant){
+    public ArrayList< Appointment > get(I_AppointmentParticipant participant){
         return new ArrayList<>( this.get().stream().filter(
                 a -> a.getParticipants().contains(participant)
         ).collect(Collectors.toList()));
@@ -90,7 +91,7 @@ public class AppointmentRepositoryController
     /**
      * @return all appointments of a specified day.
      */
-    public ArrayList< I_Appointment > get(LocalDate date) {
+    public ArrayList< Appointment > get(LocalDate date) {
         return new ArrayList<>( this.get().stream().filter(
                 a -> a.getDateTime().toLocalDate().equals(date)
         ).collect(Collectors.toList()));
@@ -103,32 +104,38 @@ public class AppointmentRepositoryController
      */
     @Override
     public void add(Appointment item) throws AppointmentClashException {
-        LocalDateTime dateTime = item.getDateTime();
-        Patient patient = item.getPatient();
-        Doctor doctor = item.getDoctor();
+        if(! _repository.get().contains(item)){
+            LocalDateTime dateTime = item.getDateTime();
+            Patient patient = item.getPatient();
+            Doctor doctor = item.getDoctor();
 
-        // Retrieves all appointments at the request's time that involve either one of the participants.
-        ArrayList< I_Appointment > clashAppointments = new ArrayList<>(this.get(dateTime.toLocalDate())
-                .stream()
-                .filter(a -> a.getParticipants().contains(patient) || a.getParticipants().contains(doctor))
-                .collect(Collectors.toList())
-        );
+            // Retrieves all appointments at the request's time that involve either one of the participants.
+            ArrayList< I_Appointment > clashAppointments = new ArrayList<>(this.get(dateTime.toLocalDate())
+                    .stream()
+                    .filter(a -> (a.getParticipants().contains(patient) || a.getParticipants().contains(doctor)) &&
+                            a.getDateTime().toLocalTime().equals(dateTime.toLocalTime()))
+                    .collect(Collectors.toList())
+            );
 
-        if(clashAppointments.isEmpty()) {
-            _repository.get().add(item);
-
-        }else{
-            if(clashAppointments.size() == 2){
-                throw new AppointmentClashException("Both participants are involved in another appointment at this time.");
+            if(clashAppointments.isEmpty()) {
+                _repository.get().add(item);
 
             }else{
-                I_Appointment clash = clashAppointments.get(0);
+                if(clashAppointments.size() == 2){
+                    throw new AppointmentClashException("Both participants are involved in another appointment at this time.");
 
-                throw new AppointmentClashException(
-                        String.format("The %s is already involved involved in another appointment at this time.",
-                        (clash.getDoctor().equals(doctor) ? "doctor" : "patient"))
-                );
+                }else{
+                    I_Appointment clash = clashAppointments.get(0);
+
+                    throw new AppointmentClashException(
+                            String.format("The %s is already involved involved in another appointment at this time.",
+                            (clash.getDoctor().equals(doctor) ? "doctor" : "patient"))
+                    );
+                }
             }
+
+        }else{
+            throw new AppointmentClashException("The appointment already exists in the system.");
         }
     }
 
@@ -150,8 +157,14 @@ public class AppointmentRepositoryController
      * @param item the item to be removed.
      */
     @Override
-    public void remove(Appointment item) {
-        _repository.get().remove(item);
+    public void remove(Appointment item) throws ObjectNotFoundException
+    {
+        if(_repository.get().contains(item)){
+            _repository.get().remove(item);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**
@@ -160,8 +173,10 @@ public class AppointmentRepositoryController
      * @param items the collection of items to be removed.
      */
     @Override
-    public void remove(ArrayList< Appointment > items) {
-        _repository.get().removeAll(items);
+    public void remove(ArrayList< Appointment > items) throws ObjectNotFoundException {
+        for (Appointment item : items) {
+            this.remove(item);
+        }
     }
 
     /**
@@ -177,13 +192,18 @@ public class AppointmentRepositoryController
      *
      * @param appointment the target appointment.
      */
-    public void complete(Appointment appointment){
-        RequestRepositoryController.getInstance().add(
-                new ArrayList<>(appointment.getPrescriptions().stream().map(
-                        prescription -> new PrescriptionRequest(appointment.getPatient(), prescription)
-                ).collect(Collectors.toList()))
-        );
+    public void complete(Appointment appointment) throws ObjectNotFoundException {
+        if(_repository.get().contains(appointment)) {
+            RequestRepositoryController.getInstance().add(
+                    new ArrayList<>(appointment.getPrescriptions().stream().map(
+                            prescription -> new PrescriptionRequest(appointment.getPatient(), prescription)
+                    ).collect(Collectors.toList()))
+            );
 
-        appointment.setCompleted(true);
+            appointment.setCompleted(true);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 }

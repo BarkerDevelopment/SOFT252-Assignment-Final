@@ -24,9 +24,7 @@ public class RequestRepositoryController
     private RequestRepositoryController() {
         _repositories = new EnumMap< >(RequestType.class);
 
-        _repositories.forEach(
-            (requestType, repository) -> repository = new Repository()
-        );
+        for(RequestType type : RequestType.values()) _repositories.put(type, new Repository());
     }
 
     /**
