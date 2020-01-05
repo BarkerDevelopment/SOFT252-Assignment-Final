@@ -1,5 +1,7 @@
 package models.drugs;
 
+import exceptions.DuplicateObjectException;
+import exceptions.ObjectNotFoundException;
 import models.I_Observable;
 import models.I_Observer;
 import models.I_Unique;
@@ -157,13 +159,26 @@ public class DrugStock
     }
 
     /**
+     * @return the _observers variable.
+     */
+    public ArrayList< I_Observer< Integer > > getObservers() {
+        return _observers;
+    }
+
+    /**
      * Subscribes an observer object to the observable object.
      *
      * @param o the observer to subscribe.
      */
     @Override
-    public void subscribe(I_Observer< Integer > o) {
-        _observers.add(o);
+    public void subscribe(I_Observer< Integer > o) throws DuplicateObjectException {
+        if(! _observers.contains(o)) {
+            _observers.add(o);
+            o.update(_stock);
+
+        }else{
+            throw new DuplicateObjectException();
+        }
     }
 
     /**
@@ -172,8 +187,13 @@ public class DrugStock
      * @param o the observer to unsubscribe.
      */
     @Override
-    public void unsubscribe(I_Observer< Integer > o) {
-        _observers.remove(o);
+    public void unsubscribe(I_Observer< Integer > o) throws ObjectNotFoundException {
+        if(_observers.contains(o)){
+            _observers.remove(o);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**

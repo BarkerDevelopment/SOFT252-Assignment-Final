@@ -1,5 +1,7 @@
 package models;
 
+import exceptions.ObjectNotFoundException;
+
 /**
  * Annotates an object as implementing the Observer pattern.
  *
@@ -11,14 +13,14 @@ public interface I_Observable< T > {
      *
      * @param o the observer to subscribe.
      */
-    public abstract void subscribe(I_Observer< T > o);
+    public abstract void subscribe(I_Observer< T > o) throws ObjectNotFoundException;
 
     /**
      * Unsubscribes an observer object to the observable object.
      *
      * @param o the observer to unsubscribe.
      */
-    public abstract void unsubscribe(I_Observer< T > o);
+    public abstract void unsubscribe(I_Observer< T > o) throws ObjectNotFoundException;
 
     /**
      * Updates the subscribed observers with the object.

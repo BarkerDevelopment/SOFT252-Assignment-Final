@@ -50,6 +50,13 @@ public class PrescriptionRequest extends Request
     }
 
     /**
+     * @return the _drugStock variable. Represents the stock of the drug in the repository.
+     */
+    public int getDrugStock() {
+        return _drugStock;
+    }
+
+    /**
      * Updates a variable within the Observer.
      *
      * @param item the variable to update.
