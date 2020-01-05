@@ -167,8 +167,13 @@ public class DrugRepositoryController
      * @param item the item to be removed.
      */
     @Override
-    public void remove(DrugStock item) {
-        _repository.get().remove(item);
+    public void remove(DrugStock item) throws ObjectNotFoundException {
+        if(_repository.get().contains(item)){
+            _repository.get().remove(item);
+
+        }else{
+            throw new ObjectNotFoundException();
+        }
     }
 
     /**
@@ -177,8 +182,10 @@ public class DrugRepositoryController
      * @param items the collection of items to be removed.
      */
     @Override
-    public void remove(ArrayList< DrugStock > items) {
-        _repository.get().removeAll(items);
+    public void remove(ArrayList< DrugStock > items) throws ObjectNotFoundException {
+        for (DrugStock item : items){
+            this.remove(item);
+        }
     }
 
     /**
