@@ -119,7 +119,7 @@ public class DrugRepositoryController
             for (I_RepositoryItem repositoryItem : _repository.get()){
                 DrugStock drugStock = (DrugStock) repositoryItem;
                 if( drugStock.getDrug().getName().equals(item.getDrug().getName())){
-                    if ( drugStock.getDrug().getDescription().equals(item.getDrug().getDescription())) {
+                    if (drugStock.getDrug().getDescription().equals(item.getDrug().getDescription())) {
                         throw new DuplicateObjectException(String.format("%s already exists in the system.", item.getDrug().getName()));
                     }
                 }

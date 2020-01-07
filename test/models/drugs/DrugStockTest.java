@@ -19,7 +19,6 @@ class DrugStockTest {
     private ArrayList< I_Observer< Integer > > _prescriptionRequests;
     private ArrayList< I_Observer< Integer > > _newPrescriptions;
 
-
     @BeforeEach
     void setUp() {
         try {
@@ -54,6 +53,9 @@ class DrugStockTest {
 
         }catch (DuplicateObjectException e){
             fail("Subscriber already exists in observers.");
+
+        } catch (ObjectNotFoundException e) {
+            fail("Drug not found in repository.");
         }
     }
 

@@ -15,12 +15,10 @@ import models.users.Patient;
 import models.users.info.Gender;
 import org.junit.jupiter.api.*;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
