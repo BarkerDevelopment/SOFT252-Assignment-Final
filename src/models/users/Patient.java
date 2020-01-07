@@ -64,13 +64,12 @@ public class Patient extends User
      *
      * @param name the Patient's name.
      * @param surname the Patient's surname.
-     * @param password the Patient's password.
      * @param dob the User's date of birth.
      * @param gender the Patient's gender.
      * @param seed the pseudo-random generator seed. This ensures repeatable random generation.
      */
-    public Patient(String name, String surname, int password, LocalDate dob, Gender gender, long seed) {
-        super(ROLE, name, surname, password, seed);
+    public Patient(String name, String surname, LocalDate dob, Gender gender, long seed) {
+        super(ROLE, name, surname, seed);
         _dob = dob;
         _gender = gender;
 
@@ -88,7 +87,24 @@ public class Patient extends User
      * @param gender the Patient's gender.
      */
     public Patient(String idNumber, String name, String surname, Gender gender) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname);
+        super(ROLE, idNumber, name, surname, "password");
+        _dob = LocalDate.now();
+        _gender = gender;
+
+        _prescriptions = new ArrayList<>();
+    }
+
+    /**
+     * Creates a bare dummy Patient object for testing purposes, particularly the login system. The name and surname 
+     * are used to provide another element of individuality to increase ease of testing rather than just looking at IDs.
+     *
+     * @param idNumber the Patient's ID number. This will be added to the Patient role string to create the Patient ID.
+     * @param name the Patient's name.
+     * @param surname the Patient's surname.
+     * @param password the Patient's password.
+     */
+    public Patient(String idNumber, String name, String surname, String password, Gender gender) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, password);
         _dob = LocalDate.now();
         _gender = gender;
 

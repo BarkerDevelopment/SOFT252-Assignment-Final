@@ -35,7 +35,7 @@ public class Secretary extends User
      * @param seed the pseudo-random generator seed. This ensures repeatable random generation.
      */
     public Secretary(String name, String surname, int password, long seed) {
-        super(ROLE, name, surname, password, seed);
+        super(ROLE, name, surname, seed);
     }
 
     /**
@@ -47,6 +47,19 @@ public class Secretary extends User
      * @param surname the Secretary's surname.
      */
     public Secretary(String idNumber, String name, String surname) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname);
+        super(ROLE, idNumber, name, surname, "password");
+    }
+
+    /**
+     * Creates a bare dummy Secretary object for testing purposes, particularly the login system. The name and surname
+     * are used to provide another element of individuality to increase ease of testing rather than just looking at IDs.
+     *
+     * @param idNumber the Secretary's ID number. This will be added to the Secretary role string to create the Secretary ID.
+     * @param name the Secretary's name.
+     * @param surname the Secretary's surname.
+     * @param password the Secretary's password.
+     */
+    public Secretary(String idNumber, String name, String surname, String password) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, password);
     }
 }

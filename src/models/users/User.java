@@ -51,15 +51,14 @@ public class User
      * @param role the User's role. This should be predefined as the subclass _role variable.
      * @param name the User's name.
      * @param surname the User's surname.
-     * @param password the User's password.
      * @param seed the pseudo-random generator seed. This ensures repeatable random generation.
      */
-    public User(UserRole role, String name, String surname, int password, long seed){
+    public User(UserRole role, String name, String surname, long seed){
         _id = new IDFactory(role, seed).create(UserRepositoryController.getInstance().getIDs(role));
         _name = name;
         _surname = surname;
         _address = new Address();
-        _password = password;
+        _password = "password".hashCode();
         _messages = new ArrayList<>();
     }
 
@@ -73,12 +72,12 @@ public class User
      * @param name the User's name.
      * @param surname the User's surname.
      */
-    public User(UserRole role, String idNumber, String name, String surname) throws OutOfRangeException {
+    public User(UserRole role, String idNumber, String name, String surname, String password) throws OutOfRangeException {
         _id = new ID(role, idNumber);
         _name = name;
         _surname = surname;
         _address = new Address();
-        _password = "password".hashCode();
+        _password = password.hashCode();
         _messages = new ArrayList<>();
     }
 

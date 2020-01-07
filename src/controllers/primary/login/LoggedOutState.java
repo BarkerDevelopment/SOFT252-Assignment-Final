@@ -75,11 +75,11 @@ public class LoggedOutState implements I_LoginState {
     /**
      * An attempt to logout.
      *
-     * @param handler the LoginHandler.
+     * @param controller the LoginHandler.
      */
     @Override
-    public void logout(LoginController handler) throws LoginException {
-        handler.setState(this);
+    public void logout(LoginController controller) throws LoginException {
+        controller.setState(this);
         throw new LoginException("Cannot logout if no one is logged in.");
     }
 }

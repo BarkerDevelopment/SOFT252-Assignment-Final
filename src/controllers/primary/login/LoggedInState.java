@@ -27,21 +27,21 @@ public class LoggedInState implements I_LoginState {
     /**
      * An attempt to login.
      *
-     * @param handler the LoginHandler.
+     * @param controller the LoginHandler.
      */
     @Override
-    public void login(LoginController handler) throws LoginException{
-        handler.setState(this);
+    public void login(LoginController controller) throws LoginException{
+        controller.setState(this);
         throw new LoginException("Cannot login because a user is already logged in.");
     }
 
     /**
      * An attempt to logout.
      *
-     * @param handler the LoginHandler
+     * @param controller the LoginHandler
      */
     @Override
-    public void logout(LoginController handler) {
-        handler.setState(new LoggedOutState());
+    public void logout(LoginController controller) {
+        controller.setState(new LoggedOutState());
     }
 }

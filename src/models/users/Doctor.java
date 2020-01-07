@@ -1,6 +1,7 @@
 package models.users;
 
 import exceptions.OutOfRangeException;
+import models.I_Printable;
 import models.appointments.I_AppointmentParticipant;
 import models.feedback.I_Feedback;
 import models.feedback.I_FeedbackRecipient;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * A User subclass for the system's doctor.
  */
 public class Doctor extends User
-    implements I_AppointmentParticipant, I_FeedbackRecipient{
+    implements I_AppointmentParticipant, I_FeedbackRecipient, I_Printable {
 
     public static UserRole ROLE = UserRole.DOCTOR;
 
@@ -38,11 +39,10 @@ public class Doctor extends User
      *
      * @param name     the Doctor's name.
      * @param surname  the Doctor's surname.
-     * @param password the Doctor's password.
      * @param seed     the pseudo-random generator seed. This ensures repeatable random generation.
      */
-    public Doctor(String name, String surname, int password, long seed) {
-        super(ROLE, name, surname, password, seed);
+    public Doctor(String name, String surname, long seed) {
+        super(ROLE, name, surname, seed);
         _feedback = new ArrayList<>();
     }
 
@@ -55,7 +55,21 @@ public class Doctor extends User
      * @param surname  the Doctor's surname.
      */
     public Doctor(String idNumber, String name, String surname) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname);
+        super(ROLE, idNumber, name, surname, "password");
+        _feedback = new ArrayList<>();
+    }
+
+    /**
+     * Creates a bare dummy Doctor object for testing purposes, particularly the login system. The name and surname 
+     * are used to provide another element of individuality to increase ease of testing rather than just looking at IDs.
+     *
+     * @param idNumber the Doctor's ID number. This will be added to the Doctor role string to create the Doctor ID.
+     * @param name the Doctor's name.
+     * @param surname the Doctor's surname.
+     * @param password the Doctor's password.
+     */
+    public Doctor(String idNumber, String name, String surname, String password) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, password);
         _feedback = new ArrayList<>();
     }
 
@@ -73,5 +87,10 @@ public class Doctor extends User
     @Override
     public void setFeedback(ArrayList< I_Feedback > feedback) {
         _feedback = feedback;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Dr. %s %s", super.getName(), super.getSurname());
     }
 }

@@ -8,6 +8,10 @@ import controllers.primary.I_ViewController;
 public class LoginController implements I_ViewController {
     private I_LoginState _state;
 
+    public LoginController() {
+        _state = new LoggedOutState();
+    }
+
     /**
      * Shows the initial view of the controller.
      */
