@@ -139,5 +139,6 @@ public class Patient extends User
     @Override
     public void setPrescriptions(ArrayList< I_Prescription > prescriptions) {
         _prescriptions = prescriptions;
+        save();
     }
 }

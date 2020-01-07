@@ -1,12 +1,12 @@
 package controllers.repository;
 
+import controllers.serialisation.RepositorySerialisationController;
 import exceptions.DuplicateObjectException;
 import exceptions.ObjectNotFoundException;
 import models.repositories.I_RepositoryItem;
 import models.repositories.Repository;
 import models.requests.Request;
 import models.requests.RequestType;
-import models.users.User;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -20,7 +20,9 @@ public class RequestRepositoryController
         implements I_EnumRepositoryController< RequestType, Request > {
 
     private static RequestRepositoryController INSTANCE;
+
     private EnumMap< RequestType, Repository > _repositories;
+    private RepositorySerialisationController _serialisationController;
 
     /**
      * Singleton constructor.
@@ -29,6 +31,7 @@ public class RequestRepositoryController
         _repositories = new EnumMap< >(RequestType.class);
 
         for(RequestType type : RequestType.values()) _repositories.put(type, new Repository());
+        _serialisationController = new RepositorySerialisationController();
     }
 
     /**
@@ -104,6 +107,7 @@ public class RequestRepositoryController
 
         if(! requests.contains(item)){
             requests.add(item);
+            save();
 
         }else{
             throw new DuplicateObjectException();
@@ -133,6 +137,7 @@ public class RequestRepositoryController
 
         if(requests.contains(item)){
             requests.remove(item);
+            save();
 
         }else{
             throw new ObjectNotFoundException();
@@ -159,6 +164,36 @@ public class RequestRepositoryController
         _repositories.forEach(
                 (requestType, repository) -> repository.get().clear()
         );
+    }
+
+    /**
+     * Loads the content repository.
+     *
+     * @return the repository controller.
+     */
+    @Override
+    public I_RepositoryController< Request > load() {
+        try {
+            _serialisationController.load(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+    /**
+     * Saves the contents of the repository.
+     */
+    @Override
+    public void save() {
+        try {
+            _serialisationController.save(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**

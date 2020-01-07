@@ -1,5 +1,6 @@
 package models.drugs;
 
+import controllers.repository.DrugRepositoryController;
 import exceptions.DuplicateObjectException;
 import exceptions.ObjectNotFoundException;
 import models.I_Observable;
@@ -78,6 +79,7 @@ public class DrugStock
          */
         public void setName(String name){
             _name = name;
+            save();
         }
 
         /**
@@ -85,6 +87,7 @@ public class DrugStock
          */
         public void setDescription(String description) {
             _description = description;
+            save();
         }
 
         /**
@@ -92,6 +95,7 @@ public class DrugStock
          */
         public void setSideEffects(ArrayList< String > sideEffects) {
             _sideEffects = sideEffects;
+            save();
         }
     }
 
@@ -156,6 +160,7 @@ public class DrugStock
         _stock = stock;
 
         this.updateObservers();
+        save();
     }
 
     /**
@@ -175,6 +180,7 @@ public class DrugStock
         if(! _observers.contains(o)) {
             _observers.add(o);
             o.update(_stock);
+            save();
 
         }else{
             throw new DuplicateObjectException();
@@ -190,6 +196,7 @@ public class DrugStock
     public void unsubscribe(I_Observer< Integer > o) throws ObjectNotFoundException {
         if(_observers.contains(o)){
             _observers.remove(o);
+            save();
 
         }else{
             throw new ObjectNotFoundException();
@@ -202,5 +209,13 @@ public class DrugStock
     @Override
     public void updateObservers() {
         _observers.forEach(o -> o.update(_stock));
+    }
+
+
+    /**
+     * Save the object.
+     */
+    protected void save(){
+        DrugRepositoryController.getInstance().save();
     }
 }

@@ -1,5 +1,6 @@
 package controllers.repository;
 
+import controllers.serialisation.RepositorySerialisationController;
 import exceptions.DuplicateObjectException;
 import exceptions.ObjectNotFoundException;
 import exceptions.StockLevelException;
@@ -7,6 +8,7 @@ import models.drugs.DrugStock;
 import models.drugs.I_Treatment;
 import models.repositories.I_RepositoryItem;
 import models.repositories.Repository;
+import models.requests.Request;
 
 import java.util.ArrayList;
 
@@ -15,10 +17,12 @@ import java.util.ArrayList;
  */
 public class DrugRepositoryController
         implements I_SingleRepositoryController< DrugStock >, I_UniqueQueryableRepository<I_Treatment, DrugStock> {
+
     private static DrugRepositoryController INSTANCE;
 
     private final String _fileName;
     private Repository _repository;
+    private RepositorySerialisationController _serialisationController;
 
     /**
      * Default constructor. Creates an object without a repository.
@@ -26,6 +30,7 @@ public class DrugRepositoryController
     private DrugRepositoryController() {
         _fileName = "drugs";
         _repository = new Repository();
+        _serialisationController = new RepositorySerialisationController();
     }
 
     /**
@@ -126,6 +131,7 @@ public class DrugRepositoryController
             }
 
             _repository.get().add(item);
+            save();
         }
     }
 
@@ -153,6 +159,7 @@ public class DrugRepositoryController
 
         if(newStock >= 0){
             drugStock.setStock(newStock);
+            save();
 
         }else{
             throw new StockLevelException(
@@ -170,6 +177,7 @@ public class DrugRepositoryController
     public void remove(DrugStock item) throws ObjectNotFoundException {
         if(_repository.get().contains(item)){
             _repository.get().remove(item);
+            save();
 
         }else{
             throw new ObjectNotFoundException();
@@ -194,5 +202,37 @@ public class DrugRepositoryController
     @Override
     public void clear() {
         _repository.get().clear();
+        save();
+    }
+
+    /**
+     * Loads the content repository.
+     *
+     * @return the repository controller.
+     */
+    @Override
+    public I_RepositoryController< DrugStock > load() {
+        try {
+            _serialisationController.load(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+    /**
+     * Saves the contents of the repository.
+     */
+    @Override
+    public void save() {
+        try {
+            _serialisationController.save(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
+

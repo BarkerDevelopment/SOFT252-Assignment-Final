@@ -89,6 +89,7 @@ public class AccountCreationRequest extends Request {
     public void approveAction() {
         try {
             UserRepositoryController.getInstance().add(new Patient(this));
+
         }catch (DuplicateObjectException e){
             // TODO handle this correctly.
             e.printStackTrace();

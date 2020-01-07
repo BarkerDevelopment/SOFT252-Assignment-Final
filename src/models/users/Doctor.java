@@ -87,6 +87,7 @@ public class Doctor extends User
     @Override
     public void setFeedback(ArrayList< I_Feedback > feedback) {
         _feedback = feedback;
+        save();
     }
 
     @Override

@@ -68,6 +68,7 @@ public class AppointmentRequest extends Request {
      */
     public void setDateTime(LocalDateTime dateTime) {
         _dateTime = dateTime;
+        save();
     }
 
     /**

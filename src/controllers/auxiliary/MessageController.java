@@ -1,5 +1,6 @@
 package controllers.auxiliary;
 
+import controllers.repository.UserRepositoryController;
 import models.messaging.I_Message;
 import models.messaging.I_MessageRecipient;
 
@@ -12,5 +13,6 @@ public class MessageController {
 
     public static void send(I_MessageRecipient recipient, I_Message message){
         recipient.getMessages().add(message);
+        UserRepositoryController.getInstance().save();
     }
 }

@@ -1,5 +1,8 @@
 package models.appointments;
 
+import controllers.repository.AppointmentRepositoryController;
+import controllers.repository.DrugRepositoryController;
+import controllers.repository.UserRepositoryController;
 import models.drugs.I_Prescription;
 import models.requests.AppointmentRequest;
 import models.users.Doctor;
@@ -109,6 +112,7 @@ public class Appointment
      */
     public void setDoctor(Doctor doctor) {
         _doctor = doctor;
+        save();
     }
 
     /**
@@ -116,6 +120,7 @@ public class Appointment
      */
     public void setDateTime(LocalDateTime dateTime) {
         _dateTime = dateTime;
+        save();
     }
 
     /**
@@ -123,6 +128,7 @@ public class Appointment
      */
     public void setNotes(String notes) {
         _notes = notes;
+        save();
     }
 
     /**
@@ -130,6 +136,7 @@ public class Appointment
      */
     public void setPrescriptions(ArrayList<I_Prescription> prescriptions) {
         _prescriptions = prescriptions;
+        save();
     }
 
     /**
@@ -137,5 +144,13 @@ public class Appointment
      */
     public void setCompleted(boolean completed) {
         _isCompleted = completed;
+        save();
+    }
+
+    /**
+     * Save the object.
+     */
+    protected void save(){
+        AppointmentRepositoryController.getInstance().save();
     }
 }

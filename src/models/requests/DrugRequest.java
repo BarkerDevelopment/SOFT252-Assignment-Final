@@ -98,6 +98,7 @@ public class DrugRequest extends Request {
      */
     public void setDescription(String description) {
         _description = description;
+        save();
     }
 
     /**
@@ -105,6 +106,7 @@ public class DrugRequest extends Request {
      */
     public void setSideEffects(ArrayList< String > sideEffects) {
         _sideEffects = sideEffects;
+        save();
     }
 
     /**
@@ -112,6 +114,7 @@ public class DrugRequest extends Request {
      */
     public void setStartingQty(int startingQty) {
         _startingQty = startingQty;
+        save();
     }
 
     /**

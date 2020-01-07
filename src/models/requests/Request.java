@@ -1,5 +1,6 @@
 package models.requests;
 
+import controllers.repository.RequestRepositoryController;
 import models.messaging.I_MessageSender;
 import models.repositories.I_RepositoryItem;
 
@@ -35,4 +36,11 @@ public abstract class Request
      * The action following request denial.
      */
     public abstract void denyAction();
+
+    /**
+     * Save the object.
+     */
+    protected void save(){
+        RequestRepositoryController.getInstance().save();
+    }
 }

@@ -137,6 +137,7 @@ public class User
      */
     public void setName(String name) {
         _name = name;
+        save();
     }
 
     /**
@@ -144,6 +145,7 @@ public class User
      */
     public void setSurname(String surname) {
         _surname = surname;
+        save();
     }
 
     /**
@@ -151,6 +153,7 @@ public class User
      */
     public void setAddress(Address address) {
         _address = address;
+        save();
     }
 
     /**
@@ -158,6 +161,7 @@ public class User
      */
     public void setPassword(String password) {
         _password = password.hashCode();
+        save();
     }
 
     /**
@@ -166,5 +170,13 @@ public class User
     @Override
     public void setMessage(ArrayList< I_Message > messages) {
         _messages = messages;
+        save();
+    }
+
+    /**
+     * Save the object.
+     */
+    protected void save(){
+        UserRepositoryController.getInstance().save();
     }
 }

@@ -2,6 +2,7 @@ package models.requests;
 
 import controllers.auxiliary.MessageController;
 import controllers.repository.DrugRepositoryController;
+import controllers.repository.UserRepositoryController;
 import exceptions.ObjectNotFoundException;
 import exceptions.StockLevelException;
 import models.I_Observer;
@@ -65,6 +66,7 @@ public class PrescriptionRequest extends Request
     @Override
     public void update(Integer item) {
         _drugStock = item;
+        save();
     }
 
     /**
@@ -75,6 +77,7 @@ public class PrescriptionRequest extends Request
         if(_prescription.getQty() <= _drugStock){
             DrugRepositoryController.getInstance().updateStock(_prescription.getTreatment(), -(_drugStock));
             _patient.getPrescriptions().add( _prescription );
+            UserRepositoryController.getInstance().save();
 
             MessageController.send(_patient, new Message(this,
                     String.format("You may now collect your prescription of %d %s from a member of staff at reception.",

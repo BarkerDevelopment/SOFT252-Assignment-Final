@@ -1,5 +1,6 @@
 package controllers.repository;
 
+import controllers.serialisation.RepositorySerialisationController;
 import exceptions.AppointmentClashException;
 import exceptions.ObjectNotFoundException;
 import models.appointments.Appointment;
@@ -21,10 +22,12 @@ import java.util.stream.Collectors;
  */
 public class AppointmentRepositoryController
         implements I_SingleRepositoryController< Appointment > {
+
     private static AppointmentRepositoryController INSTANCE;
 
     private final String _fileName;
     private Repository _repository;
+    private RepositorySerialisationController _serialisationController;
 
     /**
      * Singleton constructor.
@@ -32,6 +35,7 @@ public class AppointmentRepositoryController
     private AppointmentRepositoryController() {
         _fileName = "appointments";
         _repository = new Repository();
+        _serialisationController = new RepositorySerialisationController();
     }
 
     /**
@@ -120,6 +124,7 @@ public class AppointmentRepositoryController
 
             if(clashAppointments.isEmpty()) {
                 _repository.get().add(item);
+                save();
 
             }else{
                 if(clashAppointments.size() == 2){
@@ -162,6 +167,7 @@ public class AppointmentRepositoryController
     {
         if(_repository.get().contains(item)){
             _repository.get().remove(item);
+            save();
 
         }else{
             throw new ObjectNotFoundException();
@@ -186,6 +192,37 @@ public class AppointmentRepositoryController
     @Override
     public void clear() {
         _repository.get().clear();
+        save();
+    }
+
+    /**
+     * Loads the content repository.
+     *
+     * @return the repository controller.
+     */
+    @Override
+    public I_RepositoryController< Appointment > load() {
+        try {
+            _serialisationController.load(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+    /**
+     * Saves the contents of the repository.
+     */
+    @Override
+    public void save() {
+        try {
+            _serialisationController.save(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**

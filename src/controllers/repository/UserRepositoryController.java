@@ -1,5 +1,6 @@
 package controllers.repository;
 
+import controllers.serialisation.RepositorySerialisationController;
 import exceptions.DuplicateObjectException;
 import exceptions.ObjectNotFoundException;
 import models.repositories.I_RepositoryItem;
@@ -23,6 +24,7 @@ public class UserRepositoryController
     private static UserRepositoryController INSTANCE;
 
     private EnumMap< UserRole, Repository> _repositories;
+    private RepositorySerialisationController _serialisationController;
 
     /**
      * Singleton constructor.
@@ -31,6 +33,7 @@ public class UserRepositoryController
         _repositories = new EnumMap< >(UserRole.class);
 
         for(UserRole role : UserRole.values()) _repositories.put(role, new Repository());
+        _serialisationController = new RepositorySerialisationController();
     }
 
     /**
@@ -153,6 +156,7 @@ public class UserRepositoryController
 
         if(! users.contains(item)){
             users.add(item);
+            save();
 
         }else{
             throw new DuplicateObjectException();
@@ -184,6 +188,7 @@ public class UserRepositoryController
 
         if(users.contains(item)){
             users.remove(item);
+            save();
 
         }else{
             throw new ObjectNotFoundException();
@@ -211,5 +216,36 @@ public class UserRepositoryController
         _repositories.forEach(
                 (role, repository) -> repository.get().clear()
         );
+        save();
+    }
+
+    /**
+     * Loads the content repository.
+     *
+     * @return the repository controller.
+     */
+    @Override
+    public I_RepositoryController< User > load() {
+        try {
+            _serialisationController.load(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return this;
+    }
+
+    /**
+     * Saves the contents of the repository.
+     */
+    @Override
+    public void save() {
+        try {
+            _serialisationController.save(this);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -1,6 +1,5 @@
 package controllers.repository;
 
-import exceptions.ObjectNotFoundException;
 import models.repositories.I_RepositoryItem;
 
 import java.util.ArrayList;
@@ -43,4 +42,16 @@ public interface I_RepositoryController< T extends I_RepositoryItem > {
      * Clears the repository.
      */
     public abstract void clear();
+
+    /**
+     * Loads the content repository.
+     *
+     * @return the repository controller.
+     */
+    public abstract I_RepositoryController< T > load();
+
+    /**
+     * Saves the contents of the repository.
+     */
+    public abstract void save();
 }
