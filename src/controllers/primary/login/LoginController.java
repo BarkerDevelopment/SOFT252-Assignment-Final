@@ -1,23 +1,40 @@
 package controllers.primary.login;
 
-import controllers.primary.I_ViewController;
+import controllers.primary.I_UserController;
+import views.I_Form;
+import views.LoginForm;
 
 /**
  * A class that encapsulates logging in. It implements the state pattern to enforce either logged in or logged out.
  */
-public class LoginController implements I_ViewController {
+public class LoginController implements I_UserController {
+    private static LoginController INSTANCE;
     private I_LoginState _state;
 
+    /**
+     *
+     */
     public LoginController() {
         _state = new LoggedOutState();
     }
 
     /**
+     * @return
+     */
+    public static LoginController getInstance() {
+        if(INSTANCE == null) INSTANCE = new LoginController();
+
+        return INSTANCE;
+    }
+
+
+    /**
      * Shows the initial view of the controller.
+     * @return the initial form of the controller.
      */
     @Override
-    public void index() {
-
+    public I_Form index() {
+        return new LoginForm(this);
     }
 
     /**

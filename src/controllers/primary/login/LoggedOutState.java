@@ -1,9 +1,13 @@
 package controllers.primary.login;
 
+import controllers.primary.I_UserController;
+import controllers.primary.ViewController;
 import controllers.repository.UserRepositoryController;
 import exceptions.LoginException;
 import exceptions.ObjectNotFoundException;
 import models.users.User;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * A class that represents that there is no one logged into the system.
@@ -53,7 +57,7 @@ public class LoggedOutState implements I_LoginState {
                     User user = repositoryController.get(_username);
 
                     if (user.getPassword() == ( _password.hashCode() )) {
-                        controller.setState(new LoggedInState(user));
+                        showUserIndex(controller, user);
 
                     } else {
                         controller.setState(new LoggedOutState());
@@ -81,5 +85,18 @@ public class LoggedOutState implements I_LoginState {
     public void logout(LoginController controller) throws LoginException {
         controller.setState(this);
         throw new LoginException("Cannot logout if no one is logged in.");
+    }
+
+    /**
+     * Show the user's index.
+     *
+     * @param controller the LoginController.
+     * @param user the resultant user.
+     */
+    private void showUserIndex(LoginController controller, User user){
+        controller.setState(new LoggedInState(user));
+
+        I_UserController userController = user.getId().getRole().getViewController(user);
+        ViewController.getInstance().show(userController.index().getMainPanel());
     }
 }

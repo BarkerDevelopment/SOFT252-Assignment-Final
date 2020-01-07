@@ -3,6 +3,7 @@ package models.users.info;
 import controllers.primary.*;
 import controllers.repository.*;
 import models.I_Printable;
+import models.users.User;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -43,8 +44,14 @@ public enum UserRole
     /**
      * @return the view controller corresponding to the UserRole.
      */
-    public I_ViewController getViewController() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        return (I_ViewController) _viewController.getConstructor().newInstance();
+    public I_UserController getViewController(User user) {
+        try{
+            return (I_UserController) _viewController.getConstructor(User.class).newInstance(user);
+
+        }catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
