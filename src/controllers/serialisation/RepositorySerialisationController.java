@@ -8,6 +8,7 @@ import controllers.serialisation.strategies.DefaultSerialisationStrategy;
 import controllers.serialisation.strategies.I_SerialisationStrategy;
 import models.repositories.Repository;
 
+import java.io.IOException;
 import java.util.Map.Entry;
 
 /**
@@ -46,9 +47,9 @@ public class RepositorySerialisationController {
      * @param repositoryController the target SingleRepositoryController.
      */
     public void save(I_RepositoryController< ? > repositoryController) throws Exception {
-        if(repositoryController instanceof I_SingleRepositoryController) save(( (I_SingleRepositoryController< ? >) repositoryController ));
+        if(repositoryController instanceof I_SingleRepositoryController) singleSave(( (I_SingleRepositoryController< ? >) repositoryController ));
 
-        else if(repositoryController instanceof I_EnumRepositoryController< ?, ? >) save(( (I_EnumRepositoryController< ?, ? >) repositoryController ));
+        else if(repositoryController instanceof I_EnumRepositoryController< ?, ? >) enumSave(( (I_EnumRepositoryController< ?, ? >) repositoryController ));
 
         else throw new ClassCastException("RepositoryController not of a supported type.");
 
@@ -61,9 +62,9 @@ public class RepositorySerialisationController {
      * @param repositoryController the target SingleRepositoryController.
      */
     public void load(I_RepositoryController< ? > repositoryController) throws Exception {
-        if(repositoryController instanceof I_SingleRepositoryController) load(( (I_SingleRepositoryController< ? >) repositoryController ));
+        if(repositoryController instanceof I_SingleRepositoryController) singleLoad(( (I_SingleRepositoryController< ? >) repositoryController ));
 
-        else if(repositoryController instanceof I_EnumRepositoryController< ?, ? >) load(( (I_EnumRepositoryController< ?, ? >) repositoryController ));
+        else if(repositoryController instanceof I_EnumRepositoryController< ?, ? >) enumLoad(( (I_EnumRepositoryController< I_EnumRepositoryControllerKey, ? >) repositoryController ));
 
         else throw new ClassCastException("RepositoryController not of a supported type.");
     }
@@ -73,7 +74,7 @@ public class RepositorySerialisationController {
      *
      * @param repositoryController the target SingleRepositoryController.
      */
-    public void save(I_SingleRepositoryController< ? > repositoryController) throws Exception {
+    public void singleSave(I_SingleRepositoryController< ? > repositoryController) throws Exception {
             _serialisationStrategy.serialise(repositoryController.getFileName(), repositoryController.getRepository());
     }
 
@@ -82,7 +83,7 @@ public class RepositorySerialisationController {
      *
      * @param repositoryController the target EnumRepositoryController.
      */
-    public void save(I_EnumRepositoryController< ?, ? > repositoryController) throws Exception {
+    public void enumSave(I_EnumRepositoryController< ?, ? > repositoryController) throws Exception {
         for (Entry< ? , Repository > entry : repositoryController.getRepositories())
             _serialisationStrategy.serialise(((I_EnumRepositoryControllerKey) entry.getKey()).getFileName(), entry.getValue());
     }
@@ -92,8 +93,13 @@ public class RepositorySerialisationController {
      *
      * @param repositoryController the target SingleRepositoryController.
      */
-    public void load(I_SingleRepositoryController< ? > repositoryController) throws Exception {
-        repositoryController.setRepository( ( Repository ) _serialisationStrategy.deserialise( repositoryController.getFileName() ));
+    public void singleLoad(I_SingleRepositoryController< ? > repositoryController) throws Exception {
+        try{
+            repositoryController.setRepository( ( Repository ) _serialisationStrategy.deserialise( repositoryController.getFileName() ));
+
+        }catch (IOException e){
+            repositoryController.setRepository(new Repository());
+        }
     }
 
     /**
@@ -101,10 +107,16 @@ public class RepositorySerialisationController {
      *
      * @param repositoryController the target EnumRepositoryController.
      */
-    public void load(I_EnumRepositoryController< I_EnumRepositoryControllerKey, ? > repositoryController) throws Exception {
+    public void enumLoad(I_EnumRepositoryController< I_EnumRepositoryControllerKey, ? > repositoryController) throws Exception {
         for (Entry< ?, Repository > entry : repositoryController.getRepositories()) {
             I_EnumRepositoryControllerKey key = ( (I_EnumRepositoryControllerKey) entry.getKey() );
-            repositoryController.setRepository(key, (Repository) _serialisationStrategy.deserialise(key.getFileName()));
+
+            try {
+                repositoryController.setRepository(key, (Repository) _serialisationStrategy.deserialise(key.getFileName()));
+
+            }catch (IOException e){
+                repositoryController.setRepository(key, new Repository());
+            }
         }
     }
 }
