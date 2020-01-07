@@ -11,4 +11,14 @@ public interface I_UserController {
      * @return the initial form of the controller.
      */
     public abstract I_Form index();
+
+    /**
+     * Take the user back a form.
+     */
+    public abstract void back();
+
+    /**
+     * Log the user out and return to the login screen.
+     */
+    public abstract void logout();
 }
