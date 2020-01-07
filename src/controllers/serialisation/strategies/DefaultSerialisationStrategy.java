@@ -12,20 +12,14 @@ public class DefaultSerialisationStrategy
      * @param obj      the object to be serialised.
      */
     @Override
-    public void serialise(String fileName, Object obj) {
-        try
-        {
-            FileOutputStream file = new FileOutputStream(fileName);
-            ObjectOutputStream out = new ObjectOutputStream(file);
+    public void serialise(String fileName, Object obj) throws IOException {
+        FileOutputStream file = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(file);
 
-            out.writeObject(obj);
+        out.writeObject(obj);
 
-            out.close();
-            file.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        out.close();
+        file.close();
     }
 
     /**
@@ -33,24 +27,15 @@ public class DefaultSerialisationStrategy
      * @return the deserialised object.
      */
     @Override
-    public Object deserialise(String fileName) {
-        try
-        {
-            FileInputStream file = new FileInputStream(fileName);
-            ObjectInputStream in = new ObjectInputStream(file);
+    public Object deserialise(String fileName) throws IOException, ClassNotFoundException {
+        FileInputStream file = new FileInputStream(fileName);
+        ObjectInputStream in = new ObjectInputStream(file);
 
-            Object object = in.readObject();
+        Object object = in.readObject();
 
-            in.close();
-            file.close();
+        in.close();
+        file.close();
 
-            return object;
-        }
-        catch(IOException | ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-
-        return null;
+        return object;
     }
 }
