@@ -9,17 +9,18 @@ import models.I_Unique;
 import models.repositories.I_RepositoryItem;
 import models.requests.DrugRequest;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DrugStock
-        implements I_RepositoryItem, I_Observable< Integer >, I_Unique< I_Treatment > {
+        implements I_RepositoryItem, I_Observable< Integer >, I_Unique< I_Treatment >, Serializable {
 
     /**
      * A class that encapsulates a drug treatment.
      */
     @SuppressWarnings("InnerClassMayBeStatic")
     private class Drug
-            implements I_Treatment {
+            implements I_Treatment, Serializable {
 
         private String _name;
         private String _description;

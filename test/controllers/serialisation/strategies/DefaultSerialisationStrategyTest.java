@@ -7,18 +7,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DefaultSerialisationStrategyTest {
     private DefaultSerialisationStrategy _strategy = new DefaultSerialisationStrategy();
-    private String string = "This is a test string.";
-    private String fileName = "testFile";
+    private String _fileLocation = "test-resources";
+    private String _fileName = "testFile";
+    private String _string = "This is a test string.";
 
     @Test
     @DisplayName("serialise()")
     void serialise() {
-        assertDoesNotThrow(()-> _strategy.serialise(fileName, string));
+        assertDoesNotThrow(()-> _strategy.serialise(_fileLocation, _fileName, _string));
     }
 
     @Test
     @DisplayName("deserialise()")
     void deserialise() {
-        assertDoesNotThrow(() -> _strategy.deserialise(fileName));
+        assertDoesNotThrow(() -> _strategy.deserialise(_fileLocation, _fileName));
     }
 }

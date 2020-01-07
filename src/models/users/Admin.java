@@ -19,8 +19,8 @@ public class Admin extends User {
      * @param address the Admin's address
      * @param password the Admin's password.
      */
-    public Admin(String name, String surname, Address address, int password) {
-        super(ROLE, name, surname, address, password);
+    public Admin(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, address, password);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Admin extends User {
      * @param surname the Admin's surname.
      */
     public Admin(String idNumber, String name, String surname) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, "password");
+        super(ROLE, idNumber, name, surname, new Address(), "password");
     }
 
     /**
@@ -57,6 +57,6 @@ public class Admin extends User {
      * @param password the Admin's password.
      */
     public Admin(String idNumber, String name, String surname, String password) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, password);
+        super(ROLE, idNumber, name, surname, new Address(), password);
     }
 }

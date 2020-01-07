@@ -1,12 +1,13 @@
 package models.drugs;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * An object that encapsulates a prescription of drugs.
  */
 public class Prescription
-        implements I_Prescription {
+        implements I_Prescription, Serializable {
     private I_Treatment _treatment;
     private LocalDate _startDate;
     private int _qty;

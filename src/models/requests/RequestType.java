@@ -2,10 +2,12 @@ package models.requests;
 
 import controllers.repository.I_EnumRepositoryControllerKey;
 
+import java.io.Serializable;
+
 /**
  * An enumeration representing the possible request types.
  */
-public enum RequestType implements I_EnumRepositoryControllerKey {
+public enum RequestType implements I_EnumRepositoryControllerKey, Serializable {
     ACCOUNT_CREATION("account_creation_requests"),
     ACCOUNT_TERMINATION("account_termination_requests"),
     APPOINTMENT("appointment_requests"),

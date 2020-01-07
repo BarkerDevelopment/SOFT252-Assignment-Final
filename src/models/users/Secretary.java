@@ -21,21 +21,8 @@ public class Secretary extends User
      * @param address the Secretary's address
      * @param password the Secretary's password.
      */
-    public Secretary(String name, String surname, Address address, int password) {
-        super(ROLE, name, surname, address, password);
-    }
-
-    /**
-     * Creates a dummy Secretary object for testing purposes.
-     * NOTE: This constructor is used to specifically test the random ID functionality.
-     *
-     * @param name the Secretary's name.
-     * @param surname the Secretary's surname.
-     * @param password the Secretary's password.
-     * @param seed the pseudo-random generator seed. This ensures repeatable random generation.
-     */
-    public Secretary(String name, String surname, int password, long seed) {
-        super(ROLE, name, surname, seed);
+    public Secretary(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, address, password);
     }
 
     /**
@@ -47,7 +34,7 @@ public class Secretary extends User
      * @param surname the Secretary's surname.
      */
     public Secretary(String idNumber, String name, String surname) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, "password");
+        super(ROLE, idNumber, name, surname, new Address(), "password");
     }
 
     /**
@@ -60,6 +47,6 @@ public class Secretary extends User
      * @param password the Secretary's password.
      */
     public Secretary(String idNumber, String name, String surname, String password) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, password);
+        super(ROLE, idNumber, name, surname, new Address(), password);
     }
 }

@@ -1,12 +1,13 @@
 package models.messaging;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * A class that encapsulates messages that get passed between users.
  */
 public class Message
-        implements I_Message {
+        implements I_Message, Serializable {
 
     private String _message;
     private final LocalDateTime _datetime;

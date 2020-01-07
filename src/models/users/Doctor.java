@@ -28,8 +28,8 @@ public class Doctor extends User
      * @param address  the Doctor's address
      * @param password the Doctor's password.
      */
-    public Doctor(String name, String surname, Address address, int password) {
-        super(ROLE, name, surname, address, password);
+    public Doctor(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, address, password);
         _feedback = new ArrayList<>();
     }
 
@@ -55,7 +55,7 @@ public class Doctor extends User
      * @param surname  the Doctor's surname.
      */
     public Doctor(String idNumber, String name, String surname) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, "password");
+        super(ROLE, idNumber, name, surname, new Address(), "password");
         _feedback = new ArrayList<>();
     }
 
@@ -69,7 +69,7 @@ public class Doctor extends User
      * @param password the Doctor's password.
      */
     public Doctor(String idNumber, String name, String surname, String password) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, password);
+        super(ROLE, idNumber, name, surname, new Address(), password);
         _feedback = new ArrayList<>();
     }
 

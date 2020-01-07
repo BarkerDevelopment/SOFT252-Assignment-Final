@@ -1,12 +1,13 @@
 package models.feedback;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Generic feedback class.
  */
 public class Feedback
-    implements I_Feedback{
+    implements I_Feedback, Serializable {
 
     protected final LocalDateTime _dateTime;
     protected String _feedback;

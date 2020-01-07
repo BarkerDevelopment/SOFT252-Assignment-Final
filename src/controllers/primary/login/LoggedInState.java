@@ -1,5 +1,6 @@
 package controllers.primary.login;
 
+import controllers.serialisation.RepositorySerialisationController;
 import exceptions.LoginException;
 import models.users.User;
 
@@ -42,6 +43,7 @@ public class LoggedInState implements I_LoginState {
      */
     @Override
     public void logout(LoginController controller) {
+        RepositorySerialisationController.saveAll();
         controller.setState(new LoggedOutState());
     }
 }

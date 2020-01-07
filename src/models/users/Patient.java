@@ -50,8 +50,8 @@ public class Patient extends User
      * @param dob the Patient's date of birth.
      * @param gender the Patient's gender.
      */
-    public Patient(String name, String surname, Address address, int password, LocalDate dob, Gender gender) {
-        super(ROLE, name, surname, address, password);
+    public Patient(String idNumber, String name, String surname, Address address, String password, LocalDate dob, Gender gender) throws OutOfRangeException {
+        super(ROLE, idNumber, name, surname, address, password);
         _dob = dob;
         _gender = gender;
 
@@ -87,7 +87,7 @@ public class Patient extends User
      * @param gender the Patient's gender.
      */
     public Patient(String idNumber, String name, String surname, Gender gender) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, "password");
+        super(ROLE, idNumber, name, surname, new Address(), "password");
         _dob = LocalDate.now();
         _gender = gender;
 
@@ -104,7 +104,7 @@ public class Patient extends User
      * @param password the Patient's password.
      */
     public Patient(String idNumber, String name, String surname, String password, Gender gender) throws OutOfRangeException {
-        super(ROLE, idNumber, name, surname, password);
+        super(ROLE, idNumber, name, surname, new Address(), password);
         _dob = LocalDate.now();
         _gender = gender;
 

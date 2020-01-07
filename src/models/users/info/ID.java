@@ -3,11 +3,13 @@ package models.users.info;
 import exceptions.OutOfRangeException;
 import models.I_Printable;
 
+import java.io.Serializable;
+
 /**
  * A class that encapsulates the unique ID of a user.
  */
 public class ID
-        implements I_Printable {
+        implements I_Printable, Serializable {
     public static final int ID_LENGTH = 4;
 
     private final UserRole _role;

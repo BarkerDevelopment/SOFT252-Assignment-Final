@@ -2,11 +2,13 @@ package models.users.info;
 
 import models.I_Printable;
 
+import java.io.Serializable;
+
 /**
  * A class that encapsulates an address.
  */
 public class Address
-        implements I_Printable {
+        implements I_Printable, Serializable {
     private String _firstLine;
     private String _secondLine;
     private String _postcode;

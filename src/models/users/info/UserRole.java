@@ -5,13 +5,14 @@ import controllers.repository.*;
 import models.I_Printable;
 import models.users.User;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 
 /**
  * An enumeration representing the possible user roles.
  */
 public enum UserRole
-        implements I_EnumRepositoryControllerKey, I_Printable {
+        implements I_EnumRepositoryControllerKey, I_Printable, Serializable {
     ADMIN('A', "admins", AdminController.class),
     DOCTOR('D', "doctors", DoctorController.class),
     SECRETARY('S', "secretaries", SecretaryController.class),

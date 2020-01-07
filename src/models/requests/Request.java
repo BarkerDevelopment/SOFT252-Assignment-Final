@@ -4,11 +4,13 @@ import controllers.repository.RequestRepositoryController;
 import models.messaging.I_MessageSender;
 import models.repositories.I_RepositoryItem;
 
+import java.io.Serializable;
+
 /**
  * Template pattern for a request as approval/denial end in the request being deleted from the appropriate repository.
  */
 public abstract class Request
-    implements I_RepositoryItem, I_MessageSender {
+    implements I_RepositoryItem, I_MessageSender, Serializable {
 
     protected RequestType _type;
 

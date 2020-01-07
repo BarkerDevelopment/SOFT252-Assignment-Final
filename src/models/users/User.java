@@ -11,13 +11,14 @@ import models.users.info.UserRole;
 import models.messaging.I_Message;
 import models.messaging.I_MessageRecipient;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Super class for the system users.
  */
 public class User
-    implements I_MessageRecipient, I_RepositoryItem, I_Unique< String > {
+    implements I_MessageRecipient, I_RepositoryItem, I_Unique< String >, Serializable {
 
     private final ID _id;
     private String _name;
@@ -72,11 +73,11 @@ public class User
      * @param name the User's name.
      * @param surname the User's surname.
      */
-    public User(UserRole role, String idNumber, String name, String surname, String password) throws OutOfRangeException {
+    public User(UserRole role, String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
         _id = new ID(role, idNumber);
         _name = name;
         _surname = surname;
-        _address = new Address();
+        _address = address;
         _password = password.hashCode();
         _messages = new ArrayList<>();
     }

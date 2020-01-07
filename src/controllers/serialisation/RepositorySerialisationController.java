@@ -1,9 +1,6 @@
 package controllers.serialisation;
 
-import controllers.repository.I_EnumRepositoryController;
-import controllers.repository.I_EnumRepositoryControllerKey;
-import controllers.repository.I_RepositoryController;
-import controllers.repository.I_SingleRepositoryController;
+import controllers.repository.*;
 import controllers.serialisation.strategies.DefaultSerialisationStrategy;
 import controllers.serialisation.strategies.I_SerialisationStrategy;
 import models.repositories.Repository;
@@ -15,6 +12,7 @@ import java.util.Map.Entry;
  * A class that controls the serialisation of the repositories.
  */
 public class RepositorySerialisationController {
+    private final static String DESTINATION = "resources/repositories";
     private final I_SerialisationStrategy _serialisationStrategy;
 
     /**
@@ -52,8 +50,6 @@ public class RepositorySerialisationController {
         else if(repositoryController instanceof I_EnumRepositoryController< ?, ? >) enumSave(( (I_EnumRepositoryController< ?, ? >) repositoryController ));
 
         else throw new ClassCastException("RepositoryController not of a supported type.");
-
-
     }
 
     /**
@@ -75,7 +71,7 @@ public class RepositorySerialisationController {
      * @param repositoryController the target SingleRepositoryController.
      */
     public void singleSave(I_SingleRepositoryController< ? > repositoryController) throws Exception {
-            _serialisationStrategy.serialise(repositoryController.getFileName(), repositoryController.getRepository());
+            _serialisationStrategy.serialise(DESTINATION, repositoryController.getFileName(), repositoryController.getRepository());
     }
 
     /**
@@ -85,7 +81,7 @@ public class RepositorySerialisationController {
      */
     public void enumSave(I_EnumRepositoryController< ?, ? > repositoryController) throws Exception {
         for (Entry< ? , Repository > entry : repositoryController.getRepositories())
-            _serialisationStrategy.serialise(((I_EnumRepositoryControllerKey) entry.getKey()).getFileName(), entry.getValue());
+            _serialisationStrategy.serialise(DESTINATION, ((I_EnumRepositoryControllerKey) entry.getKey()).getFileName(), entry.getValue());
     }
 
     /**
@@ -95,7 +91,7 @@ public class RepositorySerialisationController {
      */
     public void singleLoad(I_SingleRepositoryController< ? > repositoryController) throws Exception {
         try{
-            repositoryController.setRepository( ( Repository ) _serialisationStrategy.deserialise( repositoryController.getFileName() ));
+            repositoryController.setRepository( ( Repository ) _serialisationStrategy.deserialise( DESTINATION, repositoryController.getFileName() ));
 
         }catch (IOException e){
             repositoryController.setRepository(new Repository());
@@ -112,11 +108,31 @@ public class RepositorySerialisationController {
             I_EnumRepositoryControllerKey key = ( (I_EnumRepositoryControllerKey) entry.getKey() );
 
             try {
-                repositoryController.setRepository(key, (Repository) _serialisationStrategy.deserialise(key.getFileName()));
+                repositoryController.setRepository(key, (Repository) _serialisationStrategy.deserialise(DESTINATION, key.getFileName()));
 
             }catch (IOException e){
                 repositoryController.setRepository(key, new Repository());
             }
         }
+    }
+
+    /**
+     * Loads all the repositories with their data.
+     */
+    public static void loadAll(){
+        AppointmentRepositoryController.getInstance().load();
+        DrugRepositoryController.getInstance().load();
+        RequestRepositoryController.getInstance().load();
+        UserRepositoryController.getInstance().load();
+    }
+
+    /**
+     * Save all the repositories.
+     */
+    public static void saveAll(){
+        AppointmentRepositoryController.getInstance().save();
+        DrugRepositoryController.getInstance().save();
+        RequestRepositoryController.getInstance().save();
+        UserRepositoryController.getInstance().save();
     }
 }

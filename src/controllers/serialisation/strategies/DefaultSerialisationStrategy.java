@@ -12,8 +12,8 @@ public class DefaultSerialisationStrategy
      * @param obj      the object to be serialised.
      */
     @Override
-    public void serialise(String fileName, Object obj) throws IOException {
-        FileOutputStream file = new FileOutputStream(fileName);
+    public void serialise(String fileLocation, String fileName, Object obj) throws IOException {
+        FileOutputStream file = new FileOutputStream(fileLocation + "/" + fileName);
         ObjectOutputStream out = new ObjectOutputStream(file);
 
         out.writeObject(obj);
@@ -27,8 +27,8 @@ public class DefaultSerialisationStrategy
      * @return the deserialised object.
      */
     @Override
-    public Object deserialise(String fileName) throws IOException, ClassNotFoundException {
-        FileInputStream file = new FileInputStream(fileName);
+    public Object deserialise(String fileLocation, String fileName) throws IOException, ClassNotFoundException {
+        FileInputStream file = new FileInputStream(fileLocation + "/" + fileName);
         ObjectInputStream in = new ObjectInputStream(file);
 
         Object object = in.readObject();

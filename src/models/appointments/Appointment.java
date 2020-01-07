@@ -8,6 +8,7 @@ import models.requests.AppointmentRequest;
 import models.users.Doctor;
 import models.users.Patient;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +17,7 @@ import java.util.Arrays;
  * A class that encapsulates patient's appointments.
  */
 public class Appointment
-        implements I_Appointment {
+        implements I_Appointment, Serializable {
 
     private final Patient _patient;
     private Doctor _doctor;
