@@ -22,7 +22,7 @@ class LoggedOutStateTest {
 
     @BeforeEach
     void setUp() {
-        _controller = new LoginController();
+        _controller = LoginController.getInstance();
         _repositoryController = UserRepositoryController.getInstance();
         _state = new LoggedOutState();
 

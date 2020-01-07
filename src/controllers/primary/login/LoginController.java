@@ -14,7 +14,7 @@ public class LoginController implements I_UserController {
     /**
      *
      */
-    public LoginController() {
+    private LoginController() {
         _state = new LoggedOutState();
     }
 

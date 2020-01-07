@@ -7,8 +7,6 @@ import exceptions.LoginException;
 import exceptions.ObjectNotFoundException;
 import models.users.User;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * A class that represents that there is no one logged into the system.
  */

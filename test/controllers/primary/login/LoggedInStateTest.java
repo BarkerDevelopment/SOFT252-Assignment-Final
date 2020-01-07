@@ -16,7 +16,8 @@ class LoggedInStateTest {
 
     @BeforeEach
     void setUp() {
-        _controller = new LoginController();
+        _controller = LoginController.getInstance();
+
         try {
             Patient patient = new Patient("1164", "Gremenes", "Mordatus", Gender.MALE);
             _state = new LoggedInState(patient);
