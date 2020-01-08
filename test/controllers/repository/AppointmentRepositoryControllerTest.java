@@ -1,6 +1,7 @@
 package controllers.repository;
 
 import exceptions.AppointmentClashException;
+import exceptions.IdClashException;
 import exceptions.ObjectNotFoundException;
 import exceptions.OutOfRangeException;
 import models.appointments.Appointment;
@@ -62,6 +63,9 @@ class AppointmentRepositoryControllerTest {
 
         }catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
 
         try{
@@ -197,6 +201,8 @@ class AppointmentRepositoryControllerTest {
 
         }catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 
@@ -212,6 +218,8 @@ class AppointmentRepositoryControllerTest {
 
         }catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

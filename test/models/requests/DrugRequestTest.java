@@ -1,6 +1,7 @@
 package models.requests;
 
 import controllers.repository.DrugRepositoryController;
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.drugs.DrugStock;
 import models.users.Doctor;
@@ -35,6 +36,8 @@ class DrugRequestTest {
 
         }catch (OutOfRangeException e) {
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

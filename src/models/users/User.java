@@ -1,6 +1,7 @@
 package models.users;
 
 import controllers.repository.UserRepositoryController;
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.I_Unique;
 import models.repositories.I_RepositoryItem;
@@ -73,7 +74,7 @@ public class User
      * @param name the User's name.
      * @param surname the User's surname.
      */
-    public User(UserRole role, String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
+    public User(UserRole role, String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException, IdClashException {
         _id = new ID(role, idNumber);
         _name = name;
         _surname = surname;

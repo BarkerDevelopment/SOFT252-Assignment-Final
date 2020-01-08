@@ -2,6 +2,7 @@ package controllers.primary.login;
 
 import controllers.repository.UserRepositoryController;
 import exceptions.DuplicateObjectException;
+import exceptions.IdClashException;
 import exceptions.LoginException;
 import exceptions.OutOfRangeException;
 import models.users.*;
@@ -54,6 +55,8 @@ class LoggedOutStateTest {
 
         }catch (DuplicateObjectException e){
             fail("Added user already exists in the repository.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

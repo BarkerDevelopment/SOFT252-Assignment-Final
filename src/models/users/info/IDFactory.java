@@ -2,6 +2,7 @@ package models.users.info;
 
 import controllers.repository.I_UniqueQueryableRepository;
 import controllers.repository.UserRepositoryController;
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class IDFactory {
         try{
             return new ID(_role, idNumber);
 
-        }catch (OutOfRangeException e){
+        }catch (OutOfRangeException | IdClashException e){
             e.printStackTrace();
             return null;
         }

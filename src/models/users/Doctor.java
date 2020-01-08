@@ -1,5 +1,6 @@
 package models.users;
 
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.I_Printable;
 import models.appointments.I_AppointmentParticipant;
@@ -28,7 +29,7 @@ public class Doctor extends User
      * @param address  the Doctor's address
      * @param password the Doctor's password.
      */
-    public Doctor(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
+    public Doctor(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, address, password);
         _feedback = new ArrayList<>();
     }
@@ -54,7 +55,7 @@ public class Doctor extends User
      * @param name     the Doctor's name.
      * @param surname  the Doctor's surname.
      */
-    public Doctor(String idNumber, String name, String surname) throws OutOfRangeException {
+    public Doctor(String idNumber, String name, String surname) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, new Address(), "password");
         _feedback = new ArrayList<>();
     }
@@ -68,7 +69,7 @@ public class Doctor extends User
      * @param surname the Doctor's surname.
      * @param password the Doctor's password.
      */
-    public Doctor(String idNumber, String name, String surname, String password) throws OutOfRangeException {
+    public Doctor(String idNumber, String name, String surname, String password) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, new Address(), password);
         _feedback = new ArrayList<>();
     }

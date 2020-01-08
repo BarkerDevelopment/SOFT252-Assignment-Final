@@ -1,6 +1,7 @@
 package models.requests;
 
 import controllers.repository.DrugRepositoryController;
+import exceptions.IdClashException;
 import exceptions.ObjectNotFoundException;
 import exceptions.OutOfRangeException;
 import exceptions.StockLevelException;
@@ -50,6 +51,9 @@ class PrescriptionRequestTest {
 
         }catch (ObjectNotFoundException e){
             fail("Drug not found in DrugRepositoryController.");
+
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

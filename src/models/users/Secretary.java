@@ -1,5 +1,6 @@
 package models.users;
 
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.users.info.Address;
 import models.users.info.UserRole;
@@ -21,7 +22,7 @@ public class Secretary extends User
      * @param address the Secretary's address
      * @param password the Secretary's password.
      */
-    public Secretary(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException {
+    public Secretary(String idNumber, String name, String surname, Address address, String password) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, address, password);
     }
 
@@ -33,7 +34,7 @@ public class Secretary extends User
      * @param name the Secretary's name.
      * @param surname the Secretary's surname.
      */
-    public Secretary(String idNumber, String name, String surname) throws OutOfRangeException {
+    public Secretary(String idNumber, String name, String surname) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, new Address(), "password");
     }
 
@@ -46,7 +47,7 @@ public class Secretary extends User
      * @param surname the Secretary's surname.
      * @param password the Secretary's password.
      */
-    public Secretary(String idNumber, String name, String surname, String password) throws OutOfRangeException {
+    public Secretary(String idNumber, String name, String surname, String password) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, new Address(), password);
     }
 }

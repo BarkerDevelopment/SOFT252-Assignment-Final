@@ -2,6 +2,7 @@ package models.requests;
 
 import controllers.repository.AppointmentRepositoryController;
 import exceptions.AppointmentClashException;
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.appointments.Appointment;
 import models.users.Doctor;
@@ -46,6 +47,8 @@ class AppointmentRequestTest {
 
         }catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
 
         _appointmentRequests = new ArrayList<>(

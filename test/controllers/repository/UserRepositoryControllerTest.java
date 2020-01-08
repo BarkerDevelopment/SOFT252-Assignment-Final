@@ -1,6 +1,7 @@
 package controllers.repository;
 
 import exceptions.DuplicateObjectException;
+import exceptions.IdClashException;
 import exceptions.ObjectNotFoundException;
 import exceptions.OutOfRangeException;
 import models.users.*;
@@ -85,7 +86,8 @@ class UserRepositoryControllerTest {
 
         }catch (OutOfRangeException e) {
             fail("Added a user with ID greater than the ID length.");
-
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 
@@ -253,6 +255,8 @@ class UserRepositoryControllerTest {
 
         } catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 
@@ -267,6 +271,8 @@ class UserRepositoryControllerTest {
 
         } catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 
@@ -281,6 +287,8 @@ class UserRepositoryControllerTest {
 
         }catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 
@@ -295,6 +303,8 @@ class UserRepositoryControllerTest {
 
         } catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

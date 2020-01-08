@@ -1,6 +1,7 @@
 package models.drugs;
 
 import exceptions.DuplicateObjectException;
+import exceptions.IdClashException;
 import exceptions.ObjectNotFoundException;
 import exceptions.OutOfRangeException;
 import models.I_Observer;
@@ -56,6 +57,8 @@ class DrugStockTest {
 
         } catch (ObjectNotFoundException e) {
             fail("Drug not found in repository.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

@@ -1,5 +1,6 @@
 package controllers.primary.login;
 
+import exceptions.IdClashException;
 import exceptions.LoginException;
 import exceptions.OutOfRangeException;
 import models.users.Patient;
@@ -24,6 +25,8 @@ class LoggedInStateTest {
 
         }catch (OutOfRangeException e) {
             fail();
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
     }
 

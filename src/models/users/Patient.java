@@ -1,5 +1,6 @@
 package models.users;
 
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.appointments.I_AppointmentParticipant;
 import models.drugs.I_Prescription;
@@ -50,7 +51,7 @@ public class Patient extends User
      * @param dob the Patient's date of birth.
      * @param gender the Patient's gender.
      */
-    public Patient(String idNumber, String name, String surname, Address address, String password, LocalDate dob, Gender gender) throws OutOfRangeException {
+    public Patient(String idNumber, String name, String surname, Address address, String password, LocalDate dob, Gender gender) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, address, password);
         _dob = dob;
         _gender = gender;
@@ -86,7 +87,7 @@ public class Patient extends User
      * @param surname the Patient's surname.
      * @param gender the Patient's gender.
      */
-    public Patient(String idNumber, String name, String surname, Gender gender) throws OutOfRangeException {
+    public Patient(String idNumber, String name, String surname, Gender gender) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, new Address(), "password");
         _dob = LocalDate.now();
         _gender = gender;
@@ -103,7 +104,7 @@ public class Patient extends User
      * @param surname the Patient's surname.
      * @param password the Patient's password.
      */
-    public Patient(String idNumber, String name, String surname, String password, Gender gender) throws OutOfRangeException {
+    public Patient(String idNumber, String name, String surname, String password, Gender gender) throws OutOfRangeException, IdClashException {
         super(ROLE, idNumber, name, surname, new Address(), password);
         _dob = LocalDate.now();
         _gender = gender;

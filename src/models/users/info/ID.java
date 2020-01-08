@@ -1,9 +1,12 @@
 package models.users.info;
 
+import controllers.repository.UserRepositoryController;
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.I_Printable;
 
 import java.io.Serializable;
+import java.util.stream.Collectors;
 
 /**
  * A class that encapsulates the unique ID of a user.
@@ -22,9 +25,12 @@ public class ID
      * @param idNumber a String of numbers.
      * @throws OutOfRangeException if length of idNumber is greater than the constant ID_LENGTH.
      */
-    public ID(UserRole role, String idNumber) throws OutOfRangeException {
+    public ID(UserRole role, String idNumber) throws OutOfRangeException, IdClashException {
         if(idNumber.length() > ID_LENGTH)
             throw new OutOfRangeException(String.format("Length of idNumber is too great. Must be less than %d integers.", ID_LENGTH));
+        if(UserRepositoryController.getInstance().getIDs(role).stream().map(ID::toString).collect(Collectors.toList()).contains(role.toString() + idNumber))
+            throw new IdClashException();
+
 
         _role = role;
         _idNumber = idNumber;

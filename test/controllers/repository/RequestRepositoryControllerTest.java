@@ -1,6 +1,7 @@
 package controllers.repository;
 
 import exceptions.DuplicateObjectException;
+import exceptions.IdClashException;
 import exceptions.ObjectNotFoundException;
 import exceptions.OutOfRangeException;
 import models.drugs.DrugStock;
@@ -49,6 +50,8 @@ class RequestRepositoryControllerTest {
 
         }catch (OutOfRangeException e){
             fail("Added a user with ID greater than the ID length.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
 
         DrugStock drugStock = new DrugStock("Paracetamol", "Painkiller", new ArrayList<>(), 100);

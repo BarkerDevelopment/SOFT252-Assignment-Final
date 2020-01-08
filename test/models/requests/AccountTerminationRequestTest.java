@@ -2,6 +2,7 @@ package models.requests;
 
 import controllers.repository.UserRepositoryController;
 import exceptions.DuplicateObjectException;
+import exceptions.IdClashException;
 import exceptions.OutOfRangeException;
 import models.users.Patient;
 import models.users.User;
@@ -44,6 +45,8 @@ class AccountTerminationRequestTest {
 
         }catch (DuplicateObjectException e){
             fail("Added user already exists in the repository.");
+        } catch (IdClashException e){
+            fail("Added a user with an ID that already exists.");
         }
 
         _requests = new ArrayList<>(
