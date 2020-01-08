@@ -1,13 +1,14 @@
 package controllers.primary.login;
 
-import controllers.primary.I_UserController;
+import controllers.primary.I_UserStoryIndexController;
 import views.I_Form;
 import views.LoginForm;
 
 /**
  * A class that encapsulates logging in. It implements the state pattern to enforce either logged in or logged out.
  */
-public class LoginController implements I_UserController {
+public class LoginController
+        implements I_UserStoryIndexController {
     private static LoginController INSTANCE;
     private I_LoginState _state;
 
