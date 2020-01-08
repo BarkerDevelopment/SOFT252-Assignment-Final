@@ -3,6 +3,7 @@ package views.patient;
 import controllers.primary.PatientController;
 import controllers.primary.ViewController;
 import controllers.repository.RequestRepositoryController;
+import controllers.repository.UserRepositoryController;
 import models.messaging.I_Message;
 import models.messaging.Message;
 import models.requests.AccountTerminationRequest;
@@ -21,6 +22,7 @@ public class PatientIndex extends Index {
     private RequestRepositoryController _repositoryController;
 
     private JPanel _panelMain;
+    private JPanel Messages;
     private JLabel _labelUserId;
     private JTable _tableMessages;
     private JButton _buttonRemoveMessages;
@@ -28,8 +30,6 @@ public class PatientIndex extends Index {
     private JButton _buttonViewAppointments;
     private JButton _buttonViewPrescriptions;
     private JButton _buttonTerminate;
-    private JPanel Messages;
-
 
     public PatientIndex(ViewController viewController, PatientController controller, RequestRepositoryController repositoryController) {
         super(viewController, controller, controller.getUser());
@@ -69,15 +69,7 @@ public class PatientIndex extends Index {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                int index = _tableMessages.getSelectedRow();
-
-                if(index > -1){
-                    _user.getMessages().remove(index);
-                    _tableMessages.remove(index);
-
-                }else{
-                    _viewController.createPopUp("Please select a message to delete.");
-                }
+                removeMessage(_tableMessages);
             }
         });
 

@@ -2,6 +2,7 @@ package views.secretary;
 
 import controllers.primary.SecretaryController;
 import controllers.primary.ViewController;
+import controllers.repository.UserRepositoryController;
 import views.Index;
 
 import javax.swing.*;
@@ -62,15 +63,7 @@ public class SecretaryIndex
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                int index = _tableMessages.getSelectedRow();
-
-                if(index > -1){
-                    _user.getMessages().remove(index);
-                    _tableMessages.remove(index);
-
-                }else{
-                    _viewController.createPopUp("Please select a message to delete.");
-                }
+                removeMessage(_tableMessages);
             }
         });
 
