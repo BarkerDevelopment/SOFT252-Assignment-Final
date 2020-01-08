@@ -17,11 +17,13 @@ import java.util.ArrayList;
 
 public class PatientIndex extends Index {
     private JPanel _panelMain;
+    private JLabel _labelUserId;
     private JTable _tableMessages;
     private JButton _buttonRemoveMessages;
     private JButton _buttonLogout;
     private JButton _buttonViewAppointments;
     private JButton _buttonViewPrescriptions;
+
 
 
     public PatientIndex(ViewController viewController, PatientController controller) {
@@ -100,6 +102,7 @@ public class PatientIndex extends Index {
      */
     @Override
     public void update() {
+        _labelUserId.setText(_user.getId().toString());
         _tableMessages.setModel(getTableMessageModel(_user.getMessages()));
     }
 }

@@ -10,10 +10,12 @@ import java.awt.event.ActionListener;
 
 public class AdminIndex extends Index {
     private JPanel _panelMain;
+    private JLabel _labelUserId;
     private JButton _buttonViewUsers;
     private JButton _buttonLogout;
     private JButton _removeButton;
     private JTable _tableMessages;
+
 
     public AdminIndex(ViewController viewController, AdminController controller) {
         super(viewController, controller, controller.getUser());
@@ -80,6 +82,7 @@ public class AdminIndex extends Index {
      */
     @Override
     public void update() {
+        _labelUserId.setText(_user.getId().toString());
         _tableMessages.setModel(getTableMessageModel(_user.getMessages()));
     }
 }
