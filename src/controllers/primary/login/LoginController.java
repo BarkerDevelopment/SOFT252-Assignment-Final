@@ -1,8 +1,11 @@
 package controllers.primary.login;
 
 import controllers.primary.I_UserStoryIndexController;
+import controllers.primary.ViewController;
+import controllers.repository.RequestRepositoryController;
 import views.I_Form;
 import views.LoginForm;
+import views.RegisterForm;
 
 /**
  * A class that encapsulates logging in. It implements the state pattern to enforce either logged in or logged out.
@@ -10,12 +13,14 @@ import views.LoginForm;
 public class LoginController
         implements I_UserStoryIndexController {
     private static LoginController INSTANCE;
+    private ViewController _controller;
     private I_LoginState _state;
 
     /**
      *
      */
     private LoginController() {
+        _controller = ViewController.getInstance();
         _state = new LoggedOutState();
     }
 
@@ -36,6 +41,20 @@ public class LoginController
     @Override
     public I_Form index() {
         return new LoginForm(this);
+    }
+
+    /**
+     * Show the user a registration page.
+     */
+    public void register(){
+        _controller.show(new RegisterForm(_controller, this, RequestRepositoryController.getInstance()));
+    }
+
+    /**
+     * Take the user back a form.
+     */
+    public void back(){
+        _controller.undo();
     }
 
     /**

@@ -21,6 +21,7 @@ public class LoginForm
     private JPasswordField _fieldPassword;
     private JTextField _fieldUsername;
     private JButton _btnLogin;
+    private JButton _requestAccountButton;
 
     public LoginForm(LoginController controller) {
         _controller = controller;
@@ -51,6 +52,18 @@ public class LoginForm
                         ViewController.getInstance().createPopUp(e.getMessage());
                     }
                 }
+            }
+        });
+
+        _requestAccountButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               _controller.register();
             }
         });
     }
