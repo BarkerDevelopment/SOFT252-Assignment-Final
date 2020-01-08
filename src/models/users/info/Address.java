@@ -112,4 +112,14 @@ public class Address
 
         return String.format("%s\n%s%s\n%s", _firstLine, _secondLine.equals("") ? _secondLine + "\n" : "", _postcode, _county);
     }
+
+    /**
+     * Validates the postcode against the UK postcode regular expression.
+     * This can be found at: https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom
+     * @param postcode the postcode to be validated.
+     * @return TRUE if it is the correct format, FALSE otherwise.
+     */
+    public static boolean isPostcodeValid(String postcode){
+        return postcode.matches("[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}$");
+    }
 }
