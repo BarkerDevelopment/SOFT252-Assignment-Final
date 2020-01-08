@@ -103,6 +103,28 @@ public class AppointmentRepositoryController
     }
 
     /**
+     * Gets all the future, non completed appointments relating to a user.
+     * @param participant the target participant.
+     * @return the completed appointments for the participant.
+     */
+    public ArrayList< Appointment > getPast(I_AppointmentParticipant participant){
+        return new ArrayList<>(this.get(participant).stream().filter(
+                Appointment::isCompleted
+        ).collect(Collectors.toList()));
+    }
+
+    /**
+     * Gets all the future, non completed appointments relating to a user.
+     * @param participant the target participant.
+     * @return the completed appointments for the participant.
+     */
+    public ArrayList< Appointment > getFuture(I_AppointmentParticipant participant){
+        return new ArrayList<>(this.get(participant).stream().filter(
+                appointment -> ! appointment.isCompleted()
+        ).collect(Collectors.toList()));
+    }
+
+    /**
      * Adds an item to the repository.
      *
      * @param item the item to be added.

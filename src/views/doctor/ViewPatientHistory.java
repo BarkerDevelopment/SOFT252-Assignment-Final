@@ -65,7 +65,7 @@ public class ViewPatientHistory implements I_Form {
     public void update() {
         _tableAppointments.setModel(getAppointmentModel(_repositoryController.get(_patient)));
         _tablePrescriptions.setModel(getPrescriptionModel(_patient.getPrescriptions()));
-        _tableNotes.setModel(getNotesModel(_repositoryController.get(_patient)));
+        _tableNotes.setModel(getNotesModel(_repositoryController.getPast(_patient)));
     }
 
     /**
@@ -102,15 +102,13 @@ public class ViewPatientHistory implements I_Form {
         DefaultTableModel model = new DefaultTableModel(_columns, 0);
 
         appointments.forEach(appointment -> {
-                    if (appointment.isCompleted()) {
-                        String[] row = new String[ _columns.length ];
+                    String[] row = new String[ _columns.length ];
 
-                        row[ 0 ] = appointment.getDateTime().toLocalDate().toString();
-                        row[ 1 ] = appointment.getDateTime().toLocalTime().toString();
-                        row[ 2 ] = appointment.getNotes();
+                    row[ 0 ] = appointment.getDateTime().toLocalDate().toString();
+                    row[ 1 ] = appointment.getDateTime().toLocalTime().toString();
+                    row[ 2 ] = appointment.getNotes();
 
-                        model.addRow(row);
-                    }
+                    model.addRow(row);
                 }
         );
 

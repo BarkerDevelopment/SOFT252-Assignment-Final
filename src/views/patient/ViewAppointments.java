@@ -167,8 +167,8 @@ public class ViewAppointments
      */
     @Override
     public void update() {
-        _appointments = _repositoryController.get((I_AppointmentParticipant) _controller.getUser());
-        _pastAppointments = _repositoryController.get((I_AppointmentParticipant) _controller.getUser());
+        _appointments = _repositoryController.getFuture((I_AppointmentParticipant) _controller.getUser());
+        _pastAppointments = _repositoryController.getPast((I_AppointmentParticipant) _controller.getUser());
 
         _tableAppointments.setModel(getAppointmentModel(_appointments));
         _tablePastAppointments.setModel(getAppointmentModel(_pastAppointments));
