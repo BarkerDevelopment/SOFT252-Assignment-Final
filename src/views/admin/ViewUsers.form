@@ -6,7 +6,9 @@
       <xy x="16" y="8" width="476" height="516"/>
     </constraints>
     <properties/>
-    <border type="none"/>
+    <border type="empty" title="View Users">
+      <size top="5" left="5" bottom="5" right="5"/>
+    </border>
     <children>
       <tabbedpane id="6cddf" binding="_tabbedPanel">
         <constraints>

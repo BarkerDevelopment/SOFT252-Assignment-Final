@@ -6,7 +6,9 @@
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
     <properties/>
-    <border type="none"/>
+    <border type="empty" title="Patient History">
+      <size top="5" left="5" bottom="5" right="5"/>
+    </border>
     <children>
       <tabbedpane id="292a5" default-binding="true">
         <constraints>

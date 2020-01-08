@@ -28,6 +28,7 @@ public class PatientIndex extends Index {
     private JButton _buttonViewAppointments;
     private JButton _buttonViewPrescriptions;
     private JButton _buttonTerminate;
+    private JPanel Messages;
 
 
     public PatientIndex(ViewController viewController, PatientController controller, RequestRepositoryController repositoryController) {
