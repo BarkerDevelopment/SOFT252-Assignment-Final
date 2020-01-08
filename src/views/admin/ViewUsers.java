@@ -125,25 +125,21 @@ public class ViewUsers
                     case 0:
                         index = _tableAdmins.getSelectedRow();
                         selectedUser = _users.get(UserRole.ADMIN).get(index);
-                        ( (DefaultTableModel) _tableAdmins.getModel() ).removeRow(index);
                         break;
 
                     case 1:
                         index = _listDoctors.getSelectedIndex();
                         selectedUser = _users.get(UserRole.DOCTOR).get(_listDoctors.getSelectedIndex());
-                        _listDoctors.remove(index);
                         break;
 
                     case 2:
                         index = _tablePatients.getSelectedRow();
                         selectedUser = _users.get(UserRole.PATIENT).get(index);
-                        ( (DefaultTableModel) _tableSecretaries.getModel() ).removeRow(index);
                         break;
 
                     case 3:
                         index = _tableSecretaries.getSelectedRow();
                         selectedUser = _users.get(UserRole.SECRETARY).get(index);
-                        ( (DefaultTableModel) _tableSecretaries.getModel() ).removeRow(index);
                         break;
 
                     default:
@@ -154,6 +150,7 @@ public class ViewUsers
                 if(selectedUser != null){
                     try {
                         _repositoryController.remove(selectedUser);
+                        update();
                         _viewController.createPopUp(String.format("User %s has been deleted.", selectedUser.getId().toString()));
 
                     } catch (ObjectNotFoundException ex) {
