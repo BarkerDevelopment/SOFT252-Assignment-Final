@@ -24,7 +24,6 @@ public class NewUser
     private ViewController _viewController;
     private AdminController _controller;
     private UserRepositoryController _repositoryController;
-    private ViewUsers _viewUsersForm;
     private UserRole _userRole;
 
     private JPanel _panelMain;
@@ -45,11 +44,10 @@ public class NewUser
     private JButton _buttonReturn;
 
 
-    public NewUser(ViewController viewController, AdminController controller, UserRepositoryController repositoryController, ViewUsers viewUsersForm, UserRole role) {
+    public NewUser(ViewController viewController, AdminController controller, UserRepositoryController repositoryController, UserRole role) {
         _viewController = viewController;
         _controller = controller;
         _repositoryController = repositoryController;
-        _viewUsersForm = viewUsersForm;
         _userRole = role;
 
         if (! _userRole.equals(UserRole.PATIENT)){
@@ -203,7 +201,6 @@ public class NewUser
                         }
 
                             _repositoryController.add(user);
-                            _viewUsersForm.update();
                             _controller.back();
 
                     } catch (OutOfRangeException ex) {

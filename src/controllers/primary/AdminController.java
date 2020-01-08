@@ -31,19 +31,26 @@ public class AdminController implements I_UserController {
 
     /**
      * Shows the initial view of the controller.
-     * @return
+     * @return the initial view.
      */
     @Override
     public I_Form index() {
         return new AdminIndex(_controller, this);
     }
 
+    /**
+     * Shows a form that displays all the users.
+     */
     public void viewUsers(){
         _controller.show(new ViewUsers(_controller, this, _userRepositoryController));
     }
 
-    public void createUser(UserRole role, ViewUsers viewUsers){
-        _controller.show(new NewUser(_controller, this, _userRepositoryController, viewUsers, role));
+    /**
+     * Shows a form to the user to create a new user.
+     * @param role the user type to create.
+     */
+    public void createUser(UserRole role){
+        _controller.show(new NewUser(_controller, this, _userRepositoryController, role));
     }
 
     /**

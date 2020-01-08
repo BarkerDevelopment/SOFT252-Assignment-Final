@@ -2,17 +2,13 @@ package controllers.primary;
 
 import controllers.primary.login.LoginController;
 import controllers.repository.AppointmentRepositoryController;
+import controllers.repository.RequestRepositoryController;
 import controllers.repository.UserRepositoryController;
-import models.appointments.Appointment;
 import models.users.Doctor;
 import models.users.Patient;
 import models.users.User;
-import models.users.info.UserRole;
 import views.I_Form;
 import views.patient.*;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 /**
  * A view controller for the Patient user.
@@ -21,6 +17,7 @@ public class PatientController implements I_UserController {
     private ViewController _controller;
     private AppointmentRepositoryController _appointmentRepositoryController;
     private UserRepositoryController _userRepositoryController;
+    private RequestRepositoryController _requestRepositoryController;
     private Patient _user;
 
     /**
@@ -31,6 +28,7 @@ public class PatientController implements I_UserController {
         _controller = ViewController.getInstance();
         _appointmentRepositoryController = AppointmentRepositoryController.getInstance();
         _userRepositoryController = UserRepositoryController.getInstance();
+        _requestRepositoryController = RequestRepositoryController.getInstance();
         _user = (Patient) user;
     }
 
@@ -70,14 +68,7 @@ public class PatientController implements I_UserController {
      * Shows the user the form to request an appointment.
      */
     public void requestAppointment(){
-        ArrayList< Doctor > doctors = new ArrayList<>(
-                _userRepositoryController.getRepository(UserRole.DOCTOR).get()
-                    .stream()
-                    .map(doctor -> (Doctor) doctor)
-                        .collect(Collectors.toList())
-        );
-
-        _controller.show(new RequestAppointment(this, _user, doctors));
+        _controller.show(new RequestAppointment(_controller,this, _userRepositoryController, _requestRepositoryController));
     }
 
     /**

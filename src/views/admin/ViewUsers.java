@@ -49,7 +49,7 @@ public class ViewUsers
 
         _users = new EnumMap< >(UserRole.class);
         this.update();
-        
+
         _tabbedPanel.setSelectedIndex(0);
 
         _listDoctors.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -101,7 +101,7 @@ public class ViewUsers
                 }
 
                 if(role != null){
-                    _controller.createUser(role, _this);
+                    _controller.createUser(role);
 
                 }else{
                     _viewController.createPopUp("ERROR: Unidentified user role.");
