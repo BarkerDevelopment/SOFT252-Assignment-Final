@@ -40,7 +40,7 @@ public class PatientController implements I_UserController {
      */
     @Override
     public I_Form index() {
-        return new PatientIndex(this, _user.getMessages());
+        return new PatientIndex(_controller, this, _user);
     }
 
     /**
