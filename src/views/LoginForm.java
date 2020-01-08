@@ -57,8 +57,16 @@ public class LoginForm
 
     @Override
     public JPanel getMainPanel() {
+
+        this.update();
         return _panelMain;
     }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() { }
 
     /**
      * Converts an array of characters to a strings.

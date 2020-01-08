@@ -10,4 +10,9 @@ public interface I_Form {
      * @return the main panel of the form.
      */
     public abstract JPanel getMainPanel();
+
+    /**
+     * Update the contents of the form.
+     */
+    public abstract void update();
 }

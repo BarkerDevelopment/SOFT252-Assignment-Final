@@ -2,7 +2,6 @@ package views.admin;
 
 import controllers.primary.AdminController;
 import controllers.primary.ViewController;
-import models.users.User;
 import views.Index;
 
 import javax.swing.*;
@@ -16,10 +15,9 @@ public class AdminIndex extends Index {
     private JButton _removeButton;
     private JTable _tableMessages;
 
-    public AdminIndex(ViewController viewController, AdminController controller, User user) {
-        super(viewController, controller, user);
+    public AdminIndex(ViewController viewController, AdminController controller) {
+        super(viewController, controller, controller.getUser());
 
-        _tableMessages.setModel(getTableMessageModel(_user.getMessages()));
         _tableMessages.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         _buttonViewUsers.addActionListener(new ActionListener() {
@@ -72,6 +70,16 @@ public class AdminIndex extends Index {
      */
     @Override
     public JPanel getMainPanel() {
+
+        this.update();
         return _panelMain;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+        _tableMessages.setModel(getTableMessageModel(_user.getMessages()));
     }
 }

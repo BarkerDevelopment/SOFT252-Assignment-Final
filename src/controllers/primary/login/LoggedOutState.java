@@ -95,6 +95,6 @@ public class LoggedOutState implements I_LoginState {
         controller.setState(new LoggedInState(user));
 
         I_UserController userController = user.getId().getRole().getViewController(user);
-        ViewController.getInstance().show(userController.index().getMainPanel());
+        ViewController.getInstance().show(userController.index());
     }
 }

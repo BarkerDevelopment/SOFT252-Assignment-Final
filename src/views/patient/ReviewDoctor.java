@@ -38,8 +38,6 @@ public class ReviewDoctor
         _doctor = doctor;
         _doctorName.setText(doctor.toString());
 
-        _spinnerRating.setModel(new SpinnerNumberModel(FeedbackFactory.MIN_RATING, FeedbackFactory.MIN_RATING, FeedbackFactory.MAX_RATING, 1));
-
         _returnButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -79,6 +77,16 @@ public class ReviewDoctor
      */
     @Override
     public JPanel getMainPanel() {
+
+        this.update();
         return _panelMain;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+        _spinnerRating.setModel(new SpinnerNumberModel(FeedbackFactory.MIN_RATING, FeedbackFactory.MIN_RATING, FeedbackFactory.MAX_RATING, 1));
     }
 }

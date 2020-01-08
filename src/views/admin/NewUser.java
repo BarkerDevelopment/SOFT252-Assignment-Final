@@ -19,7 +19,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
 
-public class NewUser implements I_Form {
+public class NewUser
+        implements I_Form {
     private ViewController _viewController;
     private AdminController _controller;
     private UserRepositoryController _repositoryController;
@@ -233,8 +234,15 @@ public class NewUser implements I_Form {
      */
     @Override
     public JPanel getMainPanel() {
+        this.update();
         return _panelMain;
     }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() { }
 
     private SpinnerModel getSpinnerIdModel() {
         return new SpinnerNumberModel(0, 0, 9999, 1);

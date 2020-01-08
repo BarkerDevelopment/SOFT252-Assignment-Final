@@ -5,6 +5,7 @@ import controllers.primary.ViewController;
 import controllers.repository.AppointmentRepositoryController;
 import exceptions.ObjectNotFoundException;
 import models.appointments.Appointment;
+import models.appointments.I_AppointmentParticipant;
 import models.users.Doctor;
 import views.I_Form;
 
@@ -19,9 +20,11 @@ import java.util.ArrayList;
 /**
  * Bound class to the ViewAppointments form.
  */
-public class ViewAppointments implements I_Form {
+public class ViewAppointments
+        implements I_Form {
     private ViewController _viewController;
     private PatientController _controller;
+    private AppointmentRepositoryController _repositoryController;
     private String[] _columns = { "Date", "Time", "Doctor", };
     private ArrayList< Appointment > _appointments;
     private ArrayList< Appointment > _pastAppointments;
@@ -41,17 +44,11 @@ public class ViewAppointments implements I_Form {
      *
      * @param viewController the view controller.
      * @param controller the view's controller.
-     * @param appointments the patient's future appointments.
-     * @param pastAppointments the patient's past appointments.
      */
-    public ViewAppointments(ViewController viewController, PatientController controller, ArrayList< Appointment > appointments, ArrayList< Appointment > pastAppointments) {
+    public ViewAppointments(ViewController viewController, PatientController controller, AppointmentRepositoryController repositoryController) {
         _viewController = viewController;
         _controller = controller;
-
-        _appointments = appointments;
-        _tableAppointments.setModel(getAppointmentModel(appointments));
-        _pastAppointments = pastAppointments;
-        _tablePastAppointments.setModel(getAppointmentModel(pastAppointments));
+        _repositoryController = repositoryController;
 
         _reviewDoctorButton.setVisible(false);
 
@@ -161,7 +158,20 @@ public class ViewAppointments implements I_Form {
      */
     @Override
     public JPanel getMainPanel() {
+        this.update();
         return _panelMain;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+        _appointments = _repositoryController.get((I_AppointmentParticipant) _controller.getUser());
+        _pastAppointments = _repositoryController.get((I_AppointmentParticipant) _controller.getUser());
+
+        _tableAppointments.setModel(getAppointmentModel(_appointments));
+        _tablePastAppointments.setModel(getAppointmentModel(_pastAppointments));
     }
 
     /**

@@ -1,5 +1,7 @@
 package controllers.primary;
 
+import views.I_Form;
+
 import javax.swing.*;
 import java.util.Stack;
 
@@ -9,7 +11,8 @@ import java.util.Stack;
 public class ViewController {
     private static ViewController INSTANCE;
     private JFrame _frame;
-    private Stack< JPanel > _panelStack;
+    private I_Form _current;
+    private Stack< I_Form > _panelStack;
 
     /**
      * Singleton constructor.
@@ -31,13 +34,13 @@ public class ViewController {
     /**
      * Initialise the frame with a panel and a title.
      *
-     * @param panel the initial panel.
+     * @param form the initial form.
      * @param title the frame title.
      */
-    public void initialise(JPanel panel, String title){
+    public void initialise(I_Form form, String title){
         _frame.setTitle(title);
-        _frame.setContentPane(panel);
-        _frame.pack();
+        _current = form;
+        this.refresh();
 
         _frame.setVisible(true);
     }
@@ -45,12 +48,13 @@ public class ViewController {
     /**
      * Show a new panel and push the current one to the stack.
      *
-     * @param panel the new panel to show.
+     * @param form the new form to show.
      */
-    public void show(JPanel panel){
-        _panelStack.push((JPanel) _frame.getContentPane());
-        _frame.setContentPane(panel);
-        _frame.pack();
+    public void show(I_Form form){
+        _panelStack.push(_current);
+        _current = form;
+
+        this.refresh();
     }
 
     /**
@@ -58,9 +62,18 @@ public class ViewController {
      */
     public void undo(){
         if(! _panelStack.empty()){
-            _frame.setContentPane(_panelStack.pop());
-            _frame.pack();
+            _current = _panelStack.pop();
+
+            this.refresh();
         }
+    }
+
+    /**
+     * Refreshes the current frame.
+     */
+    public void refresh(){
+        _frame.setContentPane(_current.getMainPanel());
+        _frame.pack();
     }
 
     /**

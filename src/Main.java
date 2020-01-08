@@ -9,7 +9,7 @@ public class Main {
         ViewController viewController = ViewController.getInstance();
 
         viewController.initialise(
-                 LoginController.getInstance().index().getMainPanel(), "WIP"
+                 LoginController.getInstance().index(), "WIP"
         );
     }
 }

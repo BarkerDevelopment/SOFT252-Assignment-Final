@@ -35,21 +35,27 @@ public class PatientController implements I_UserController {
     }
 
     /**
+     * @return the user.
+     */
+    @Override
+    public User getUser() {
+        return _user;
+    }
+
+    /**
      * Shows the initial view of the controller.
      * @return the initial view for the user.
      */
     @Override
     public I_Form index() {
-        return new PatientIndex(_controller, this, _user);
+        return new PatientIndex(_controller, this);
     }
 
     /**
      * Show the user a form that shows their appointments.
      */
     public void viewAppointments(){
-        ArrayList< Appointment > future = _appointmentRepositoryController.get(_user); //TODO get the right appointments.
-        ArrayList< Appointment > past = _appointmentRepositoryController.get(_user); //TODO get the right appointments.
-        _controller.show(new ViewAppointments(_controller, this, future, past).getMainPanel());
+        _controller.show(new ViewAppointments(_controller, this, _appointmentRepositoryController));
     }
 
     /**
@@ -57,7 +63,7 @@ public class PatientController implements I_UserController {
      * @param doctor the target doctor.
      */
     public void reviewDoctor(Doctor doctor){
-        _controller.show(new ReviewDoctor(this, doctor).getMainPanel());
+        _controller.show(new ReviewDoctor(this, doctor));
     }
 
     /**
@@ -71,14 +77,14 @@ public class PatientController implements I_UserController {
                         .collect(Collectors.toList())
         );
 
-        _controller.show(new RequestAppointment(this, _user, doctors).getMainPanel());
+        _controller.show(new RequestAppointment(this, _user, doctors));
     }
 
     /**
      * Shows the user the form to see their prescriptions.
      */
     public void viewPrescriptions(){
-        _controller.show(new ViewPrescriptions(this, _user.getPrescriptions()).getMainPanel());
+        _controller.show(new ViewPrescriptions(this));
     }
 
     /**
@@ -97,7 +103,7 @@ public class PatientController implements I_UserController {
         LoginController loginController = LoginController.getInstance();
         loginController.logout();
 
-        _controller.show(loginController.index().getMainPanel());
+        _controller.show(loginController.index());
         _controller.clear();
     }
 }

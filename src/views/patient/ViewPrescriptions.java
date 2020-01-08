@@ -3,18 +3,22 @@ package views.patient;
 import controllers.primary.PatientController;
 import models.drugs.I_Prescription;
 import models.drugs.Prescription;
+import models.users.Doctor;
+import models.users.Patient;
 import views.I_Form;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Bound class to ViewPrescription form.
  */
-public class ViewPrescriptions implements I_Form {
+public class ViewPrescriptions
+        implements I_Form {
     private PatientController _controller;
     private String[] _columns = {"Start Date", "Drug", "Quantity Given", "Drugs per day"};
 
@@ -26,12 +30,9 @@ public class ViewPrescriptions implements I_Form {
      * Default constructor.
      *
      * @param controller the view's controller.
-     * @param prescriptions the user's prescriptions.
      */
-    public ViewPrescriptions(PatientController controller, ArrayList< I_Prescription > prescriptions) {
+    public ViewPrescriptions(PatientController controller) {
         _controller = controller;
-
-        _tablePrescriptions.setModel(getTablePrescriptionModel(prescriptions));
 
         _returnButton.addActionListener(new ActionListener() {
             /**
@@ -51,7 +52,18 @@ public class ViewPrescriptions implements I_Form {
      */
     @Override
     public JPanel getMainPanel() {
+
+        this.update();
         return _panelMain;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+        ArrayList< I_Prescription > prescriptions = ( (Patient) _controller.getUser() ).getPrescriptions();
+        _tablePrescriptions.setModel(getTablePrescriptionModel(prescriptions));
     }
 
     /**

@@ -46,6 +46,15 @@ public class ListTest implements I_Form{
 
     @Override
     public JPanel getMainPanel() {
+        this.update();
         return _panel1;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+
     }
 }

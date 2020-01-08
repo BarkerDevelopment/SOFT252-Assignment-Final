@@ -24,10 +24,9 @@ public class PatientIndex extends Index {
     private JButton _buttonViewPrescriptions;
 
 
-    public PatientIndex(ViewController viewController, PatientController controller, User user) {
-        super(viewController, controller, user);
+    public PatientIndex(ViewController viewController, PatientController controller) {
+        super(viewController, controller, controller.getUser());
 
-        _tableMessages.setModel(getTableMessageModel(_user.getMessages()));
         _tableMessages.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         _buttonViewAppointments.addActionListener(new ActionListener() {
@@ -92,6 +91,15 @@ public class PatientIndex extends Index {
      */
     @Override
     public JPanel getMainPanel() {
+        this.update();
         return _panelMain;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+        _tableMessages.setModel(getTableMessageModel(_user.getMessages()));
     }
 }

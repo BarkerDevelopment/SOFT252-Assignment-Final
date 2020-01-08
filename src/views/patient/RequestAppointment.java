@@ -52,12 +52,7 @@ public class RequestAppointment implements I_Form {
         _patient = patient;
         _doctors = doctors;
 
-        _listDoctors.setModel(getDoctorModel(_doctors));
         _listDoctors.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        _comboDate.setModel(getComboDateModel());
-        _spinnerHour.setModel(getSpinnerHourModel());
-        _spinnerMinute.setModel(getSpinnerMinuteModel());
 
         _listDoctors.addListSelectionListener(new ListSelectionListener() {
             /**
@@ -132,7 +127,21 @@ public class RequestAppointment implements I_Form {
      */
     @Override
     public JPanel getMainPanel() {
+
+        this.update();
         return _panelMain;
+    }
+
+    /**
+     * Update the contents of the form.
+     */
+    @Override
+    public void update() {
+        _listDoctors.setModel(getDoctorModel(_doctors));
+
+        _comboDate.setModel(getComboDateModel());
+        _spinnerHour.setModel(getSpinnerHourModel());
+        _spinnerMinute.setModel(getSpinnerMinuteModel());
     }
 
     /**

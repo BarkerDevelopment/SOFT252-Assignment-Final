@@ -22,20 +22,28 @@ public class AdminController implements I_UserController {
     }
 
     /**
+     * @return the user.
+     */
+    @Override
+    public User getUser() {
+        return _user;
+    }
+
+    /**
      * Shows the initial view of the controller.
      * @return
      */
     @Override
     public I_Form index() {
-        return new AdminIndex(_controller, this, _user);
+        return new AdminIndex(_controller, this);
     }
 
     public void viewUsers(){
-        _controller.show(new ViewUsers(_controller, this, _userRepositoryController).getMainPanel());
+        _controller.show(new ViewUsers(_controller, this, _userRepositoryController));
     }
 
     public void createUser(UserRole role, ViewUsers viewUsers){
-        _controller.show(new NewUser(_controller, this, _userRepositoryController, viewUsers, role).getMainPanel());
+        _controller.show(new NewUser(_controller, this, _userRepositoryController, viewUsers, role));
     }
 
     /**
@@ -54,7 +62,7 @@ public class AdminController implements I_UserController {
         LoginController loginController = LoginController.getInstance();
         loginController.logout();
 
-        _controller.show(loginController.index().getMainPanel());
+        _controller.show(loginController.index());
         _controller.clear();
     }
 }
