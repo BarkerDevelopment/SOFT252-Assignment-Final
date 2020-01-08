@@ -2,8 +2,10 @@ package views.patient;
 
 import controllers.primary.PatientController;
 import controllers.primary.ViewController;
+import controllers.repository.RequestRepositoryController;
 import models.messaging.I_Message;
 import models.messaging.Message;
+import models.requests.AccountTerminationRequest;
 import models.users.User;
 import views.I_Form;
 import views.Index;
@@ -16,6 +18,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class PatientIndex extends Index {
+    private RequestRepositoryController _repositoryController;
+
     private JPanel _panelMain;
     private JLabel _labelUserId;
     private JTable _tableMessages;
@@ -23,11 +27,12 @@ public class PatientIndex extends Index {
     private JButton _buttonLogout;
     private JButton _buttonViewAppointments;
     private JButton _buttonViewPrescriptions;
+    private JButton _buttonTerminate;
 
 
-
-    public PatientIndex(ViewController viewController, PatientController controller) {
+    public PatientIndex(ViewController viewController, PatientController controller, RequestRepositoryController repositoryController) {
         super(viewController, controller, controller.getUser());
+        _repositoryController = repositoryController;
 
         _tableMessages.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -83,6 +88,21 @@ public class PatientIndex extends Index {
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                _controller.logout();
+            }
+        });
+
+        _buttonTerminate.addActionListener(new ActionListener() {
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                _repositoryController.add(new AccountTerminationRequest(_controller.getUser()));
+                _viewController.createPopUp("Account termination request submitted.");
+
                 _controller.logout();
             }
         });
