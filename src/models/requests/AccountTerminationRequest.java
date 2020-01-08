@@ -37,15 +37,8 @@ public class AccountTerminationRequest extends Request {
      * The action following request approval.
      */
     @Override
-    public void approveAction() {
-        try {
-            UserRepositoryController.getInstance().remove(_requester);
-
-        } catch (ObjectNotFoundException e) {
-            //TODO handle this error properly.
-            e.printStackTrace();
-        }
-
+    public void approveAction() throws ObjectNotFoundException {
+        UserRepositoryController.getInstance().remove(_requester);
     }
 
     /**
