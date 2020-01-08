@@ -11,6 +11,7 @@ import models.repositories.Repository;
 import models.requests.PrescriptionRequest;
 import models.users.Doctor;
 import models.users.Patient;
+import models.users.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -89,7 +90,8 @@ public class AppointmentRepositoryController
      */
     public ArrayList< Appointment > get(I_AppointmentParticipant participant){
         return new ArrayList<>( this.get().stream().filter(
-                a -> a.getParticipants().contains(participant)
+                a -> ( (User) a.getParticipants().get(0) ).getUnique().equals(((User) participant).getUnique()) ||
+                        ( (User) a.getParticipants().get(1) ).getUnique().equals(((User) participant).getUnique())
         ).collect(Collectors.toList()));
     }
 

@@ -5,12 +5,15 @@ import controllers.primary.ViewController;
 import controllers.repository.AppointmentRepositoryController;
 import models.appointments.Appointment;
 import models.appointments.I_AppointmentParticipant;
+import models.users.Patient;
 import views.I_Form;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ViewAppointments implements I_Form {
@@ -74,7 +77,6 @@ public class ViewAppointments implements I_Form {
     @Override
     public void update() {
         _appointments = _repositoryController.getFuture((I_AppointmentParticipant) _controller.getUser());
-
         _tableAppointments.setModel(getAppointmentModel(_appointments));
     }
 
@@ -85,15 +87,17 @@ public class ViewAppointments implements I_Form {
      * @return the TableModelObject.
      */
     private DefaultTableModel getAppointmentModel(ArrayList< Appointment > appointments){
-        String[] columns = { "Date", "Time", "Doctor", };
+        String[] columns = { "Date", "Time", "Patient" };
         DefaultTableModel model = new DefaultTableModel(columns, 0);
 
-        _appointments.forEach(appointment -> {
+        appointments.forEach(appointment -> {
                     String[] row = new String[ columns.length];
 
-                    row[0] = appointment.getDateTime().toLocalDate().toString();
-                    row[1] = appointment.getDateTime().toLocalTime().toString();
-                    row[2] = appointment.getPatient().toString();
+                    LocalDateTime dateTime = appointment.getDateTime();
+                    row[0] = dateTime.toLocalDate().toString();
+                    row[1] = dateTime.toLocalTime().toString();
+                    Patient patient = appointment.getPatient();
+                    row[2] = String.format("%s %s, %s", patient.getId().toString(), patient.getSurname(), patient.getName());
 
                     model.addRow(row);
                 }

@@ -183,7 +183,7 @@ public class ViewAppointments
     private DefaultTableModel getAppointmentModel(ArrayList< Appointment > appointments){
         DefaultTableModel model = new DefaultTableModel(_columns, 0);
 
-        _appointments.forEach(appointment -> {
+        appointments.forEach(appointment -> {
                     String[] row = new String[ _columns.length];
 
                     row[0] = appointment.getDateTime().toLocalDate().toString();
