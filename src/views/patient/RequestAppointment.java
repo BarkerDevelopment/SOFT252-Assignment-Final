@@ -120,6 +120,7 @@ public class RequestAppointment implements I_Form {
                 if( index > -1) {
                     Doctor doctor = _doctors.get(index);
                     submitAppointmentRequest(doctor);
+                    _viewController.createPopUp("Appointment request submitted.");
 
                 }else{
                     submitAppointmentRequest(null);

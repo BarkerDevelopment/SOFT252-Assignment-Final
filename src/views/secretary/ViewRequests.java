@@ -41,8 +41,6 @@ public class ViewRequests implements I_Form {
         _repositoryController = repositoryController;
         _requests = new EnumMap< >(RequestType.class);
 
-        this.update();
-
         _buttonApprove.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
@@ -57,9 +55,10 @@ public class ViewRequests implements I_Form {
                     try {
                         _repositoryController.approve(selectedRequest);
                         _viewController.createPopUp("Request approved.");
+                        update();
 
                     } catch (Exception ex) {
-                        _viewController.createPopUp(ex.getMessage());
+                        _viewController.createPopUp("Error: " + ex.getMessage());
                     }
 
                 }else{
@@ -82,9 +81,10 @@ public class ViewRequests implements I_Form {
                     try {
                         _repositoryController.deny(selectedRequest);
                         _viewController.createPopUp("Request denied.");
+                        update();
 
                     } catch (Exception ex) {
-                        _viewController.createPopUp(ex.getMessage());
+                        _viewController.createPopUp("Error: " + ex.getMessage());
                     }
 
                 }else{
