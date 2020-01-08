@@ -15,9 +15,12 @@ import views.I_Form;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
+import java.util.Date;
 
 public class NewUser
         implements I_Form {
@@ -55,6 +58,7 @@ public class NewUser
 
         }else{
             _spinnerDob.setModel(getSpinnerDateModel());
+            _spinnerDob.setEditor(new JSpinner.DateEditor(_spinnerDob, new SimpleDateFormat("DD/MM/YYYY").toPattern()));
             _comboGender.setModel(getComboGenderModel());
         }
 
@@ -147,7 +151,7 @@ public class NewUser
                                                         _fieldCounty.getText()
                                                 ),
                                                 String.valueOf(_fieldPassword.getPassword()),
-                                                (LocalDate) _spinnerDob.getValue(),
+                                                ( (Date) _spinnerDob.getValue() ).toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                                                 (Gender) _comboGender.getSelectedItem()
                                         );
 
@@ -163,7 +167,7 @@ public class NewUser
                                                         _fieldCounty.getText()
                                                 ),
                                                 String.valueOf(_fieldPassword.getPassword()),
-                                                (LocalDate) _spinnerDob.getValue(),
+                                                ( (Date) _spinnerDob.getValue() ).toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                                                 (Gender) _comboGender.getSelectedItem()
                                         );
                                 }
@@ -248,7 +252,7 @@ public class NewUser
     private SpinnerModel getSpinnerDateModel() {
         SpinnerDateModel model = new SpinnerDateModel();
         model.setCalendarField(Calendar.DATE);
-        Date today = Date.valueOf(LocalDate.now());
+        Date today = Date.from(Instant.now());
         model.setEnd(today);
         model.setValue(today);
 
