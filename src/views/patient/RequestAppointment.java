@@ -1,13 +1,16 @@
 package views.patient;
 
 import controllers.primary.PatientController;
+import controllers.primary.ViewController;
 import controllers.repository.RequestRepositoryController;
+import controllers.repository.UserRepositoryController;
 import models.feedback.FeedbackWithRating;
 import models.feedback.I_Feedback;
 import models.requests.AppointmentRequest;
 import models.requests.Request;
 import models.users.Doctor;
 import models.users.Patient;
+import models.users.info.UserRole;
 import views.I_Form;
 
 import javax.swing.*;
@@ -25,8 +28,10 @@ import java.util.stream.Collectors;
  * Bound class to RequestAppointment form.
  */
 public class RequestAppointment implements I_Form {
+    private ViewController _viewController;
     private PatientController _controller;
-    private Patient _patient;
+    private UserRepositoryController _userRepositoryController;
+    private RequestRepositoryController _requestRepositoryController;
     private ArrayList< Doctor > _doctors;
 
     private JPanel _panelMain;
@@ -44,13 +49,14 @@ public class RequestAppointment implements I_Form {
      * Default constructor.
      *
      * @param controller the view's controller.
-     * @param patient the patient.
-     * @param doctors the ArrayList of doctors.
+     * @param userRepositoryController the UserRepositoryController.
      */
-    public RequestAppointment(PatientController controller, Patient patient, ArrayList< Doctor > doctors) {
+    public RequestAppointment(ViewController viewController,  PatientController controller, UserRepositoryController userRepositoryController, RequestRepositoryController requestRepositoryController) {
+        _viewController = viewController;
         _controller = controller;
-        _patient = patient;
-        _doctors = doctors;
+        _userRepositoryController = userRepositoryController;
+        _requestRepositoryController = requestRepositoryController;
+
 
         _listDoctors.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -137,6 +143,7 @@ public class RequestAppointment implements I_Form {
      */
     @Override
     public void update() {
+        _doctors = new ArrayList<>(_userRepositoryController.getRepository(UserRole.DOCTOR).get().stream().map(user -> ( (Doctor) user )).collect(Collectors.toList()));
         _listDoctors.setModel(getDoctorModel(_doctors));
 
         _comboDate.setModel(getComboDateModel());
@@ -165,7 +172,7 @@ public class RequestAppointment implements I_Form {
     private DefaultComboBoxModel getComboDateModel(){
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 1; i < 8; i++) {
             model.addElement(LocalDate.now().plusDays(i));
         }
 
@@ -218,11 +225,10 @@ public class RequestAppointment implements I_Form {
      * @param doctor the requested doctor.
      */
     private void submitAppointmentRequest(Doctor doctor){
-        RequestRepositoryController requestRepositoryController = RequestRepositoryController.getInstance();
         LocalDateTime dateTime = LocalDateTime.of((LocalDate) _comboDate.getSelectedItem(), LocalTime.of((Integer) _spinnerHour.getValue(), (Integer) _spinnerMinute.getValue()));
 
-        Request request = new AppointmentRequest(_patient, doctor, dateTime);
-        requestRepositoryController.add(request);
+        Request request = new AppointmentRequest(( (Patient) _controller.getUser() ), doctor, dateTime);
+        _requestRepositoryController.add(request);
 
         _controller.back();
     }
