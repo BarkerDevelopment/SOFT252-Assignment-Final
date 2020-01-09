@@ -1,13 +1,13 @@
-import controllers.repository.DrugRepositoryController;
-import controllers.repository.UserRepositoryController;
-import exceptions.DuplicateObjectException;
-import exceptions.IdClashException;
-import exceptions.OutOfRangeException;
-import models.drugs.DrugStock;
-import models.users.*;
-import models.users.info.Address;
-import models.users.info.Gender;
-import models.users.info.UserRole;
+import project.controllers.repository.DrugRepositoryController;
+import project.controllers.repository.UserRepositoryController;
+import project.exceptions.DuplicateObjectException;
+import project.exceptions.IdClashException;
+import project.exceptions.OutOfRangeException;
+import project.models.drugs.DrugStock;
+import project.models.users.*;
+import project.models.users.info.Address;
+import project.models.users.info.Gender;
+import project.models.users.info.UserRole;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
