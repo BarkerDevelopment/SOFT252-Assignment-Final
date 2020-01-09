@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="SOFT252-Assignment-IntelliJ:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/SOFT252_Assignment_IntelliJ_jar</output-path>
-    <root id="archive" name="SOFT252-Assignment-IntelliJ.jar">
-      <element id="module-output" name="SOFT252-Assignment-IntelliJ" />
-    </root>
-  </artifact>
-</component>

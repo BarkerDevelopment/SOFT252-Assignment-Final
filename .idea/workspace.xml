@@ -7,14 +7,363 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76e5716c-4d62-4675-bf32-2a90dd21d3e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/SOFT252_Assignment_IntelliJ_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/max.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/PopulateRepositories.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/SOFT252.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/allclasses-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/allpackages-index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/constant-values.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/auxiliary/FeedbackController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/auxiliary/MessageController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/auxiliary/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/auxiliary/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/AdminController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/DoctorController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/I_UserController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/I_UserStoryIndexController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/PatientController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/SecretaryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/ViewController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/I_LoginState.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/LoggedInState.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/LoggedInStateTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/LoggedOutState.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/LoggedOutStateTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/LoginController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/login/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/primary/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/AppointmentRepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/AppointmentRepositoryControllerTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/DrugRepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/DrugRepositoryControllerTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/I_EnumRepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/I_EnumRepositoryControllerKey.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/I_RepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/I_SingleRepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/I_UniqueQueryableRepository.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/RequestRepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/RequestRepositoryControllerTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/UserRepositoryController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/UserRepositoryControllerTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/repository/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/RepositorySerialisationController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/strategies/DefaultSerialisationStrategy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/strategies/DefaultSerialisationStrategyTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/strategies/I_SerialisationStrategy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/strategies/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/controllers/serialisation/strategies/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/element-list" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/AppointmentClashException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/DuplicateObjectException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/IdClashException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/LoginException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/ObjectNotFoundException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/OutOfRangeException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/StockLevelException.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/exceptions/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/help-doc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-11.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-12.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-13.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-14.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-15.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-16.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-17.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-18.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-19.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index-files/index-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/member-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/I_Observable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/I_Observer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/I_Printable.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/I_Unique.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/appointments/Appointment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/appointments/I_Appointment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/appointments/I_AppointmentParticipant.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/appointments/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/appointments/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/DrugStock.Drug.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/DrugStock.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/DrugStockTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/I_Prescription.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/I_PrescriptionHolder.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/I_Treatment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/Prescription.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/drugs/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/Feedback.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/FeedbackFactory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/FeedbackWithRating.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/I_Feedback.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/I_FeedbackRecipient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/I_FeedbackSender.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/feedback/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/messaging/I_Message.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/messaging/I_MessageRecipient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/messaging/I_MessageSender.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/messaging/Message.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/messaging/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/messaging/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/repositories/I_Repository.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/repositories/I_RepositoryItem.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/repositories/Repository.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/repositories/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/repositories/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/AccountCreationRequest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/AccountCreationRequestTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/AccountTerminationRequest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/AccountTerminationRequestTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/AppointmentRequest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/AppointmentRequestTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/DrugRequest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/DrugRequestTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/PrescriptionRequest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/PrescriptionRequestTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/Request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/RequestType.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/requests/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/Admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/Doctor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/Patient.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/Secretary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/User.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/Address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/Gender.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/ID.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/IDFactory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/IDFactoryTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/UserRole.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/UserRoleTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/info/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/models/users/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/overview-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/overview-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/package-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/resources/glass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/resources/x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/external/jquery/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-bg_glass_65_dadada_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-bg_glass_75_dadada_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-icons_222222_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-icons_454545_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-icons_888888_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-3.4.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-ui.structure.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script-dir/jquery-ui.structure.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/serialized-form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/stylesheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/type-search-index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/ChangeController.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/I_Form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/Index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/ListTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/LoginForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/RegisterForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/ViewChange.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/ViewTest.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/admin/AdminIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/admin/NewUser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/admin/ViewUsers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/admin/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/admin/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/AppointmentForm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/DoctorIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/ProposeFutureAppointment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/RequestDrug.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/ViewAppointments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/ViewPatientHistory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/doctor/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/PatientIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/RequestAppointment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/ReviewDoctor.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/ViewAppointments.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/ViewPrescriptions.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/patient/package-tree.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/secretary/SecretaryIndex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/secretary/ViewDrugs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/secretary/ViewRequests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/secretary/package-summary.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/documentation/javadoc/views/secretary/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SOFT252_Assignment_IntelliJ_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SOFT252.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/SOFT252.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/auxiliary/FeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/auxiliary/FeedbackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/auxiliary/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/auxiliary/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/DoctorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/I_UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/I_UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/I_UserStoryIndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/I_UserStoryIndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/SecretaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/SecretaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/login/I_LoginState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/login/I_LoginState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/login/LoggedInState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/login/LoggedInState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/login/LoggedOutState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/login/LoggedOutState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/primary/login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/primary/login/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/AppointmentRepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/AppointmentRepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/DrugRepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/DrugRepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/I_EnumRepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/I_EnumRepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/I_EnumRepositoryControllerKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/I_EnumRepositoryControllerKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/I_RepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/I_RepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/I_SingleRepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/I_SingleRepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/I_UniqueQueryableRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/I_UniqueQueryableRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/RequestRepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/RequestRepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/repository/UserRepositoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/repository/UserRepositoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/serialisation/RepositorySerialisationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/serialisation/RepositorySerialisationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/serialisation/strategies/DefaultSerialisationStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/serialisation/strategies/DefaultSerialisationStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/serialisation/strategies/I_SerialisationStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/controllers/serialisation/strategies/I_SerialisationStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/AppointmentClashException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/AppointmentClashException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/DuplicateObjectException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/DuplicateObjectException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/IdClashException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/IdClashException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/LoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/LoginException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/ObjectNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/ObjectNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/OutOfRangeException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/OutOfRangeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/StockLevelException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/exceptions/StockLevelException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/I_Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/I_Observable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/I_Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/I_Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/I_Printable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/I_Printable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/I_Unique.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/I_Unique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/appointments/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/appointments/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/appointments/I_Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/appointments/I_Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/appointments/I_AppointmentParticipant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/appointments/I_AppointmentParticipant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/drugs/DrugStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/drugs/DrugStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/drugs/I_Prescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/drugs/I_Prescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/drugs/I_PrescriptionHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/drugs/I_PrescriptionHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/drugs/I_Treatment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/drugs/I_Treatment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/drugs/Prescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/drugs/Prescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/feedback/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/feedback/Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/feedback/FeedbackFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/feedback/FeedbackFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/feedback/FeedbackWithRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/feedback/FeedbackWithRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/feedback/I_Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/feedback/I_Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/feedback/I_FeedbackRecipient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/feedback/I_FeedbackRecipient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/feedback/I_FeedbackSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/feedback/I_FeedbackSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/messaging/I_Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/messaging/I_Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/messaging/I_MessageRecipient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/messaging/I_MessageRecipient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/messaging/I_MessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/messaging/I_MessageSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/messaging/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/messaging/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/repositories/I_Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/repositories/I_Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/repositories/I_RepositoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/repositories/I_RepositoryItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/repositories/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/repositories/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/AccountCreationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/AccountCreationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/AccountTerminationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/AccountTerminationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/AppointmentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/AppointmentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/DrugRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/DrugRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/PrescriptionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/PrescriptionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/requests/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/requests/RequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/Secretary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/Secretary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/info/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/info/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/info/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/info/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/info/ID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/info/ID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/info/IDFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/info/IDFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/users/info/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/models/users/info/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/I_Form.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/I_Form.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/Index.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/LoginForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegisterForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/RegisterForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/RegisterForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin/AdminIndex.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/admin/AdminIndex.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin/AdminIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/admin/AdminIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin/NewUser.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/admin/NewUser.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin/NewUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/admin/NewUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin/ViewUsers.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/admin/ViewUsers.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin/ViewUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/admin/ViewUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/AppointmentForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/AppointmentForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/AppointmentForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/AppointmentForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/DoctorIndex.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/DoctorIndex.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/DoctorIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/DoctorIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/ProposeFutureAppointment.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/ProposeFutureAppointment.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/ProposeFutureAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/ProposeFutureAppointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/RequestDrug.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/RequestDrug.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/RequestDrug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/RequestDrug.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/ViewAppointments.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/ViewAppointments.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/ViewAppointments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/ViewAppointments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/ViewPatientHistory.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/ViewPatientHistory.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/doctor/ViewPatientHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/doctor/ViewPatientHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/PatientIndex.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/PatientIndex.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/PatientIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/PatientIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/RequestAppointment.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/RequestAppointment.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/RequestAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/RequestAppointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/ReviewDoctor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/ReviewDoctor.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/ReviewDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/ReviewDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/ViewAppointments.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/ViewAppointments.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/ViewAppointments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/ViewAppointments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/ViewPrescriptions.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/ViewPrescriptions.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/patient/ViewPrescriptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/patient/ViewPrescriptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/secretary/SecretaryIndex.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/secretary/SecretaryIndex.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/secretary/SecretaryIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/secretary/SecretaryIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/secretary/ViewDrugs.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/secretary/ViewDrugs.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/secretary/ViewDrugs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/secretary/ViewDrugs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/secretary/ViewRequests.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/secretary/ViewRequests.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/secretary/ViewRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/views/secretary/ViewRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/PopulateRepositories.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/PopulateRepositories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/primary/login/LoggedInStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/primary/login/LoggedInStateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/primary/login/LoggedOutStateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/primary/login/LoggedOutStateTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/repository/AppointmentRepositoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/repository/AppointmentRepositoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/repository/DrugRepositoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/repository/DrugRepositoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/repository/RequestRepositoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/repository/RequestRepositoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/repository/UserRepositoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/repository/UserRepositoryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/serialisation/strategies/DefaultSerialisationStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/controllers/serialisation/strategies/DefaultSerialisationStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/drugs/DrugStockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/drugs/DrugStockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/requests/AccountCreationRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/requests/AccountCreationRequestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/requests/AccountTerminationRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/requests/AccountTerminationRequestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/requests/AppointmentRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/requests/AppointmentRequestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/requests/DrugRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/requests/DrugRequestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/requests/PrescriptionRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/requests/PrescriptionRequestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/users/info/IDFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/users/info/IDFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/users/info/UserRoleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/models/users/info/UserRoleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/views/ChangeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/views/ChangeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/views/ListTest.form" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/views/ListTest.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/views/ListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/views/ListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/views/ViewChange.form" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/views/ViewChange.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/views/ViewChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/views/ViewChange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/views/ViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/views/ViewTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +426,9 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="models.repositories" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="models.users.info" />
       <recent name="controllers.repository" />
@@ -87,13 +439,8 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/views/admin" />
-      <recent name="$PROJECT_DIR$/src/views/patient" />
-      <recent name="$PROJECT_DIR$/src/views/secretary" />
-      <recent name="$PROJECT_DIR$/src/views/doctor" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="project" />
       <recent name="controllers.primary" />
       <recent name="views" />
     </key>
@@ -110,8 +457,12 @@
       <recent name="models.messaging" />
       <recent name="models.feedback" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="models.repositories" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/documentation/javadoc" />
+      <recent name="$PROJECT_DIR$/src/views/admin" />
+      <recent name="$PROJECT_DIR$/src/views/patient" />
+      <recent name="$PROJECT_DIR$/src/views/secretary" />
+      <recent name="$PROJECT_DIR$/src/views/doctor" />
     </key>
   </component>
   <component name="RunManager" selected="Application.SOFT252">
@@ -123,18 +474,18 @@
       </method>
     </configuration>
     <configuration name="SOFT252" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SOFT252" />
+      <option name="MAIN_CLASS_NAME" value="project.SOFT252" />
       <module name="SOFT252-Assignment-IntelliJ" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ViewTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="views.ViewTest" />
+      <option name="MAIN_CLASS_NAME" value="project.views.ViewTest" />
       <module name="SOFT252-Assignment-IntelliJ" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="views.*" />
+          <option name="PATTERN" value="project.views.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,12 +497,12 @@
       <module name="SOFT252-Assignment-IntelliJ" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controllers.serialisation.strategies.*" />
+          <option name="PATTERN" value="project.controllers.serialisation.strategies.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controllers.serialisation.strategies" />
-      <option name="MAIN_CLASS_NAME" value="controllers.serialisation.strategies.DefaultSerialisationStrategyTest" />
+      <option name="PACKAGE_NAME" value="project.controllers.serialisation.strategies" />
+      <option name="MAIN_CLASS_NAME" value="project.controllers.serialisation.strategies.DefaultSerialisationStrategyTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -191,7 +542,8 @@
       <option name="presentableId" value="Default" />
       <updated>1577793961484</updated>
       <workItem from="1577793965671" duration="60587000" />
-      <workItem from="1578078149668" duration="150895000" />
+      <workItem from="1578078149668" duration="152124000" />
+      <workItem from="1578563652553" duration="453000" />
     </task>
     <servers />
   </component>
@@ -220,14 +572,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="233" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1578320990621" />
-    <state x="618" y="117" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578529437394">
+    <state x="618" y="117" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578563983497">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="618" y="117" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1578529437394" />
+    <state x="618" y="117" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1578563983497" />
+    <state x="333" y="382" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1578564025641">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="333" y="382" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1440.900@0.0.1440.900" timestamp="1578564025641" />
     <state x="486" y="342" width="467" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578399779402">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="486" y="342" width="467" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1578399779402" />
+    <state x="486" y="328" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1578564096041">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="486" y="328" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1440.900@0.0.1440.900" timestamp="1578564096041" />
     <state x="69" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578506904543">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -244,6 +604,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="483" y="160" key="#xdebugger.evaluate/0.0.1440.900@0.0.1440.900" timestamp="1578232593479" />
+    <state x="463" y="180" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578534962019">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="463" y="180" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1440.900@0.0.1440.900" timestamp="1578534962019" />
     <state x="525" y="350" key="Github.ShareDialog" timestamp="1577797958244">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -252,25 +616,25 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="402" y="163" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1577797967453" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1578528439601">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1578564224684">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578528439601" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1578564224684" />
     <state width="1398" height="245" key="GridCell.Tab.0.bottom/1440.0.1024.768/0.0.1440.900@0.0.1440.900" timestamp="1578414401727" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1578528439600">
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1578564224683">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578528439600" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1578564224683" />
     <state width="1398" height="245" key="GridCell.Tab.0.center/1440.0.1024.768/0.0.1440.900@0.0.1440.900" timestamp="1578414401725" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1578528439599">
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1578564224682">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578528439599" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1578564224682" />
     <state width="1398" height="245" key="GridCell.Tab.0.left/1440.0.1024.768/0.0.1440.900@0.0.1440.900" timestamp="1578414401724" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1578528439600">
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1578564224684">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578528439600" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1578564224683" />
     <state width="1398" height="245" key="GridCell.Tab.0.right/1440.0.1024.768/0.0.1440.900@0.0.1440.900" timestamp="1578414401726" />
     <state width="1398" height="328" key="GridCell.Tab.1.bottom" timestamp="1578527240290">
       <screen x="0" y="0" width="1440" height="900" />
@@ -296,18 +660,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="388" y="172" width="922" height="649" key="GuiDesigner.FormSource.Dialog/0.0.1440.900@0.0.1440.900" timestamp="1578311302812" />
-    <state x="204" y="31" width="1084" height="759" key="SettingsEditor" timestamp="1578529448595">
+    <state x="204" y="31" width="1084" height="759" key="SettingsEditor" timestamp="1578563993316">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="204" y="31" width="1084" height="759" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578529448595" />
+    <state x="204" y="31" width="1084" height="759" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1578563993316" />
     <state x="585" y="251" key="UIDesigner.ListEditorDialog" timestamp="1578513477593">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="585" y="251" key="UIDesigner.ListEditorDialog/0.0.1440.900@0.0.1440.900" timestamp="1578513477593" />
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1578078150923">
+    <state x="435" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1578563692894">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1578078150923" />
+    <state x="435" y="298" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1578563692894" />
     <state x="450" y="351" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1578091046172">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -345,17 +709,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controllers/repository/AppointmentRepositoryController.java</url>
+          <url>file://$PROJECT_DIR$/src/project/controllers/repository/AppointmentRepositoryController.java</url>
           <line>91</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/views/admin/AdminIndex.java</url>
-          <line>78</line>
+          <url>file://$PROJECT_DIR$/src/project/views/admin/AdminIndex.java</url>
+          <line>77</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/views/secretary/ViewRequests.java</url>
+          <url>file://$PROJECT_DIR$/src/project/views/secretary/ViewRequests.java</url>
           <line>81</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>

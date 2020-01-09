@@ -1,0 +1,22 @@
+unnamed package
+project.controllers.auxiliary
+project.controllers.primary
+project.controllers.primary.login
+project.controllers.repository
+project.controllers.serialisation
+project.controllers.serialisation.strategies
+project.exceptions
+project.models
+project.models.appointments
+project.models.drugs
+project.models.feedback
+project.models.messaging
+project.models.repositories
+project.models.requests
+project.models.users
+project.models.users.info
+project.views
+project.views.admin
+project.views.doctor
+project.views.patient
+project.views.secretary
