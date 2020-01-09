@@ -4,7 +4,19 @@ While this project is relatively young, it was not the first iteration of it. To
 * [SOFT252-Assignment-IDEA](https://github.com/BarkerDevelopment/SOFT252-Assignment-IDEA)
 * [SOFT252-Assignemtn-NetBeans](https://github.com/BarkerDevelopment/SOFT252-Assignment-NetBeans)
 
+## Example Login Details
+
+Here are a couple of example logins to get past the login page.
+
+|Login|Password  |Use Case |
+|-----|:--------:|:--------|
+|P1902|terminator|Patient  |
+|D4891|let_me_in |Doctor   |
+|S2844|frag&crack|Secretary|
+|A4212|admin     |Admin    |
+
 ## Desing Patterns Used
+
 * **MVC** - For project structure.
 * **Observer** - For a relationship between PrescriptionRequest and DrugStock. PrescriptionRequest keeps track of the drug it will prescribe's stock so that if it is approved, it knows if there is sufficient stock in the system or not.
 * **Factory** - For Feedback and ID creation. Seperates the creation logic from the model.
